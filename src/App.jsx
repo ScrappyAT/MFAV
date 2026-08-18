@@ -1,87 +1,45 @@
-import React, { useState } from 'react';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import WhoWeAre from './components/WhoWeAre';
-import Capabilities from './components/Capabilities';
-import KeyStats from './components/KeyStats';
-import FeaturedServices from './components/FeaturedServices';
-import IndustriesWeServe from './components/IndustriesWeServe';
-import SafetyExcellence from './components/SafetyExcellence';
-import ProjectsSection from './components/ProjectsSection';
-import WhyMfav from './components/WhyMfav';
-import ConsultationModal from './components/ConsultationModal';
-import ServiceModal from './components/ServiceModal';
-import Footer from './components/Footer';
+import React, { Suspense } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Layout from './components/layout/Layout';
+import Home from './pages/Home';
+import About from './pages/About';
+import Services from './pages/Services';
+import ServiceDetail from './pages/ServiceDetail';
+import Industries from './pages/Industries';
+import Projects from './pages/Projects';
+import Company from './pages/Company';
+import Contact from './pages/Contact';
+import NotFound from './pages/NotFound';
+
+// Dev-only route (A2: "/styleguide dev-only route") — lazy-loaded so it,
+// and every primitive it imports, are excluded from the production
+// bundle entirely, not just hidden from navigation.
+const StyleguideLazy = React.lazy(() => import('./pages/Styleguide'));
 
 export default function App() {
-  const [isConsultationOpen, setIsConsultationOpen] = useState(false);
-  const [selectedService, setSelectedService] = useState(null);
-
-  const handleOpenConsultation = () => {
-    setIsConsultationOpen(true);
-  };
-
-  const handleCloseConsultation = () => {
-    setIsConsultationOpen(false);
-  };
-
-  const handleSelectServiceOrDivision = (item) => {
-    setSelectedService(item);
-  };
-
-  const handleCloseServiceModal = () => {
-    setSelectedService(null);
-  };
-
   return (
-    <div className="min-h-screen bg-c-bg text-c-on selection:bg-c-primary-bg selection:text-white">
-      {/* 1. Header Navigation */}
-      <Header onRequestConsultation={handleOpenConsultation} />
-
-      {/* Main Content Sections */}
-      <main>
-        {/* 2. Hero */}
-        <Hero onRequestConsultation={handleOpenConsultation} />
-
-        {/* 3. Who We Are */}
-        <WhoWeAre />
-
-        {/* 4. Capabilities (6 Divisions) */}
-        <Capabilities onSelectDivision={handleSelectServiceOrDivision} />
-
-        {/* 5. Key Statistics */}
-        <KeyStats />
-
-        {/* 6. Featured Services */}
-        <FeaturedServices onSelectService={handleSelectServiceOrDivision} />
-
-        {/* 7. Industries We Serve */}
-        <IndustriesWeServe />
-
-        {/* 8. Safety & Operational Excellence */}
-        <SafetyExcellence />
-
-        {/* 9. Projects / Operations */}
-        <ProjectsSection onSelectProject={handleSelectServiceOrDivision} />
-
-        {/* 10. Why MFAV */}
-        <WhyMfav />
-      </main>
-
-      {/* 11 & 12. Final CTA & Footer */}
-      <Footer onRequestConsultation={handleOpenConsultation} />
-
-      {/* Interactive Modals */}
-      <ConsultationModal
-        isOpen={isConsultationOpen}
-        onClose={handleCloseConsultation}
-      />
-
-      <ServiceModal
-        item={selectedService}
-        onClose={handleCloseServiceModal}
-        onRequestConsultation={handleOpenConsultation}
-      />
-    </div>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/services/:slug" element={<ServiceDetail />} />
+        <Route path="/industries" element={<Industries />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/company" element={<Company />} />
+        <Route path="/contact" element={<Contact />} />
+        {import.meta.env.DEV && (
+          <Route
+            path="/styleguide"
+            element={
+              <Suspense fallback={null}>
+                <StyleguideLazy />
+              </Suspense>
+            }
+          />
+        )}
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
   );
 }
