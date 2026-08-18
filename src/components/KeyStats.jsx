@@ -1,60 +1,73 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import Container from './ui/Container';
+import Stat from './ui/Stat';
+import { useInView } from '../hooks/useInView';
 
+const STATS = [
+  { value: '10+', label: 'Service Capabilities' },
+  { value: '24/7', label: 'Operational Support' },
+  { value: '100%', label: 'Safety Commitment' },
+  { value: 'Nigeria & Beyond', label: 'Operational Reach' },
+];
+
+const NUMERIC = /^(\d+)(.*)$/;
+const COUNT_MS = 1200;
+const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+
+/** Counts 0 → target once when `start` flips true; static otherwise. */
+function useCountUp(target, start) {
+  const [value, setValue] = useState(0);
+
+  useEffect(() => {
+    if (!start || target == null) return undefined;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setValue(target);
+      return undefined;
+    }
+
+    let raf;
+    const startTime = performance.now();
+    const tick = (now) => {
+      const progress = Math.min((now - startTime) / COUNT_MS, 1);
+      setValue(Math.round(easeOut(progress) * target));
+      if (progress < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [start, target]);
+
+  return value;
+}
+
+function AnimatedStat({ value, label, start }) {
+  const match = value.match(NUMERIC);
+  const target = match ? Number(match[1]) : null;
+  const suffix = match ? match[2] : '';
+  const count = useCountUp(target, start);
+
+  const display = target != null ? `${count}${suffix}` : value;
+
+  return <Stat value={display} label={label} onDark />;
+}
+
+/**
+ * Statistics band — A6 §2d. Full-width navy band, four items on hairline
+ * rules. Numerals are off-white and never accent-colored (A3). Counters
+ * fire once on scroll-into-view via useInView (which itself only ever
+ * fires once) — they cannot re-trigger on scroll-back.
+ */
 export default function KeyStats() {
-  const stats = [
-    {
-      value: '10+',
-      label: 'Sectors Supported',
-      sub: 'Marine, Aviation, Energy & Infra'
-    },
-    {
-      value: '24/7',
-      label: 'Operational Support',
-      sub: 'Continuous Journey Management'
-    },
-    {
-      value: '100%',
-      label: 'Safety Commitment',
-      sub: 'Strict HSE Standard Protocols'
-    },
-    {
-      value: 'GLOBAL',
-      label: 'Logistics Reach',
-      sub: 'Intermodal Supply Network'
-    },
-  ];
+  const [ref, inView] = useInView({ threshold: 0.3 });
 
   return (
-    <section className="bg-c-bg-alt border-y border-c-border/40 py-12 relative overflow-hidden">
-      {/* Background Accent Grid */}
-      <div 
-        className="absolute inset-0 opacity-5 pointer-events-none"
-        style={{
-          backgroundImage: `linear-gradient(var(--clr-primary-bg) 1px, transparent 1px), linear-gradient(90deg, var(--clr-primary-bg) 1px, transparent 1px)`,
-          backgroundSize: '40px 40px'
-        }}
-      />
-
-      <div className="mfav-container relative z-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6 text-center">
-          {stats.map((stat, idx) => (
-            <div 
-              key={idx} 
-              className="flex flex-col items-center justify-center p-4 border-r last:border-r-0 border-c-border/30"
-            >
-              <span className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight mb-1 font-mono">
-                <span style={{ color: idx % 2 === 0 ? 'var(--clr-on-surface)' : 'var(--clr-teal)' }}>{stat.value}</span>
-              </span>
-              <span className="text-xs md:text-sm font-bold text-c-on uppercase tracking-wider mb-1">
-                {stat.label}
-              </span>
-              <span className="text-[11px] text-c-muted/70 font-normal max-w-[180px]">
-                {stat.sub}
-              </span>
-            </div>
+    <section ref={ref} className="bg-c-primary-bg py-16">
+      <Container>
+        <div className="grid grid-cols-2 md:grid-cols-4">
+          {STATS.map((stat) => (
+            <AnimatedStat key={stat.label} value={stat.value} label={stat.label} start={inView} />
           ))}
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

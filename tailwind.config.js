@@ -124,6 +124,12 @@ export default {
         // A3: body measure capped at ~65-70 characters.
         'measure': '65ch',
       },
+
+      // A6 §2a: "full-viewport (min-h-[92vh], not a rigid 100vh)" — named
+      // so the exact value is a token, not an arbitrary bracket value.
+      minHeight: {
+        'hero': '92vh',
+      },
     },
   },
   plugins: [],

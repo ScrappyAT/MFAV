@@ -1,81 +1,65 @@
 import React from 'react';
-import { ArrowRight, CheckCircle2, ShieldCheck, Cpu, Layers } from 'lucide-react';
+import Eyebrow from './ui/Eyebrow';
+import TextLink from './ui/TextLink';
+import { useInView } from '../hooks/useInView';
 
+/**
+ * About / company introduction — A6 §2c. Split screen, full-bleed image
+ * on one side, content on the other. Copy: two to three short paragraphs,
+ * agent-authored (logged below for COPY-FOR-REVIEW.md), no unverifiable
+ * size/history claims.
+ */
 export default function WhoWeAre() {
+  const [ref, inView] = useInView();
+
   return (
-    <section id="about" className="mfav-section bg-c-bg border-b border-c-border/30 relative">
-      <div className="mfav-container">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          
-          {/* Text Content Column */}
-          <div className="lg:col-span-6 flex flex-col justify-center">
-            <span className="section-tag">WHO WE ARE</span>
-            
-            <h2 className="section-title">
-              Engineered for Scale.<br />
-              Delivered with Precision.
+    <section id="about" className="scroll-mt-24 bg-c-bg-alt">
+      <div className="grid grid-cols-1 lg:grid-cols-2">
+        {/* Image side — full-bleed to the viewport edge, not inset */}
+        <div ref={ref} className="relative min-h-96 lg:min-h-full overflow-hidden order-2 lg:order-1">
+          <img
+            src="/assets/images/who_we_are_plant.svg"
+            alt="Industrial plant at dusk"
+            loading="lazy"
+            className={['absolute inset-0 h-full w-full object-cover reveal-image', inView && 'is-visible'].filter(Boolean).join(' ')}
+          />
+          <span className="absolute bottom-4 left-4 rounded-token-sm border border-c-border-hl bg-c-bg/90 px-3 py-1.5 text-micro uppercase text-c-on-muted">
+            [IMAGE CAPTION PLACEHOLDER]
+          </span>
+        </div>
+
+        {/* Text side */}
+        <div className="order-1 lg:order-2 py-section-sm md:py-section flex items-center px-6 md:px-10 lg:px-16">
+          <div className="max-w-measure border-l-2 border-c-primary pl-6">
+            <Eyebrow index="02" className="mb-4">
+              About MFAV
+            </Eyebrow>
+            <h2 className="text-display-sm md:text-display text-c-on mb-6">
+              Built Around Capability. Driven by Excellence.
             </h2>
-
-            <p className="text-base md:text-lg text-c-muted leading-relaxed mb-6">
-              MFAV Offshore & Allied Resources is an integrated services company providing comprehensive solutions across maritime, aviation, energy, and infrastructure sectors. We partner with industry leaders to ensure operational continuity in the most demanding environments.
-            </p>
-
-            <p className="text-sm md:text-base text-c-muted/80 leading-relaxed mb-8">
-              Through strategic asset deployment, rigorous compliance, and specialized technical expertise, MFAV delivers mission-critical support that reduces risk and maximizes performance across land, air, and sea operations.
-            </p>
-
-            {/* Value Highlights */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-              <div className="flex items-start gap-3 p-3 rounded bg-c-surface border border-c-border/40">
-                <ShieldCheck className="text-c-teal mt-0.5 shrink-0" size={20} />
-                <div>
-                  <h4 className="text-sm font-bold text-c-on mb-0.5">High Safety Protocol</h4>
-                  <p className="text-xs text-c-muted">Standardized compliance & zero-compromise safety practices.</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3 p-3 rounded bg-c-surface border border-c-border/40">
-                <Layers className="text-c-primary mt-0.5 shrink-0" size={20} />
-                <div>
-                  <h4 className="text-sm font-bold text-c-on mb-0.5">End-to-End Execution</h4>
-                  <p className="text-xs text-c-muted">Unified logistics, equipment, and journey management.</p>
-                </div>
-              </div>
+            <div className="flex flex-col gap-4 text-c-on-muted leading-relaxed">
+              <p>
+                MFAV Offshore and Allied Resources is an integrated services group
+                operating across marine, offshore, aviation, logistics, energy,
+                infrastructure and industrial sectors.
+              </p>
+              <p>
+                Bringing these capabilities together under one accountable partner
+                reduces the coordination risk that comes with managing multiple
+                vendors across a complex operation — a single point of contact,
+                a single standard of delivery.
+              </p>
+              <p>
+                Safety, discipline and international operating standards are the
+                constant across every division, regardless of sector or scale.
+              </p>
             </div>
-
-            {/* Discover More Link */}
-            <div>
-              <a href="#services" className="btn-outline-blue">
-                DISCOVER MORE
-                <ArrowRight size={16} />
-              </a>
+            <div className="mt-8">
+              <TextLink to="/about" standalone>
+                Discover MFAV
+              </TextLink>
             </div>
           </div>
-
-          {/* Visual Column - Industrial Image */}
-          <div className="lg:col-span-6">
-            <div className="relative rounded-lg overflow-hidden border border-c-border shadow-2xl group">
-              <img
-                src="/assets/images/who_we_are_plant.svg"
-                alt="MFAV Industrial Operations & Infrastructure"
-                className="w-full h-[420px] md:h-[500px] object-cover object-center transform group-hover:scale-105 transition-transform duration-700 filter brightness-90"
-              />
-              {/* Overlay accent line */}
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-c-primary-bg via-c-teal to-c-primary" />
-              
-              {/* Floating Stat Badge */}
-              <div className="absolute bottom-6 left-6 right-6 p-4 rounded bg-c-bg/90 backdrop-blur-md border border-c-border/60 flex items-center justify-between">
-                <div>
-                  <div className="text-xs text-c-primary font-semibold uppercase tracking-wider">Mission Statement</div>
-                  <div className="text-sm text-c-on font-medium">Powering energy, maritime & aviation operations seamlessly.</div>
-                </div>
-                <div className="w-8 h-8 rounded-full bg-c-primary-bg flex items-center justify-center text-white shrink-0 ml-3">
-                  <Cpu size={16} />
-                </div>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
     </section>

@@ -26,11 +26,9 @@ const DIVISION_SLUG_BY_ID = {
 export default function Home() {
   const navigate = useNavigate();
 
-  const handleRequestConsultation = () => navigate('/contact');
-
-  // Capabilities panels and FeaturedServices cards both resolve to a
-  // division page. FeaturedServices' `category` field already uses the
-  // same short ids as Capabilities' `id` (marine/aviation/energy/...).
+  // FeaturedServices cards resolve to a division page (Phase 3a, still
+  // untouched — Hero and Capabilities were rebuilt in Phase 2 as real
+  // <Link>/<Button> elements and no longer need this indirection).
   const handleSelectDivision = (item) => {
     const slug = DIVISION_SLUG_BY_ID[item.id] || DIVISION_SLUG_BY_ID[item.category];
     navigate(slug ? `/services/${slug}` : '/services');
@@ -42,9 +40,9 @@ export default function Home() {
 
   return (
     <main>
-      <Hero onRequestConsultation={handleRequestConsultation} />
+      <Hero />
+      <Capabilities />
       <WhoWeAre />
-      <Capabilities onSelectDivision={handleSelectDivision} />
       <KeyStats />
       <FeaturedServices onSelectService={handleSelectDivision} />
       <IndustriesWeServe />

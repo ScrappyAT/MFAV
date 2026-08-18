@@ -163,7 +163,7 @@ export default function FeaturedServices({ onSelectService }) {
                 <div>
                   {/* Icon & Category Tag */}
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-10 h-10 rounded bg-c-primary-bg/30 border border-c-primary/20 flex items-center justify-center text-c-teal group-hover:bg-c-primary-bg group-hover:text-white transition-colors">
+                    <div className="w-10 h-10 rounded bg-c-primary-bg/30 border border-c-primary/20 flex items-center justify-center text-c-primary group-hover:bg-c-primary-bg group-hover:text-white transition-colors">
                       <IconComp size={20} />
                     </div>
                     <span className="text-[10px] uppercase font-bold tracking-widest text-c-primary bg-c-bg px-2 py-0.5 rounded border border-c-border/40">
@@ -172,7 +172,7 @@ export default function FeaturedServices({ onSelectService }) {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-lg font-bold text-c-on mb-2 group-hover:text-c-teal transition-colors flex items-center justify-between">
+                  <h3 className="text-lg font-bold text-c-on mb-2 group-hover:text-c-primary transition-colors flex items-center justify-between">
                     {service.title}
                   </h3>
 

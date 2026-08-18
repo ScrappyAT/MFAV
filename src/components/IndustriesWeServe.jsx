@@ -33,12 +33,12 @@ export default function IndustriesWeServe() {
             return (
               <div
                 key={idx}
-                className="group p-5 rounded-lg bg-c-surface border border-c-border/40 hover:border-c-teal transition-all duration-300 flex flex-col items-center justify-center text-center cursor-default hover:bg-c-surface-high"
+                className="group p-5 rounded-lg bg-c-surface border border-c-border/40 hover:border-c-primary transition-all duration-300 flex flex-col items-center justify-center text-center cursor-default hover:bg-c-surface-high"
               >
-                <div className="w-12 h-12 rounded-full bg-c-bg border border-c-border/60 flex items-center justify-center text-c-primary group-hover:text-c-teal group-hover:border-c-teal transition-colors mb-3">
+                <div className="w-12 h-12 rounded-full bg-c-bg border border-c-border/60 flex items-center justify-center text-c-primary group-hover:text-c-primary group-hover:border-c-primary transition-colors mb-3">
                   <IconComp size={22} />
                 </div>
-                <h3 className="text-sm md:text-base font-bold text-c-on mb-1 group-hover:text-c-teal transition-colors">
+                <h3 className="text-sm md:text-base font-bold text-c-on mb-1 group-hover:text-c-primary transition-colors">
                   {ind.name}
                 </h3>
                 <span className="text-[10px] text-c-muted/70 font-medium">

@@ -57,10 +57,10 @@ export default function WhyMfav() {
                 key={idx}
                 className="industrial-card p-6 flex flex-col items-center text-center group"
               >
-                <div className="w-12 h-12 rounded-full bg-c-primary-bg/30 border border-c-primary/20 flex items-center justify-center text-c-teal group-hover:bg-c-primary-bg group-hover:text-white transition-all duration-300 mb-5">
+                <div className="w-12 h-12 rounded-full bg-c-primary-bg/30 border border-c-primary/20 flex items-center justify-center text-c-primary group-hover:bg-c-primary-bg group-hover:text-white transition-all duration-300 mb-5">
                   <IconComp size={24} />
                 </div>
-                <h3 className="text-lg font-bold text-c-on mb-2 group-hover:text-c-teal transition-colors">
+                <h3 className="text-lg font-bold text-c-on mb-2 group-hover:text-c-primary transition-colors">
                   {pillar.title}
                 </h3>
                 <p className="text-xs text-c-muted leading-relaxed">

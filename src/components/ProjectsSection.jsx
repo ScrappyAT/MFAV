@@ -1,15 +1,24 @@
 import React from 'react';
-import { ArrowUpRight, ShieldCheck, Compass, Anchor, Zap } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 export default function ProjectsSection({ onSelectProject }) {
+  // NOTE (fabricated-claims fix, same treatment as the Footer): every
+  // project here is illustrative placeholder content (full placeholder
+  // labeling — titles, locations, sector tags — is Phase 3d/5d work, not
+  // done here). What WAS fixed now, before Phase 2: the `specs` field
+  // previously asserted specific, unverifiable performance claims —
+  // "100% On-Time Delivery" and "24/7 Medevac Standby" — with no client
+  // data behind them. Removed entirely, per A2.6/A2.7; not softened into
+  // vaguer claims. The purely descriptive half of each spec (no metric,
+  // no verification claim) was left as-is.
   const projects = [
     {
       id: 'project-alpha',
       title: 'Project Alpha',
       category: 'MARINE LOGISTICS',
       description: 'Offshore platform supply vessel chartering and journey management for deepwater energy operations.',
-      image: '/assets/images/hero_offshore.svg',
-      specs: 'Deepwater OSV Deployment • 100% On-Time Delivery'
+      image: '/assets/images/hero_section.jpg',
+      specs: 'Deepwater OSV Deployment'
     },
     {
       id: 'project-beta',
@@ -17,7 +26,7 @@ export default function ProjectsSection({ onSelectProject }) {
       category: 'ENERGY INFRASTRUCTURE',
       description: 'Subsea pipeline installation, engineering maintenance, and structural corrosion testing.',
       image: '/assets/images/who_we_are_plant.svg',
-      specs: 'Subsea Installation • Precision Engineering'
+      specs: 'Subsea Installation'
     },
     {
       id: 'project-gamma',
@@ -25,7 +34,7 @@ export default function ProjectsSection({ onSelectProject }) {
       category: 'AVIATION SUPPORT',
       description: 'Executive aircraft charter dispatch and rotary wing crew transfers for remote site operations.',
       image: '/assets/images/division_aviation.svg',
-      specs: 'Twin-Engine Rotary Transport • 24/7 Medevac Standby'
+      specs: 'Twin-Engine Rotary Transport'
     },
     {
       id: 'project-delta',
@@ -33,7 +42,7 @@ export default function ProjectsSection({ onSelectProject }) {
       category: 'HEAVY HAULAGE',
       description: 'Breakbulk machinery haulage and port-to-site equipment supply chain management.',
       image: '/assets/images/division_logistics.svg',
-      specs: 'Intermodal Freight • Heavy Industrial Gear'
+      specs: 'Intermodal Freight'
     },
   ];
 
@@ -47,10 +56,6 @@ export default function ProjectsSection({ onSelectProject }) {
             <span className="section-tag">PORTFOLIO</span>
             <h2 className="section-title mb-0">EXPERIENCE IN MOTION</h2>
           </div>
-          <div className="flex items-center gap-2 text-xs font-semibold text-c-primary uppercase tracking-wider">
-            <span>Verified Operational History</span>
-            <ShieldCheck size={16} className="text-c-teal" />
-          </div>
         </div>
 
         {/* Project Cards Grid */}
@@ -59,7 +64,7 @@ export default function ProjectsSection({ onSelectProject }) {
             <div
               key={project.id}
               onClick={() => onSelectProject(project)}
-              className="group relative h-96 rounded-lg overflow-hidden border border-c-border bg-c-surface cursor-pointer transition-all duration-500 hover:border-c-teal hover:shadow-2xl flex flex-col justify-end p-6 md:p-8"
+              className="group relative h-96 rounded-lg overflow-hidden border border-c-border bg-c-surface cursor-pointer transition-all duration-500 hover:border-c-primary hover:shadow-2xl flex flex-col justify-end p-6 md:p-8"
             >
               {/* Background Image */}
               <div className="absolute inset-0 z-0">
@@ -78,13 +83,13 @@ export default function ProjectsSection({ onSelectProject }) {
 
               {/* Content */}
               <div className="relative z-10">
-                <div className="text-[11px] font-bold tracking-widest text-c-ondark-teal uppercase mb-1">
+                <div className="text-[11px] font-bold tracking-widest text-c-ondark-primary uppercase mb-1">
                   {project.category}
                 </div>
 
                 <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-2 group-hover:text-c-ondark-primary transition-colors flex items-center justify-between">
                   {project.title}
-                  <ArrowUpRight size={22} className="text-c-ondark-teal transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  <ArrowUpRight size={22} className="text-c-ondark-primary transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </h3>
 
                 <p className="text-xs md:text-sm text-c-ondark/75 line-clamp-2 leading-relaxed mb-4">

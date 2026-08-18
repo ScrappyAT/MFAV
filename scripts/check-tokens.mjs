@@ -29,10 +29,8 @@ import { join, relative } from 'node:path';
 const SRC_DIR = join(process.cwd(), 'src');
 
 const LEGACY_ALLOWLIST = new Set([
-  'components/Hero.jsx',
-  'components/WhoWeAre.jsx',
-  'components/Capabilities.jsx',
-  'components/KeyStats.jsx',
+  // Hero.jsx, WhoWeAre.jsx, Capabilities.jsx, and KeyStats.jsx were
+  // rewritten in Phase 2 (zero violations) and removed from this list.
   'components/IndustriesWeServe.jsx',
   'components/SafetyExcellence.jsx',
   'components/ProjectsSection.jsx',

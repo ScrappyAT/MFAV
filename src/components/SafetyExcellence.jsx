@@ -25,7 +25,7 @@ export default function SafetyExcellence() {
         <div className="max-w-3xl mx-auto text-center flex flex-col items-center">
           
           {/* Shield Badge */}
-          <div className="w-14 h-14 rounded-full bg-c-primary-bg/40 border border-c-ondark-teal/40 flex items-center justify-center text-c-ondark-teal mb-6 backdrop-blur-md">
+          <div className="w-14 h-14 rounded-full bg-c-primary-bg/40 border border-c-ondark-primary/40 flex items-center justify-center text-c-ondark-primary mb-6 backdrop-blur-md">
             <ShieldCheck size={28} />
           </div>
 
@@ -50,7 +50,7 @@ export default function SafetyExcellence() {
           {/* 3 Pillars Summary */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full mt-16 text-left">
             <div className="p-4 rounded bg-c-surface/95 backdrop-blur-md border border-c-border shadow-sm">
-              <div className="flex items-center gap-2 text-c-teal font-bold text-sm mb-2">
+              <div className="flex items-center gap-2 text-c-primary font-bold text-sm mb-2">
                 <CheckCircle2 size={16} />
                 Zero-Harm Philosophy
               </div>
@@ -66,7 +66,7 @@ export default function SafetyExcellence() {
             </div>
 
             <div className="p-4 rounded bg-c-surface/95 backdrop-blur-md border border-c-border shadow-sm">
-              <div className="flex items-center gap-2 text-c-teal font-bold text-sm mb-2">
+              <div className="flex items-center gap-2 text-c-primary font-bold text-sm mb-2">
                 <CheckCircle2 size={16} />
                 Continuous Auditing
               </div>
@@ -88,7 +88,7 @@ export default function SafetyExcellence() {
               <X size={20} />
             </button>
 
-            <div className="flex items-center gap-3 mb-4 text-c-teal">
+            <div className="flex items-center gap-3 mb-4 text-c-primary">
               <FileText size={24} />
               <h3 className="text-xl font-bold text-c-on">MFAV HSE & Safety Policy Standard</h3>
             </div>

@@ -36,7 +36,7 @@ export default function DivisionPanel({
         src={image}
         alt={imageAlt || ''}
         loading="lazy"
-        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-standard group-hover:scale-105"
+        className="absolute inset-0 h-full w-full object-cover transition-transform duration-320 ease-standard group-hover:scale-105"
       />
       <div
         aria-hidden="true"

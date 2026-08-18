@@ -133,10 +133,19 @@ export default function Header() {
         'fixed inset-x-0 top-0 z-header transition-colors duration-200 ease-standard',
         solid
           ? 'bg-c-bg border-b border-c-border py-3 shadow-token'
-          : 'bg-transparent py-5 border-b border-transparent',
+          : 'py-5 border-b border-transparent',
       ].join(' ')}
     >
-      <div className="mfav-container flex items-center justify-between gap-6">
+      {/* Measured contrast failure (Phase 2 QA): white nav text over a
+          bright photo sky dropped as low as 1.82:1 with nothing behind
+          the transparent header but the page's own scrim, which is
+          weakest at the very top. This scrim is independent of whatever
+          image sits behind the header, on every page, not just the
+          Home hero. */}
+      {!solid && (
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-c-scrim/90 to-c-scrim/70" />
+      )}
+      <div className="relative z-10 mfav-container flex items-center justify-between gap-6">
         <Link to="/" className="shrink-0 rounded-token-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-c-primary">
           <LogoLockup solid={solid} />
         </Link>
