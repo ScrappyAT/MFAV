@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Linkedin, Twitter, Facebook, Instagram } from 'lucide-react';
-import Button from '../ui/Button';
 import TextLink from '../ui/TextLink';
+import CtaBand from '../ui/CtaBand';
+import Logo from './Logo';
 import { DIVISIONS } from '../../content/divisions';
 
 // No real social URLs exist yet (client hasn't supplied handles). Per A2.6
@@ -18,27 +19,12 @@ const SOCIALS = [
 export default function Footer() {
   return (
     <footer className="bg-c-primary-bg text-c-ondark">
-      {/* Closing CTA band — reused verbatim in Phase 3g with page-specific copy */}
-      <div className="border-b border-c-ondark/15">
-        <div className="mfav-container flex flex-col md:flex-row items-center justify-between gap-8 py-16">
-          <div className="max-w-xl">
-            <h2 className="text-display-sm text-c-ondark">
-              Let&rsquo;s Build the Right Solution for Your Operation.
-            </h2>
-            <p className="mt-3 text-c-ondark/75">
-              Tell us what you need. Our team will work with you to develop the right solution.
-            </p>
-          </div>
-          <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0">
-            <Button to="/contact" variant="onDark" size="md">
-              Start a Conversation
-            </Button>
-            <Button to="/services" variant="onDark" size="md">
-              View Our Services
-            </Button>
-          </div>
-        </div>
-      </div>
+      {/* Closing CTA band (A3 §3g) — the shared component, not hand-coded
+          here; Phase 4's ServiceDetail template reuses the same one. */}
+      <CtaBand
+        heading="Let’s Build the Right Solution for Your Operation."
+        body="Tell us what you need. Our team will work with you to develop the right solution."
+      />
 
       {/* Main footer links */}
       <div className="mfav-container py-16">
@@ -46,13 +32,7 @@ export default function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-2 flex flex-col gap-4">
             <Link to="/" className="inline-flex items-center w-fit rounded-token-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-c-ondark-primary">
-              <img
-                src="/assets/images/mfav_logo.png"
-                alt="MFAV Offshore & Allied Resources"
-                width={160}
-                height={87}
-                className="h-10 w-auto"
-              />
+              <Logo />
             </Link>
             <p className="text-sm text-c-ondark/70 max-w-sm leading-relaxed">
               Integrated marine, offshore, aviation, logistics and industrial solutions.

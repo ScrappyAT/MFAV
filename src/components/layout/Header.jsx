@@ -2,22 +2,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, Mail, Phone } from 'lucide-react';
 import Button from '../ui/Button';
+import Logo from './Logo';
 import { DIVISIONS, NAV_LINKS } from '../../content/divisions';
 
 const SCROLL_SOLID_AT = 80;
 const SCROLL_TRANSPARENT_AT = 40;
-
-function LogoLockup() {
-  return (
-    <img
-      src="/assets/images/mfav_logo.png"
-      alt="MFAV Offshore & Allied Resources"
-      width={160}
-      height={87}
-      className="h-10 w-auto"
-    />
-  );
-}
 
 export default function Header() {
   const [solid, setSolid] = useState(false);
@@ -131,12 +120,17 @@ export default function Header() {
       {!solid && (
         <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-c-scrim/90 to-c-scrim/70" />
       )}
-      <div className="relative z-10 mfav-container grid items-center [grid-template-columns:1fr_auto_1fr] gap-6">
-        <Link to="/" className="justify-self-start rounded-token-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-c-primary">
-          <LogoLockup />
+      <div className="relative z-10 mfav-container flex items-center justify-between gap-6">
+        <Link to="/" className="shrink-0 rounded-token-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-c-primary">
+          <Logo />
         </Link>
 
-        <nav aria-label="Primary" className="hidden lg:flex items-center justify-center gap-8">
+        {/* Absolutely centered on the header itself (not just relative to
+            its flex siblings) — see the Phase 1 note this restores: a
+            plain flex justify-between only centers the nav relative to
+            the logo/actions' combined width, not the header's true
+            center, and the two rarely match. */}
+        <nav aria-label="Primary" className="hidden lg:flex items-center gap-8 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           {NAV_LINKS.map((link) =>
             link.name === 'Services' ? (
               <div key={link.name} ref={servicesRef} className="relative">
@@ -218,7 +212,7 @@ export default function Header() {
           )}
         </nav>
 
-        <div className="justify-self-end flex items-center gap-4">
+        <div className="shrink-0 flex items-center gap-4">
           <div className="hidden lg:block">
             <Button to="/contact" variant="primary" size="sm">
               Request a Consultation

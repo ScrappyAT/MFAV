@@ -7,9 +7,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Wired through the "R G B" companion vars so Tailwind's opacity
-        // modifiers (bg-c-x/50, border-c-x/30, ...) actually work — a
-        // color bound straight to a hex var can't take a /NN modifier.
+        // Wired through "R G B" companion vars for Tailwind opacity modifiers.
+        // All values sourced from mfav design tokens.json (light theme).
         'c-bg': 'rgb(var(--clr-bg-rgb) / <alpha-value>)',
         'c-bg-alt': 'rgb(var(--clr-bg-alt-rgb) / <alpha-value>)',
         'c-surface': 'rgb(var(--clr-surface-rgb) / <alpha-value>)',
@@ -19,36 +18,22 @@ export default {
         'c-surface-lowest': 'rgb(var(--clr-surface-lowest-rgb) / <alpha-value>)',
         'c-on': 'rgb(var(--clr-on-surface-rgb) / <alpha-value>)',
         'c-on-muted': 'rgb(var(--clr-on-muted-rgb) / <alpha-value>)',
-        // Alias: components reference "c-muted" (not "c-on-muted")
-        // throughout — kept so existing Phase-2/3-scope components don't
-        // silently lose color when those sections are rebuilt.
         'c-muted': 'rgb(var(--clr-on-muted-rgb) / <alpha-value>)',
         'c-on-primary': 'rgb(var(--clr-on-primary-rgb) / <alpha-value>)',
         'c-primary': 'rgb(var(--clr-primary-rgb) / <alpha-value>)',
         'c-primary-bg': 'rgb(var(--clr-primary-bg-rgb) / <alpha-value>)',
-        // Retired per Phase 0 audit + client decision: teal was a second,
-        // unsanctioned accent hue. A3 names exactly one accent (blue).
-        // 'c-teal' / 'c-teal-bg' / 'c-ondark-teal' intentionally removed —
-        // do not re-add without a design-law amendment.
         'c-border': 'rgb(var(--clr-border-rgb) / <alpha-value>)',
         'c-border-hl': 'rgb(var(--clr-border-hl-rgb) / <alpha-value>)',
         'c-ondark': 'rgb(var(--clr-ondark-rgb) / <alpha-value>)',
         'c-ondark-primary': 'rgb(var(--clr-ondark-primary-rgb) / <alpha-value>)',
-        // Dedicated scrim token for image overlays (Hero, division/project
-        // cards, Safety banner) — pulls from the same navy as c-primary-bg
-        // so overlays and the accent fill are never allowed to drift apart.
         'c-scrim': 'rgb(var(--clr-scrim-rgb) / <alpha-value>)',
-        // Semantic error color for form validation states (Contact form,
-        // FieldError primitive). Not part of the A3 palette law — this is
-        // a functional/system color, sparingly used, on error states only.
         'c-error': 'rgb(var(--clr-error-rgb) / <alpha-value>)',
       },
 
-      // --- Type scale (A3: hero H1 very large/tight leading & tracking,
-      // section H2 large, eyebrow small/uppercase/wide-tracked, stat
-      // numerals very large/tabular). Values proposed in TOKENS-GAPS.md §4,
-      // approved as written. ---
+      // --- Type scale: project-specific tokens (kept for existing components)
+      // plus Figma DM Sans type scale (mfav design tokens.json > typography). ---
       fontSize: {
+        // Project-specific (no direct Figma equivalent)
         'hero': ['4.5rem', { lineHeight: '0.97', letterSpacing: '-0.02em', fontWeight: '700' }],
         'hero-sm': ['2.75rem', { lineHeight: '1.05', letterSpacing: '-0.01em', fontWeight: '700' }],
         'display': ['3.5rem', { lineHeight: '1.1', letterSpacing: '-0.01em', fontWeight: '600' }],
@@ -56,15 +41,43 @@ export default {
         'stat': ['4rem', { lineHeight: '1', fontVariantNumeric: 'tabular-nums', fontWeight: '500' }],
         'eyebrow': ['0.75rem', { letterSpacing: '0.15em', fontWeight: '700' }],
         'micro': ['0.6875rem', { letterSpacing: '0.08em', fontWeight: '600' }],
+        // Figma DM Sans — Display
+        'figma-display-lg': ['4rem', { lineHeight: '1.6', letterSpacing: '-4px', fontWeight: '500' }],
+        'figma-display-md': ['3.125rem', { lineHeight: '1.5', letterSpacing: '-3px', fontWeight: '500' }],
+        'figma-display-sm': ['2.5rem', { lineHeight: '1.5', letterSpacing: '-2.3px', fontWeight: '500' }],
+        // Figma DM Sans — Headline
+        'figma-headline-lg': ['2rem', { lineHeight: '1.5', letterSpacing: '-1.55px', fontWeight: '500' }],
+        'figma-headline-md': ['1.75rem', { lineHeight: '1.5', letterSpacing: '-1.2px', fontWeight: '500' }],
+        'figma-headline-sm': ['1.5rem', { lineHeight: '1.5', letterSpacing: '-1px', fontWeight: '500' }],
+        // Figma DM Sans — Title
+        'figma-title-lg': ['1.375rem', { lineHeight: '1.5', letterSpacing: '-1px', fontWeight: '500' }],
+        'figma-title-md': ['1rem', { lineHeight: '1.5', letterSpacing: '-0.85px', fontWeight: '500' }],
+        'figma-title-sm': ['0.875rem', { lineHeight: '1.5', letterSpacing: '-0.75px', fontWeight: '600' }],
+        // Figma DM Sans — Body
+        'figma-body-lg': ['1rem', { lineHeight: '1.5', letterSpacing: '-0.8px', fontWeight: '500' }],
+        'figma-body-md': ['0.875rem', { lineHeight: '1.5', letterSpacing: '-0.75px', fontWeight: '500' }],
+        'figma-body-sm': ['0.875rem', { lineHeight: '1.5', letterSpacing: '-0.75px', fontWeight: '500' }],
+        // Figma DM Sans — Label
+        'figma-label-lg': ['0.875rem', { lineHeight: '1.5', letterSpacing: '-0.9px', fontWeight: '500' }],
+        'figma-label-md': ['0.75rem', { lineHeight: '1.5', letterSpacing: '-0.9px', fontWeight: '500' }],
+        'figma-label-sm': ['0.6875rem', { lineHeight: '1.5', letterSpacing: '-0.9px', fontWeight: '500' }],
       },
 
-      // --- Spacing scale, section-rhythm steps (A3: ~120–180px desktop
-      // section padding). Named, not just numbered, so `py-section` reads
-      // as intent in component code. ---
+      // --- Spacing: section rhythm (project) + Figma spacing scale. ---
       spacing: {
-        'section-sm': '5rem',    // 80px  — mobile section padding
-        'section': '9rem',       // 144px — desktop section padding (mid-band)
-        'section-lg': '11.25rem',// 180px — upper band (Hero / closing CTA)
+        // Project-specific section padding
+        'section-sm': '5rem',
+        'section': '9rem',
+        'section-lg': '11.25rem',
+        // Figma spacing scale (primitive colours > spacing)
+        'space-0': '0',
+        'space-xs': '4px',
+        'space-sm': '8px',
+        'space-md': '12px',
+        'space-base': '16px',
+        'space-lg': '20px',
+        'space-xl': '24px',
+        'space-2xl': '32px',
       },
 
       // --- Radii (A3: near-square, 0–4px max on cards/buttons). `rounded`
@@ -75,12 +88,10 @@ export default {
         'token': '4px',
       },
 
-      // --- Shadows (A3: "almost absent" — a 1px border or tone shift
-      // instead of blur). One barely-there elevation, one exception for
-      // genuine overlays (modal, mega-menu). ---
+      // --- Shadows (Figma effect tokens: 4px blur, 4px/4px offset, 0 spread) ---
       boxShadow: {
-        'token': '0 1px 2px rgb(26 27 32 / 0.06)',
-        'token-modal': '0 24px 48px rgb(26 27 32 / 0.24)',
+        'token': '0 4px 4px 0 rgba(0, 0, 0, 0.2)',
+        'token-modal': '0 4px 4px 0 rgba(0, 0, 0, 0.4)',
       },
 
       // --- Motion (A6 Phase 6 durations, brought forward now so Phase 1

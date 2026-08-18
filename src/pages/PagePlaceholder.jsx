@@ -2,14 +2,17 @@ import React from 'react';
 import Container from '../components/ui/Container';
 import Section from '../components/ui/Section';
 import Eyebrow from '../components/ui/Eyebrow';
+import { useDocumentMeta } from '../hooks/useDocumentMeta';
 
 /**
  * PagePlaceholder — the Phase 1c "placeholder page body" for every route
- * that doesn't get real content until Phase 4/5. Keeps a real <h1>, real
- * landmark structure, and a visible marker that this is a routing-shell
- * stand-in, per A2.6.
+ * that doesn't get real content until Phase 5. Keeps a real <h1>, real
+ * landmark structure, a visible marker that this is a routing-shell
+ * stand-in (A2.6), and a unique <title>/meta description per page.
  */
 export default function PagePlaceholder({ eyebrow, title, note, children }) {
+  useDocumentMeta(title, note);
+
   return (
     <main>
       <Section size="lg" tone="alt" border>

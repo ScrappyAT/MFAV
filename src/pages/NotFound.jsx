@@ -2,8 +2,11 @@ import React from 'react';
 import Container from '../components/ui/Container';
 import Section from '../components/ui/Section';
 import Button from '../components/ui/Button';
+import { useDocumentMeta } from '../hooks/useDocumentMeta';
 
 export default function NotFound() {
+  useDocumentMeta('Page Not Found', 'The page you were looking for doesn’t exist or has moved.');
+
   return (
     <main>
       <Section size="lg" tone="navy">

@@ -5,8 +5,13 @@
  * an ESLint dependency.
  *
  * Scans every .jsx file under src/ for:
- *   1. Tailwind arbitrary-value syntax ( `-[...]` inside a className )
- *   2. Raw hex colors ( #fff, #1a2b3c )
+ *   1. Tailwind arbitrary-value syntax ( `-[...]` inside a className,
+ *      e.g. `w-[420px]` )
+ *   2. Tailwind arbitrary-property syntax ( a standalone `[prop:value]`
+ *      declaration, e.g. `[grid-template-columns:1fr_auto_1fr]` ) — a
+ *      separate Tailwind feature from #1, and separately banned by A2.3;
+ *      missed here for a while since it doesn't need a leading hyphen
+ *   3. Raw hex colors ( #fff, #1a2b3c )
  *
  * A2.3: "Zero raw hex values, zero arbitrary Tailwind values ... in
  * component code. If a needed value is missing from the tokens, stop,
@@ -41,6 +46,10 @@ const LEGACY_ALLOWLIST = new Set([
 const CSS_ALLOWLIST = new Set(['index.css']);
 
 const ARBITRARY_VALUE = /-\[[^\]]*\]/;
+// Standalone arbitrary-property syntax: a `[` preceded by a quote/space/
+// brace-open (i.e. not part of a utility-name-plus-hyphen token, which
+// ARBITRARY_VALUE above already covers) and containing a `:`.
+const ARBITRARY_PROPERTY = /(?:^|[\s"'`{])\[[a-zA-Z-]+:[^\]]*\]/;
 const RAW_HEX = /#[0-9A-Fa-f]{3,8}\b/;
 
 function walk(dir, files = []) {
@@ -66,7 +75,7 @@ for (const file of walk(SRC_DIR)) {
 
   const lines = readFileSync(file, 'utf8').split('\n');
   lines.forEach((line, idx) => {
-    if (ARBITRARY_VALUE.test(line) || RAW_HEX.test(line)) {
+    if (ARBITRARY_VALUE.test(line) || ARBITRARY_PROPERTY.test(line) || RAW_HEX.test(line)) {
       violations.push(`${rel}:${idx + 1}: ${line.trim()}`);
     }
   });

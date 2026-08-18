@@ -1,27 +1,172 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { DIVISIONS } from '../content/divisions';
-import PagePlaceholder from './PagePlaceholder';
+import { SERVICES } from '../content/services';
+import { useDocumentMeta } from '../hooks/useDocumentMeta';
+import Container from '../components/ui/Container';
+import Eyebrow from '../components/ui/Eyebrow';
+import SectionHeader from '../components/ui/SectionHeader';
+import Button from '../components/ui/Button';
+import TextLink from '../components/ui/TextLink';
+import ServiceCard from '../components/ui/ServiceCard';
+import CtaBand from '../components/ui/CtaBand';
 import NotFound from './NotFound';
 
 /**
- * ServiceDetail — the one reusable route for all six division pages
- * (A5: /services/:slug). The real ServiceDetail template (hero, overview,
- * capabilities, process, benefits, industries, related services, CTA) is
- * Phase 4 work, driven from src/content/services.ts. For now this
- * confirms the slug resolves and shows a placeholder body.
+ * ServiceDetail — Phase 4. ONE reusable template for all six division
+ * routes, entirely data-driven from DIVISIONS (Phase 2b / mega-menu
+ * content) + SERVICES (Phase 4 copy). No per-division page files.
  */
 export default function ServiceDetail() {
   const { slug } = useParams();
   const division = DIVISIONS.find((d) => d.id === slug);
+  const service = SERVICES[slug];
 
-  if (!division) return <NotFound />;
+  // Hooks must run unconditionally — call before the not-found bail-out.
+  useDocumentMeta(
+    division ? division.name : 'Service Not Found',
+    division ? `${division.blurb} ${service?.positioning || ''}`.trim() : undefined
+  );
+
+  if (!division || !service) return <NotFound />;
+
+  const relatedDivisions = service.relatedServices
+    .map((id) => DIVISIONS.find((d) => d.id === id))
+    .filter(Boolean);
 
   return (
-    <PagePlaceholder
-      eyebrow={division.name}
-      title={division.name}
-      note={`${division.blurb} Full division content (overview, capabilities, process, benefits) lands here in Phase 4.`}
-    />
+    <main>
+      {/* 1. Hero */}
+      <section className="relative overflow-hidden bg-c-scrim">
+        <img
+          src={service.image}
+          alt=""
+          loading="eager"
+          className={['absolute inset-0 h-full w-full object-cover', service.graded && 'grade-cool'].filter(Boolean).join(' ')}
+        />
+        {service.graded && <div aria-hidden="true" className="grade-cool-tint absolute inset-0" />}
+        <div aria-hidden="true" className="absolute inset-0 bg-c-scrim/80" />
+
+        <Container className="relative z-10 py-section-sm md:py-section-lg">
+          <nav aria-label="Breadcrumb" className="mb-6 text-sm text-c-ondark/70">
+            <TextLink to="/" onDark>Home</TextLink>
+            <span className="mx-2">/</span>
+            <TextLink to="/services" onDark>Services</TextLink>
+            <span className="mx-2">/</span>
+            <span className="text-c-ondark">{division.name}</span>
+          </nav>
+          <Eyebrow onDark className="mb-4">{division.name}</Eyebrow>
+          <h1 className="text-hero-sm md:text-hero text-c-ondark mb-6 max-w-3xl">{division.name}</h1>
+          <p className="max-w-measure text-lg text-c-ondark/85 leading-relaxed mb-8">{service.positioning}</p>
+          <Button to="/contact" variant="primary" size="lg">
+            Request a Consultation
+          </Button>
+        </Container>
+      </section>
+
+      {/* 2. Overview */}
+      <Container className="py-section-sm md:py-section">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+          <div className="lg:col-span-7">
+            <Eyebrow className="mb-4">Overview</Eyebrow>
+            <p className="text-lg text-c-on leading-relaxed">{service.overview}</p>
+          </div>
+          <div className="lg:col-span-5">
+            <dl className="flex flex-col">
+              {service.keyFacts.map((fact) => (
+                <div key={fact.label} className="py-4 border-t border-c-border first:border-t-0">
+                  <dt className="text-eyebrow uppercase text-c-on-muted mb-1">{fact.label}</dt>
+                  <dd className="text-c-on">{fact.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </div>
+      </Container>
+
+      {/* 3. Capabilities */}
+      <section className="bg-c-bg-alt">
+        <Container className="py-section-sm md:py-section">
+          <SectionHeader eyebrow="Capabilities" heading={`${division.name} Capabilities`} />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8">
+            {service.capabilities.map((cap) => (
+              <div key={cap.name} className="border-t border-c-border pt-5">
+                <h3 className="font-bold text-c-on mb-1.5">{cap.name}</h3>
+                <p className="text-c-on-muted leading-relaxed">{cap.description}</p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* 4. Approach / Process */}
+      <Container className="py-section-sm md:py-section">
+        <SectionHeader eyebrow="Approach" heading="How We Work" />
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+          {service.process.map((step, idx) => (
+            <div key={step.title} className="relative pt-6 border-t-2 border-c-primary">
+              <span className="block text-eyebrow text-c-primary mb-3">{String(idx + 1).padStart(2, '0')}</span>
+              <h3 className="font-bold text-c-on mb-1.5">{step.title}</h3>
+              <p className="text-sm text-c-on-muted leading-relaxed">{step.description}</p>
+            </div>
+          ))}
+        </div>
+      </Container>
+
+      {/* 5. Benefits */}
+      <section className="bg-c-bg-alt">
+        <Container className="py-section-sm md:py-section">
+          <SectionHeader eyebrow="Benefits" heading="Why This Division" />
+          <div className="grid grid-cols-1 md:grid-cols-2 border-t border-l border-c-border">
+            {service.benefits.map((benefit) => (
+              <div key={benefit} className="border-r border-b border-c-border p-6">
+                <p className="text-c-on">{benefit}</p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* 6. Relevant Industries */}
+      <Container className="py-section-sm md:py-section">
+        <SectionHeader eyebrow="Industries" heading="Where This Applies" />
+        <div className="flex flex-wrap gap-3">
+          {service.relevantIndustries.map((industry) => (
+            <Link
+              key={industry}
+              to="/industries"
+              className="rounded-token border border-c-border-hl px-4 py-2 text-sm font-semibold uppercase tracking-wide text-c-on-muted transition-colors duration-200 ease-standard hover:border-c-primary hover:text-c-primary-bg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-c-primary"
+            >
+              {industry}
+            </Link>
+          ))}
+        </div>
+      </Container>
+
+      {/* 7. Related Services */}
+      {relatedDivisions.length > 0 && (
+        <section className="bg-c-bg-alt">
+          <Container className="py-section-sm md:py-section">
+            <SectionHeader eyebrow="Related" heading="Related Services" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {relatedDivisions.map((related) => (
+                <ServiceCard
+                  key={related.id}
+                  image={SERVICES[related.id]?.image}
+                  imageAlt=""
+                  title={related.name}
+                  description={related.blurb}
+                  to={`/services/${related.id}`}
+                  graded={SERVICES[related.id]?.graded}
+                />
+              ))}
+            </div>
+          </Container>
+        </section>
+      )}
+
+      {/* 8. CTA band */}
+      <CtaBand heading={service.cta.heading} body={service.cta.body} />
+    </main>
   );
 }

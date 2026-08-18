@@ -3,61 +3,65 @@
 @tailwind utilities;
 
 :root {
-  /* MFAV always runs the light (white) palette — no dark-mode switch. */
+  /* MFAV always runs the light (white) palette — no dark-mode switch.
+     All color values sourced from mfav design tokens.json
+     (color > material-theme > sys > light). */
   color-scheme: light;
 
-  --clr-bg: #FAF9FF;
-  --clr-bg-alt: #F3F3FA;
-  --clr-surface: #FFFFFF;
-  --clr-surface-high: #EDEDF4;
-  --clr-surface-highest: #E2E2E9;
-  --clr-surface-low: #F6F6FB;
-  --clr-surface-lowest: #FFFFFF;
-  --clr-on-surface: #1A1B20;
-  --clr-on-muted: #44474F;
-  --clr-on-primary: #FFFFFF;
-  --clr-primary: #3A5488;
-  --clr-primary-bg: #2C4678;
-  --clr-border: #D8D9E0;
-  --clr-border-hl: #9CA0AB;
-  /* Semantic error red, for form-validation states only (Contact form,
-     FieldError primitive). Sourced from the original Material export's
-     light-error role — not part of the A3 accent law, functional only. */
-  --clr-error: #BA1A1A;
+  /* --- Surfaces --- */
+  --clr-bg: #faf9ff;
+  --clr-bg-alt: #f3f3fa;
+  --clr-surface: #ffffff;
+  --clr-surface-high: #eeedf4;
+  --clr-surface-highest: #e2e2e9;
+  --clr-surface-low: #dad9e0;
+  --clr-surface-lowest: #ffffff;
 
-  /* Fixed light-on-dark tokens for sections that sit on top of dark
-     photography (Hero, division/project card overlays, Safety banner).
-     These never flip — the imagery behind them is always dark. */
-  --clr-ondark: #F2F3F8;
-  --clr-ondark-primary: #AEC6FF;
+  /* --- Text --- */
+  --clr-on-surface: #1a1b20;
+  --clr-on-muted: #44474f;
+  --clr-on-primary: #ffffff;
 
-  /* RGB-triplet companions used by Tailwind's opacity modifiers
-     (bg-c-x/50 etc). Tailwind can only blend an alpha channel into a
-     color when the token is expressed as "R G B" and consumed via
-     rgb(var(...) / <alpha-value>) — a bare hex var like the ones above
-     can't take a /NN modifier, it silently resolves to transparent. */
+  /* --- Accent (single hue — blue) --- */
+  --clr-primary: #455e91;
+  --clr-primary-bg: #2c4678;
+
+  /* --- Borders --- */
+  --clr-border: #c5c6d0;
+  --clr-border-hl: #757780;
+
+  /* --- Error (functional only, not accent) --- */
+  --clr-error: #ba1a1a;
+
+  /* --- Fixed light-on-dark (Hero, card overlays, Safety) --- */
+  --clr-ondark: #f1f0f7;
+  --clr-ondark-primary: #aec6ff;
+
+  /* --- Scrim (image overlays) --- */
+  --clr-scrim: #000000;
+
+  /* RGB-triplet companions for Tailwind opacity modifiers.
+     Tailwind can only blend an alpha channel into a color when the
+     token is expressed as "R G B" and consumed via
+     rgb(var(...) / <alpha-value>). */
   --clr-bg-rgb: 250 249 255;
   --clr-bg-alt-rgb: 243 243 250;
   --clr-surface-rgb: 255 255 255;
-  --clr-surface-high-rgb: 237 237 244;
+  --clr-surface-high-rgb: 238 237 244;
   --clr-surface-highest-rgb: 226 226 233;
-  --clr-surface-low-rgb: 246 246 251;
+  --clr-surface-low-rgb: 218 217 224;
   --clr-surface-lowest-rgb: 255 255 255;
   --clr-on-surface-rgb: 26 27 32;
   --clr-on-muted-rgb: 68 71 79;
   --clr-on-primary-rgb: 255 255 255;
-  --clr-primary-rgb: 58 84 136;
+  --clr-primary-rgb: 69 94 145;
   --clr-primary-bg-rgb: 44 70 120;
-  --clr-border-rgb: 216 217 224;
-  --clr-border-hl-rgb: 156 160 171;
-  --clr-ondark-rgb: 242 243 248;
+  --clr-border-rgb: 197 198 208;
+  --clr-border-hl-rgb: 117 119 128;
+  --clr-ondark-rgb: 241 240 247;
   --clr-ondark-primary-rgb: 174 198 255;
   --clr-error-rgb: 186 26 26;
-  /* Dedicated scrim token for photo overlays — intentionally the same
-     value as --clr-primary-bg-rgb, kept as a separate name so overlay
-     usage is semantically distinct from "accent fill" usage even though
-     they resolve to the same navy. See TOKENS-GAPS.md §4. */
-  --clr-scrim-rgb: 44 70 120;
+  --clr-scrim-rgb: 0 0 0;
 
   /* --- Motion tokens (A3 Phase 6, wired now so Phase 1 primitives have
      real tokens instead of ad hoc values). No spring/bounce anywhere. --- */
