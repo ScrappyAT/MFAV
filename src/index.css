@@ -1,0 +1,288 @@
+@import '../mfav design tokens.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* MFAV always runs the light (white) palette — no dark-mode switch. */
+  color-scheme: light;
+
+  --clr-bg: #FAF9FF;
+  --clr-bg-alt: #F3F3FA;
+  --clr-surface: #FFFFFF;
+  --clr-surface-high: #EDEDF4;
+  --clr-surface-highest: #E2E2E9;
+  --clr-surface-low: #F6F6FB;
+  --clr-surface-lowest: #FFFFFF;
+  --clr-on-surface: #1A1B20;
+  --clr-on-muted: #44474F;
+  --clr-on-primary: #FFFFFF;
+  --clr-primary: #3A5488;
+  --clr-primary-bg: #2C4678;
+  --clr-teal: #186B53;
+  --clr-teal-bg: #A5F2D4;
+  --clr-border: #D8D9E0;
+  --clr-border-hl: #9CA0AB;
+
+  /* Fixed light-on-dark tokens for sections that sit on top of dark
+     photography (Hero, division/project card overlays, Safety banner).
+     These never flip — the imagery behind them is always dark. */
+  --clr-ondark: #F2F3F8;
+  --clr-ondark-primary: #AEC6FF;
+  --clr-ondark-teal: #89D6B8;
+
+  /* RGB-triplet companions used by Tailwind's opacity modifiers
+     (bg-c-x/50 etc). Tailwind can only blend an alpha channel into a
+     color when the token is expressed as "R G B" and consumed via
+     rgb(var(...) / <alpha-value>) — a bare hex var like the ones above
+     can't take a /NN modifier, it silently resolves to transparent. */
+  --clr-bg-rgb: 250 249 255;
+  --clr-bg-alt-rgb: 243 243 250;
+  --clr-surface-rgb: 255 255 255;
+  --clr-surface-high-rgb: 237 237 244;
+  --clr-surface-highest-rgb: 226 226 233;
+  --clr-surface-low-rgb: 246 246 251;
+  --clr-surface-lowest-rgb: 255 255 255;
+  --clr-on-surface-rgb: 26 27 32;
+  --clr-on-muted-rgb: 68 71 79;
+  --clr-on-primary-rgb: 255 255 255;
+  --clr-primary-rgb: 58 84 136;
+  --clr-primary-bg-rgb: 44 70 120;
+  --clr-teal-rgb: 24 107 83;
+  --clr-teal-bg-rgb: 165 242 212;
+  --clr-border-rgb: 216 217 224;
+  --clr-border-hl-rgb: 156 160 171;
+  --clr-ondark-rgb: 242 243 248;
+  --clr-ondark-primary-rgb: 174 198 255;
+  --clr-ondark-teal-rgb: 137 214 184;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--clr-bg);
+  color: var(--clr-on-surface);
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--clr-bg);
+  color: var(--clr-on-surface);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--clr-surface-lowest);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--clr-surface-highest);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--clr-border-hl);
+}
+
+/* Container Utility */
+.mfav-container {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .mfav-container {
+    padding: 0 2.5rem;
+  }
+}
+
+/* Section Padding */
+.mfav-section {
+  padding: 5rem 0;
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .mfav-section {
+    padding: 7rem 0;
+  }
+}
+
+/* Section Header Typography */
+.section-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--clr-primary);
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--clr-on-surface);
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .section-title {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-title {
+    font-size: 3.5rem;
+  }
+}
+
+.section-description {
+  font-size: 1.05rem;
+  color: var(--clr-on-muted);
+  max-width: 680px;
+  line-height: 1.6;
+}
+
+/* Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  background-color: var(--clr-primary-bg);
+  color: var(--clr-on-primary);
+  font-weight: 600;
+  font-size: 0.925rem;
+  padding: 0.875rem 1.75rem;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn-primary:hover {
+  background-color: #1f3660;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(44, 71, 120, 0.35);
+  border-color: var(--clr-primary);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  background-color: var(--clr-surface-high);
+  color: var(--clr-on-surface);
+  font-weight: 600;
+  font-size: 0.925rem;
+  padding: 0.875rem 1.75rem;
+  border-radius: 4px;
+  border: 1px solid var(--clr-border-hl);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(8px);
+}
+
+.btn-secondary:hover {
+  background-color: var(--clr-surface-highest);
+  color: var(--clr-on-surface);
+  border-color: var(--clr-primary-bg);
+  transform: translateY(-2px);
+}
+
+.btn-outline-blue {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--clr-primary);
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.btn-outline-blue:hover {
+  color: var(--clr-on-primary);
+  gap: 0.75rem;
+}
+
+/* Cards & Industrial Surfaces */
+.industrial-card {
+  background-color: var(--clr-surface-low);
+  border: 1px solid var(--clr-border);
+  border-radius: 6px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.industrial-card:hover {
+  border-color: var(--clr-border-hl);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(26, 27, 32, 0.14);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Modal Overlay */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(6, 7, 12, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: fadeIn 0.25s ease;
+}
+
+.modal-content {
+  background-color: var(--clr-surface);
+  border: 1px solid var(--clr-border-hl);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 640px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.7);
+}

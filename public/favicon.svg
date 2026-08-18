@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <rect width="200" height="200" rx="36" fill="#0D111A"/>
+  
+  <!-- Red Outer Swoosh Arc -->
+  <path d="M 100 25 A 65 65 0 1 0 155 135" fill="none" stroke="#E62528" stroke-width="18" stroke-linecap="round"/>
+  
+  <!-- Blue Wave -->
+  <path d="M 40 150 Q 80 125 120 145 Q 140 155 160 145" fill="none" stroke="#0066CC" stroke-width="12" stroke-linecap="round"/>
+  
+  <!-- Black/Dark Wave -->
+  <path d="M 45 165 Q 85 140 125 160 Q 145 170 165 160" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"/>
+  
+  <!-- Text M-FAV -->
+  <text x="75" y="105" font-family="'DM Sans', 'Arial Black', sans-serif" font-weight="900" font-size="42" fill="#FFFFFF" letter-spacing="-1">M-FAV</text>
+</svg>
