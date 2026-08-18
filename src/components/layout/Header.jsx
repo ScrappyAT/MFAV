@@ -7,29 +7,15 @@ import { DIVISIONS, NAV_LINKS } from '../../content/divisions';
 const SCROLL_SOLID_AT = 80;
 const SCROLL_TRANSPARENT_AT = 40;
 
-/**
- * Two-line text lockup — "MFAV" bold + "OFFSHORE & ALLIED RESOURCES"
- * subline, per Phase 1c. NOTE: the repo ships a pre-existing raster logo
- * (mfav_logo.png) that reads "M-FAV Offshore and Allied Services Ltd" in a
- * red/blue mark — a different company name and a palette outside the A3
- * law (see Phase 1 report). This text lockup is used instead until the
- * client resolves that conflict with a real vector mark.
- */
-function LogoLockup({ solid }) {
+function LogoLockup() {
   return (
-    <span className="flex flex-col leading-none">
-      <span className={['text-2xl font-extrabold tracking-tight', solid ? 'text-c-on' : 'text-white'].join(' ')}>
-        MFAV
-      </span>
-      <span
-        className={[
-          'mt-1 text-micro uppercase',
-          solid ? 'text-c-on-muted' : 'text-white/80',
-        ].join(' ')}
-      >
-        Offshore &amp; Allied Resources
-      </span>
-    </span>
+    <img
+      src="/assets/images/mfav_logo.png"
+      alt="MFAV Offshore & Allied Resources"
+      width={160}
+      height={87}
+      className="h-10 w-auto"
+    />
   );
 }
 
@@ -145,13 +131,12 @@ export default function Header() {
       {!solid && (
         <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-c-scrim/90 to-c-scrim/70" />
       )}
-      <div className="relative z-10 mfav-container flex items-center justify-between gap-6">
-        <Link to="/" className="shrink-0 rounded-token-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-c-primary">
-          <LogoLockup solid={solid} />
+      <div className="relative z-10 mfav-container grid items-center [grid-template-columns:1fr_auto_1fr] gap-6">
+        <Link to="/" className="justify-self-start rounded-token-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-c-primary">
+          <LogoLockup />
         </Link>
 
-        {/* Desktop nav */}
-        <nav aria-label="Primary" className="hidden lg:flex items-center gap-8">
+        <nav aria-label="Primary" className="hidden lg:flex items-center justify-center gap-8">
           {NAV_LINKS.map((link) =>
             link.name === 'Services' ? (
               <div key={link.name} ref={servicesRef} className="relative">
@@ -233,27 +218,27 @@ export default function Header() {
           )}
         </nav>
 
-        <div className="hidden lg:block shrink-0">
-          <Button to="/contact" variant="primary" size="sm">
-            Request a Consultation
-          </Button>
+        <div className="justify-self-end flex items-center gap-4">
+          <div className="hidden lg:block">
+            <Button to="/contact" variant="primary" size="sm">
+              Request a Consultation
+            </Button>
+          </div>
+          <button
+            ref={menuButtonRef}
+            type="button"
+            onClick={() => setMobileOpen((v) => !mobileOpen)}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-nav"
+            aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            className={[
+              'lg:hidden rounded-token border p-2 transition-colors duration-200 ease-standard',
+              solid ? 'text-c-on border-c-border' : 'text-white border-white/30',
+            ].join(' ')}
+          >
+            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
         </div>
-
-        {/* Mobile toggle */}
-        <button
-          ref={menuButtonRef}
-          type="button"
-          onClick={() => setMobileOpen((v) => !v)}
-          aria-expanded={mobileOpen}
-          aria-controls="mobile-nav"
-          aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
-          className={[
-            'lg:hidden rounded-token border p-2 transition-colors duration-200 ease-standard',
-            solid ? 'text-c-on border-c-border' : 'text-white border-white/30',
-          ].join(' ')}
-        >
-          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
       </div>
 
       {/* Mobile full-screen overlay */}

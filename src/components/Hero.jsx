@@ -21,14 +21,20 @@ export default function Hero({ onRequestConsultation }) {
         width={1081}
         height={720}
         fetchpriority="high"
-        className="absolute inset-0 h-full w-full object-cover animate-hero-settle"
+        className="grade-cool absolute inset-0 h-full w-full object-cover animate-hero-settle"
       />
+      {/* Cool-tone grade (A4) — source photo runs warm (sunset sky);
+          see the `.grade-cool`/`.grade-cool-tint` note in index.css. */}
+      <div aria-hidden="true" className="grade-cool-tint absolute inset-0" />
       {/* Directional scrim: two stacked linear gradients (vertical +
           horizontal) approximate a corner-to-corner wash — strong at the
           bottom-left where the text column sits, lighter top-right —
-          without any arbitrary/raw-color values (A2.3). */}
-      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-c-scrim/95 via-c-scrim/60 to-transparent" />
-      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-c-scrim/70 via-transparent to-transparent" />
+          without any arbitrary/raw-color values (A2.3).
+          Combined opacity at bottom-left ≈ 65 % (brief target 55–70 %).
+          Stacking two semi-transparent layers compounds exponentially:
+          (1 − 0.50) × (1 − 0.30) ≈ 0.35 visible image → 65 % navy. */}
+      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-c-scrim/50 via-c-scrim/15 to-transparent" />
+      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-c-scrim/30 via-transparent to-transparent" />
 
       <div className="relative z-10 pb-20 pt-32 md:pb-28">
         <Container>

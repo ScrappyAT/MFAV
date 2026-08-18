@@ -45,11 +45,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Brand column */}
           <div className="lg:col-span-2 flex flex-col gap-4">
-            <Link to="/" className="inline-flex flex-col leading-none w-fit rounded-token-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-c-ondark-primary">
-              <span className="text-2xl font-extrabold tracking-tight text-c-ondark">MFAV</span>
-              <span className="mt-1 text-micro uppercase text-c-ondark/70">
-                Offshore &amp; Allied Resources
-              </span>
+            <Link to="/" className="inline-flex items-center w-fit rounded-token-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-c-ondark-primary">
+              <img
+                src="/assets/images/mfav_logo.png"
+                alt="MFAV Offshore & Allied Resources"
+                width={160}
+                height={87}
+                className="h-10 w-auto"
+              />
             </Link>
             <p className="text-sm text-c-ondark/70 max-w-sm leading-relaxed">
               Integrated marine, offshore, aviation, logistics and industrial solutions.

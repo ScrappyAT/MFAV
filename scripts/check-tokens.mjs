@@ -30,11 +30,10 @@ const SRC_DIR = join(process.cwd(), 'src');
 
 const LEGACY_ALLOWLIST = new Set([
   // Hero.jsx, WhoWeAre.jsx, Capabilities.jsx, and KeyStats.jsx were
-  // rewritten in Phase 2 (zero violations) and removed from this list.
-  'components/IndustriesWeServe.jsx',
-  'components/SafetyExcellence.jsx',
-  'components/ProjectsSection.jsx',
-  'components/FeaturedServices.jsx',
+  // rewritten in Phase 2; IndustriesWeServe.jsx, SafetyExcellence.jsx,
+  // ProjectsSection.jsx, FeaturedServices.jsx, and WhyMfav.jsx in Phase 3
+  // — all zero violations, all removed from this list. Empty for now;
+  // kept as a live mechanism for whatever content phase touches next.
 ]);
 
 // index.css's own token-definition block is exempt — that's the one

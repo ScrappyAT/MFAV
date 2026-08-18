@@ -20,6 +20,11 @@ export default function DivisionPanel({
   to,
   spanClassName = '',
   className = '',
+  // A4 cool-tone grade for source photography that runs warm — see
+  // `.grade-cool`/`.grade-cool-tint` in index.css. Opt-in per panel since
+  // most placeholder art doesn't need it; the marine-offshore panel
+  // (reusing the warm hero photo) does.
+  graded = false,
 }) {
   return (
     <Link
@@ -36,8 +41,12 @@ export default function DivisionPanel({
         src={image}
         alt={imageAlt || ''}
         loading="lazy"
-        className="absolute inset-0 h-full w-full object-cover transition-transform duration-320 ease-standard group-hover:scale-105"
+        className={[
+          'absolute inset-0 h-full w-full object-cover transition-transform duration-320 ease-standard group-hover:scale-105',
+          graded && 'grade-cool',
+        ].filter(Boolean).join(' ')}
       />
+      {graded && <div aria-hidden="true" className="grade-cool-tint absolute inset-0" />}
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-c-scrim/70 transition-colors duration-320 ease-standard group-hover:bg-c-scrim/85"

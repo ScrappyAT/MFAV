@@ -8,7 +8,7 @@ import { ArrowRight } from 'lucide-react';
  * "never hover-only content on mobile"). The whole card is a single
  * focusable link, not nested interactive elements.
  */
-export default function ServiceCard({ image, imageAlt, title, description, to, className = '' }) {
+export default function ServiceCard({ image, imageAlt, title, description, to, graded = false, className = '' }) {
   return (
     <Link
       to={to}
@@ -23,8 +23,12 @@ export default function ServiceCard({ image, imageAlt, title, description, to, c
         src={image}
         alt={imageAlt || ''}
         loading="lazy"
-        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-standard group-hover:scale-105"
+        className={[
+          'absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-standard group-hover:scale-105',
+          graded && 'grade-cool',
+        ].filter(Boolean).join(' ')}
       />
+      {graded && <div aria-hidden="true" className="grade-cool-tint absolute inset-0" />}
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-c-scrim/70 transition-colors duration-320 ease-standard group-hover:bg-c-scrim/80"

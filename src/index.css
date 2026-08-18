@@ -337,6 +337,24 @@ body {
   transform: scale(1);
 }
 
+/* Standard cool-tone grade (A4: "cinematic, cool-toned, desaturated
+   slightly") for source photography that comes in warm — currently
+   hero_section.jpg, reused across Hero, the marine-offshore capability
+   panel, and the Projects placeholder. Two parts, applied together:
+   `.grade-cool` mutes and cools the source image itself (a photo this
+   warm can't be fully neutralized by filter() alone); `.grade-cool-tint`
+   is a sibling multiply-blend layer in the same navy as the rest of the
+   scrim system, so what's left of the warmth reads as navy, not orange.
+   This is the standard treatment to apply to any future photography
+   that comes in warm — documented again in IMAGES.md (Phase 7e). */
+.grade-cool {
+  filter: grayscale(0.7) saturate(0.5) brightness(0.9);
+}
+.grade-cool-tint {
+  background-color: rgb(var(--clr-scrim-rgb) / 0.45);
+  mix-blend-mode: multiply;
+}
+
 /* Underline-wipe hover treatment for TextLink — a background-size
    transition (not a width-animated pseudo-element) so it only ever
    touches background-size, never triggers layout. Toggled off the

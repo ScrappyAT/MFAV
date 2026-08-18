@@ -6,7 +6,7 @@ import Tag from './Tag';
  * Phase 3d/5d content is explicit placeholder data passed in via props —
  * this component only owns structure and states.
  */
-export default function ProjectCard({ image, imageAlt, sector, title, location, description, className = '' }) {
+export default function ProjectCard({ image, imageAlt, sector, title, location, description, graded = false, className = '' }) {
   return (
     <article
       className={[
@@ -20,8 +20,12 @@ export default function ProjectCard({ image, imageAlt, sector, title, location, 
           src={image}
           alt={imageAlt || ''}
           loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-700 ease-standard group-hover:scale-105"
+          className={[
+            'h-full w-full object-cover transition-transform duration-700 ease-standard group-hover:scale-105',
+            graded && 'grade-cool',
+          ].filter(Boolean).join(' ')}
         />
+        {graded && <div aria-hidden="true" className="grade-cool-tint absolute inset-0" />}
         <div aria-hidden="true" className="absolute inset-0 bg-c-scrim/30" />
         {sector && <Tag className="absolute left-4 top-4 bg-c-bg/90">{sector}</Tag>}
       </div>

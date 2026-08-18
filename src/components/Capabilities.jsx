@@ -17,6 +17,10 @@ const IMAGE_BY_DIVISION = {
   'property-investment': '/assets/images/division_property.svg',
 };
 
+// marine-offshore reuses the warm hero photo — grade it cool to match
+// the rest of the site (A4). The other placeholders are already neutral.
+const GRADED_DIVISIONS = new Set(['marine-offshore']);
+
 // Deliberately asymmetric spans against a 6-column desktop grid (A3 §2b:
 // "not six identical squares") — a wide feature panel, three even panels,
 // then a full-width closing panel. 2-up on tablet, single stack on mobile.
@@ -53,6 +57,7 @@ export default function Capabilities() {
               subCapabilities={division.subCapabilities}
               to={`/services/${division.id}`}
               spanClassName={SPAN_BY_DIVISION[division.id]}
+              graded={GRADED_DIVISIONS.has(division.id)}
             />
           ))}
         </div>
