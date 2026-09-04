@@ -2,19 +2,22 @@ import React from 'react';
 import Container from './ui/Container';
 import Grid from './ui/Grid';
 import Button from './ui/Button';
-import { DIVISIONS } from '../content/divisions';
 
 /**
  * Hero — A6 §2a. Full-viewport (92vh, not a rigid 100vh), full-bleed
  * cinematic image, directional navy scrim (strong bottom-left where the
  * text sits, lighter top-right), content left-aligned across the left 7
- * of 12 columns, vertically anchored to the lower third.
+ * of 12 columns.
+ *
+ * Vertical position was moved from "anchored to the lower third" to
+ * "at/slightly below true center" by request — see the flex-spacer note
+ * below.
  *
  * Copy below is client-approved (A7) — reproduced verbatim.
  */
 export default function Hero({ onRequestConsultation }) {
   return (
-    <section className="relative min-h-hero flex flex-col justify-end overflow-hidden bg-c-scrim">
+    <section className="relative min-h-hero flex flex-col overflow-hidden bg-c-scrim">
       <img
         src="/assets/images/hero_section.jpg"
         alt="Offshore rig platform and supply vessels at dusk"
@@ -36,7 +39,37 @@ export default function Hero({ onRequestConsultation }) {
       <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-c-scrim/50 via-c-scrim/15 to-transparent" />
       <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-c-scrim/30 via-transparent to-transparent" />
 
-      <div className="relative z-10 pb-20 pt-32 md:pb-28">
+      {/* Vertical position: two empty flex-grow spacers (not padding)
+          split whatever vertical space the 92vh hero has left over after
+          the content block's own height, 6:1 top:bottom — enough top-
+          heavy bias to land the block at roughly true center to slightly
+          below, while still leaving comfortable room below the CTAs.
+          This replaces the previous `justify-end` (bottom-anchored)
+          layout by request — a flex-grow ratio was used instead of
+          `justify-center`/padding because with only one real flex
+          child, neither of those let top and bottom space be tuned
+          independently: `justify-end` locks the block's bottom edge to
+          the section's bottom edge regardless of padding, and
+          `justify-center` ties the space above and below together.
+          (Ratio bumped from an earlier 5:1 — and the top spacer's floor
+          below raised from 96px to 128px — once the header became
+          permanently solid/opaque: a hard white bar sitting directly
+          above the content reads tighter at a given pixel gap than the
+          old transparent-over-hero header did, so it gets a bit more
+          clearance than before.)
+
+          `min-h-32` on the top spacer is load-bearing, not decorative:
+          at a short/tall-content combination (measured failure case:
+          375×667, a real iPhone 8/SE viewport height, and 768×600) an
+          unconstrained flex-grow ratio lets the top spacer shrink toward
+          0 under pressure, which would let the H1 collide with the
+          header — min-h-32 (128px, comfortably over the fixed 100px-tall
+          header) gives it a floor it can't shrink below, so the
+          section grows past its 92vh minimum instead of ever overlapping
+          the header. The bottom spacer gets a smaller `min-h-12` (48px)
+          for the same reason, on the other edge. */}
+      <div aria-hidden="true" className="flex-6 min-h-32" />
+      <div className="relative z-10 py-8">
         <Container>
           <Grid cols={12} gap="gap-0">
             <div className="col-span-12 md:col-span-9 lg:col-span-7 flex flex-col gap-8">
@@ -60,26 +93,23 @@ export default function Hero({ onRequestConsultation }) {
           </Grid>
         </Container>
       </div>
+      <div aria-hidden="true" className="flex-1 min-h-12" />
 
-      {/* Hairline table-of-contents strip — the six divisions, small and
-          restrained, along the hero's bottom edge (A6 §2a, optional). */}
-      <div className="relative z-10 border-t border-c-ondark/15">
-        <Container>
-          <ul className="flex flex-wrap items-center gap-x-8 gap-y-2 py-4 text-micro uppercase text-c-ondark/60">
-            {DIVISIONS.map((division) => (
-              <li key={division.id}>{division.name}</li>
-            ))}
-          </ul>
-        </Container>
-      </div>
-
-      {/* Scroll indicator — hidden on mobile and under reduced motion
-          (the travel keyframe is neutralized by the global rule; hiding
-          it below md keeps it from competing with the division strip). */}
+      {/* Scroll indicator — hidden on mobile and under reduced motion per
+          A6 §2a ("Hidden on mobile and under reduced-motion. Subtle.");
+          the travel keyframe itself is neutralized by the global
+          reduced-motion rule. `bottom-24` (96px) moved to `bottom-6`
+          (24px) in the same pass that pushed the content block down via
+          the flex spacers above — the indicator sat almost flush against
+          the CTA row's bottom edge before (measured gap ≈0 at a 1440×900
+          viewport); leaving it at `bottom-24` while the button row moved
+          ~70px lower would have opened a ~70px gap between them and
+          broken that relationship, so it moves down by the same ~70px
+          (96px − 72px ≈ 24px) to stay flush. */}
       <a
         href="#capabilities"
         aria-label="Scroll to Our Capabilities"
-        className="hidden md:flex absolute bottom-24 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-c-ondark/60 hover:text-c-ondark transition-colors duration-200 ease-standard"
+        className="hidden md:flex absolute bottom-6 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-c-ondark/60 hover:text-c-ondark transition-colors duration-200 ease-standard"
       >
         <span className="text-micro uppercase">Scroll</span>
         <span className="relative h-10 w-px bg-c-ondark/20 overflow-hidden">

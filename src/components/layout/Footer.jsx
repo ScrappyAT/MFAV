@@ -18,7 +18,11 @@ const SOCIALS = [
 
 export default function Footer() {
   return (
-    <footer className="bg-c-primary-bg text-c-ondark">
+    // `bg-black` here, not the shared `c-primary-bg` navy token — by
+    // request, just for the footer surface itself. CtaBand paints its own
+    // `bg-c-primary` over the top portion regardless, so this only affects
+    // the link columns + copyright bar beneath it.
+    <footer className="bg-black text-c-ondark">
       {/* Closing CTA band (A3 §3g) — the shared component, not hand-coded
           here; Phase 4's ServiceDetail template reuses the same one. */}
       <CtaBand
@@ -26,13 +30,15 @@ export default function Footer() {
         body="Tell us what you need. Our team will work with you to develop the right solution."
       />
 
-      {/* Main footer links */}
-      <div className="mfav-container py-16">
+      {/* Main footer links — py-section-sm (not py-16 like CtaBand) so this
+          black surface reads as substantial in its own right rather than
+          feeling thin next to the CTA band's large heading above it. */}
+      <div className="mfav-container py-section-sm">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Brand column */}
           <div className="lg:col-span-2 flex flex-col gap-4">
             <Link to="/" className="inline-flex items-center w-fit rounded-token-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-c-ondark-primary">
-              <Logo />
+              <Logo onDark />
             </Link>
             <p className="text-sm text-c-ondark/70 max-w-sm leading-relaxed">
               Integrated marine, offshore, aviation, logistics and industrial solutions.
@@ -53,9 +59,9 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="text-eyebrow uppercase text-c-ondark/60 mb-4 pb-2 border-b border-c-ondark/15">
+            <h3 className="text-eyebrow uppercase text-c-ondark/70 mb-4 pb-2 border-b border-c-ondark/15">
               Services
-            </h4>
+            </h3>
             <ul className="flex flex-col gap-2.5 text-sm">
               {DIVISIONS.map((division) => (
                 <li key={division.id}>
@@ -69,9 +75,9 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="text-eyebrow uppercase text-c-ondark/60 mb-4 pb-2 border-b border-c-ondark/15">
+            <h3 className="text-eyebrow uppercase text-c-ondark/70 mb-4 pb-2 border-b border-c-ondark/15">
               Company
-            </h4>
+            </h3>
             <ul className="flex flex-col gap-2.5 text-sm">
               <li><TextLink to="/about" onDark>About Us</TextLink></li>
               <li><TextLink to="/about#leadership" onDark>Leadership</TextLink></li>
@@ -82,9 +88,9 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-eyebrow uppercase text-c-ondark/60 mb-4 pb-2 border-b border-c-ondark/15">
+            <h3 className="text-eyebrow uppercase text-c-ondark/70 mb-4 pb-2 border-b border-c-ondark/15">
               Contact
-            </h4>
+            </h3>
             <ul className="flex flex-col gap-3 text-sm text-c-ondark/80">
               <li className="flex items-start gap-2">
                 <MapPin size={16} aria-hidden="true" className="shrink-0 mt-0.5 text-c-ondark-primary" />
@@ -105,12 +111,12 @@ export default function Footer() {
 
       {/* Copyright bar */}
       <div className="border-t border-c-ondark/15">
-        <div className="mfav-container flex flex-col sm:flex-row items-center justify-between gap-4 py-6 text-sm text-c-ondark/60">
+        <div className="mfav-container flex flex-col sm:flex-row items-center justify-between gap-4 py-8 text-sm text-c-ondark/70">
           <p>&copy; 2026 MFAV Offshore and Allied Resources. All Rights Reserved.</p>
           {/* No /privacy or /terms route exists in the A5 IA — rendered as
               plain text rather than a fake href="#" link. Flagged in the
               Phase 1 report as an open question (add real pages, or omit). */}
-          <div className="flex items-center gap-6 text-c-ondark/50">
+          <div className="flex items-center gap-6 text-c-ondark/70">
             <span>Privacy</span>
             <span>Terms</span>
           </div>

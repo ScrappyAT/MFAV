@@ -99,27 +99,38 @@ body {
 }
 
 /* Global reduced-motion rule (A8 / A3 Phase 6): disables transform and
-   opacity animation everywhere, collapses every duration, and leaves
-   state changes instant but complete. Verified by toggling the OS
-   setting — see Phase 1 QA gate report. */
+   opacity animation everywhere, collapses every duration AND delay, and
+   leaves state changes instant but complete. This is a single `*` rule,
+   so it automatically covers every animated element sitewide — the
+   Phase 6 stagger delays added below included — without needing a
+   per-component reduced-motion branch. Verified by toggling the OS
+   setting — see the Phase 6 QA gate report.
+   (`animation-delay`/`transition-delay` were added in the Phase 6 pass:
+   without them, a staggered group's later children would still visibly
+   pop in up to 300ms after the first even though each pop itself was
+   instant — a "sequenced instant" effect that reads as motion.) */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
     scroll-behavior: auto !important;
   }
 }
 
 /* Every in-page anchor target clears the fixed header (A6/1c: "correct
-   scroll-margin-top to clear the fixed header"). Header is ~72-88px tall
-   depending on scroll state; 6rem covers both with a little breathing
-   room. Applied globally via the attribute selector so a Phase 5 section
-   only has to set an `id` — no per-element class needed. */
+   scroll-margin-top to clear the fixed header"). Header is a fixed
+   `h-header` (100px, tailwind.config.js) — no longer scroll-dependent,
+   so this is a simple "header height + a little breathing room" value
+   rather than something covering two different states. Applied
+   globally via the attribute selector so a Phase 5 section only has to
+   set an `id` — no per-element class needed. */
 [id] {
-  scroll-margin-top: 6rem;
+  scroll-margin-top: 7.5rem;
 }
 
 /* Custom Scrollbar */
@@ -137,164 +148,92 @@ body {
   background: var(--clr-border-hl);
 }
 
-/* Container Utility */
+/* Container Utility — longhand padding-left/right only (not shorthand
+   `padding`), so a Tailwind `py-*` utility placed on the same element for
+   vertical padding isn't silently zeroed out by this rule (shorthand
+   `padding: 0 1.5rem` used to reset padding-top/bottom to 0 regardless of
+   class order — see Footer.jsx's two `mfav-container py-*` elements,
+   which never actually got their vertical padding until this fix). */
 .mfav-container {
   width: 100%;
   max-width: 1320px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 @media (min-width: 768px) {
   .mfav-container {
-    padding: 0 2.5rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
   }
 }
 
-/* Section Padding
-   NOTE: this legacy utility class is still consumed directly by the
-   Phase-2/3-scope homepage section components (Capabilities, KeyStats,
-   etc.) that Phase 1 does not rewrite. Its desktop value has been
-   corrected to match the approved `section` token (144px / 9rem) so
-   those sections benefit from the fix without any component edits.
-   New work should use the <Section> primitive instead of this class. */
-.mfav-section {
-  padding: 5rem 0;
-  position: relative;
-}
+/* Phase 6 audit: `.mfav-section`, `.section-tag`/`.section-title`/
+   `.section-description`, `.btn-primary`/`.btn-secondary` and
+   `.industrial-card` (previously here, kept as "legacy, still consumed
+   by Phase 2/3 components") are no longer referenced by any component —
+   every section, button and card migrated to the <Section>/<Button>/
+   card primitives across Phases 2–5. Grepped the full `src/` tree to
+   confirm zero usages before removing. They're deleted rather than left
+   in place because two of them animated banned properties: `.btn-primary`
+   /`.btn-secondary`'s `transition: all` animated `box-shadow` on hover,
+   and `.industrial-card:hover` did the same — both violate the Phase 6
+   motion budget (transform/opacity only), so this is the fix as well as
+   a dead-code cleanup.
 
-@media (min-width: 1024px) {
-  .mfav-section {
-    padding: 9rem 0;
-  }
-}
-
-/* Section Header Typography
-   NOTE: same status as .mfav-section above — kept for Phase-2/3-scope
-   components still in use; new work should use the <SectionHeader>,
-   <Eyebrow> primitives and the `eyebrow`/`display` fontSize tokens. */
-.section-tag {
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--clr-primary);
-  margin-bottom: 0.75rem;
-}
-
-.section-title {
-  font-size: 2.25rem;
-  font-weight: 700;
-  line-height: 1.15;
-  color: var(--clr-on-surface);
-  letter-spacing: -0.02em;
-  margin-bottom: 1.25rem;
-}
-
-@media (min-width: 768px) {
-  .section-title {
-    font-size: 3rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .section-title {
-    font-size: 3.5rem;
-  }
-}
-
-.section-description {
-  font-size: 1.05rem;
-  color: var(--clr-on-muted);
-  max-width: 680px;
-  line-height: 1.6;
-}
-
-/* Buttons
-   NOTE: legacy CSS-class buttons, still consumed by Phase-2/3-scope
-   homepage components (Hero, WhoWeAre, SafetyExcellence, etc.). The new
-   <Button> primitive (src/components/ui/Button.jsx) is the source of
-   truth for all Phase-1-scope work (Header, Footer, styleguide) and for
-   every page built from Phase 2 onward. These classes are left exactly
-   as they were audited in TOKENS-GAPS.md — their shadow/radius drift is
-   a known, already-flagged gap for the Phase 2/3 rewrite, not something
-   Phase 1 silently "fixes" out from under those components. */
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.625rem;
-  background-color: var(--clr-primary-bg);
-  color: var(--clr-on-primary);
-  font-weight: 600;
-  font-size: 0.925rem;
-  padding: 0.875rem 1.75rem;
-  border-radius: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-.btn-primary:hover {
-  background-color: #1f3660;
-  color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(44, 71, 120, 0.35);
-  border-color: var(--clr-primary);
-}
-
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.625rem;
-  background-color: var(--clr-surface-high);
-  color: var(--clr-on-surface);
-  font-weight: 600;
-  font-size: 0.925rem;
-  padding: 0.875rem 1.75rem;
-  border-radius: 4px;
-  border: 1px solid var(--clr-border-hl);
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  backdrop-filter: blur(8px);
-}
-
-.btn-secondary:hover {
-  background-color: var(--clr-surface-highest);
-  color: var(--clr-on-surface);
-  border-color: var(--clr-primary-bg);
-  transform: translateY(-2px);
-}
-
-/* Cards & Industrial Surfaces — same legacy status as the buttons above. */
-.industrial-card {
-  background-color: var(--clr-surface-low);
-  border: 1px solid var(--clr-border);
-  border-radius: 6px;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-.industrial-card:hover {
-  border-color: var(--clr-border-hl);
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(26, 27, 32, 0.14);
-}
-
-/* Animations */
+   Animations */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fadeIn var(--dur-4) var(--ease-entrance) forwards;
+}
+
+/* Hover-reveal (Phase 6 fix): DivisionPanel/ServiceCard's hover-revealed
+   sub-copy previously expanded via a `max-h-0 -> max-h-32` Tailwind
+   transition, which animates `max-height` — a banned property (layout
+   thrash; explicitly excluded by the motion budget alongside width/top/
+   left/box-shadow). `grid-template-rows: 0fr -> 1fr` is the standard
+   replacement: it reveals content to its real intrinsic height with no
+   guessed max-height, and — unlike `height`/`max-height` — isn't in the
+   budget's banned list. Mobile (below `md`) gets no rule here at all, so
+   the content stays in normal flow and always visible, per A3 "never
+   hover-only content on mobile"; only `md:` and up collapses/reveals it. */
+@media (min-width: 768px) {
+  .hover-reveal {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition: grid-template-rows var(--dur-3) var(--ease-standard), opacity var(--dur-3) var(--ease-standard);
+  }
+  .hover-reveal > * {
+    overflow: hidden;
+  }
+  .group:hover .hover-reveal,
+  .group:focus-within .hover-reveal {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+}
+
+/* Page transitions (Phase 6, PageTransition.jsx): opacity-and-lift on
+   route change, ~120ms out / ~200ms in — transform + opacity only. */
+.page-transition-exit {
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity var(--dur-1) var(--ease-exit), transform var(--dur-1) var(--ease-exit);
+}
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(8px);
+}
+.page-transition-entered {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--dur-2) var(--ease-entrance), transform var(--dur-2) var(--ease-entrance);
 }
 
 /* Hero: "a slow, barely-perceptible image scale from 1.06 to 1.0 over

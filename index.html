@@ -2,16 +2,73 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/assets/images/mfav_logo.png" />
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MFAV Offshore & Allied Resources Limited | Integrated Marine, Aviation & Industrial Solutions</title>
     <meta name="description" content="MFAV Offshore & Allied Resources Limited provides integrated marine, offshore, aviation, logistics, infrastructure, equipment, and property solutions across demanding industrial sectors." />
-    
+
+    <!-- Open Graph / Twitter Card — static fallback for the brief instant
+         before React mounts (and for any crawler that doesn't execute
+         JS). useDocumentMeta.js (src/hooks) overwrites all of these with
+         per-route values once a page mounts; the tag names/properties
+         match exactly so it's replacing content, not adding duplicate
+         tags. og:url/og:image use the placeholder production domain also
+         used in public/robots.txt and public/sitemap.xml — see
+         PLACEHOLDERS.md for the note to update all three once the real
+         domain is confirmed. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="MFAV Offshore & Allied Resources" />
+    <meta property="og:title" content="MFAV Offshore & Allied Resources Limited | Integrated Marine, Aviation & Industrial Solutions" />
+    <meta property="og:description" content="MFAV Offshore & Allied Resources Limited provides integrated marine, offshore, aviation, logistics, infrastructure, equipment, and property solutions across demanding industrial sectors." />
+    <meta property="og:url" content="https://www.mfavoffshore.com/" />
+    <meta property="og:image" content="https://www.mfavoffshore.com/assets/images/hero_section.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="MFAV Offshore & Allied Resources Limited | Integrated Marine, Aviation & Industrial Solutions" />
+    <meta name="twitter:description" content="MFAV Offshore & Allied Resources Limited provides integrated marine, offshore, aviation, logistics, infrastructure, equipment, and property solutions across demanding industrial sectors." />
+    <meta name="twitter:image" content="https://www.mfavoffshore.com/assets/images/hero_section.jpg" />
+
+    <!-- JSON-LD Organization — a single, static, site-wide entity
+         description (it doesn't vary by route, so it lives here once
+         rather than being re-injected per page by useDocumentMeta).
+         Every field is either already-published site copy or a real
+         asset path; nothing here is invented. No `sameAs` (no real
+         social profile URLs exist yet — Footer's social icons are
+         explicitly non-interactive placeholders, see PLACEHOLDERS.md),
+         no address/telephone (still `[ADDRESS PLACEHOLDER]`/
+         `[PHONE PLACEHOLDER]` on /contact), no founding date, no
+         employee count, no certifications — omitted rather than
+         fabricated, per A2.6/A2.7. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "MFAV Offshore & Allied Resources",
+        "url": "https://www.mfavoffshore.com/",
+        "logo": "https://www.mfavoffshore.com/assets/images/mfav_logo.png",
+        "description": "MFAV Offshore & Allied Resources Limited provides integrated marine, offshore, aviation, logistics, infrastructure, equipment, and property solutions across demanding industrial sectors.",
+        "areaServed": "Nigeria"
+      }
+    </script>
+
     <!-- Google Fonts: DM Sans (the app's one typeface — Roboto was loaded
-         for the unused Material-3 typography classes removed in Phase 1) -->
+         for the unused Material-3 typography classes removed in Phase 1).
+         Phase 7c: weight axis narrowed to 400–800 (the actual range used
+         across the app — see the font-weight grep in the Phase 7 report)
+         and the italic axis dropped to 400-only (the sole italic use is
+         Partners.jsx's regular-weight caption) — cuts the variable-font
+         payload without removing any weight the site actually renders. -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..800;1,9..40,400..400&display=swap" rel="stylesheet">
+
+    <!-- Phase 7c: preload the hero photo so the browser fetches it in
+         parallel with the JS bundle instead of waiting for React to
+         mount before discovering the <img> — this is a client-rendered
+         SPA, so without this the LCP image's fetch doesn't start until
+         after the bundle downloads, parses and runs. -->
+    <link rel="preload" as="image" href="/assets/images/hero_section.jpg" fetchpriority="high" />
   </head>
   <body>
     <div id="root"></div>

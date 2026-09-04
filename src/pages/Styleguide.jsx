@@ -4,7 +4,6 @@ import Section from '../components/ui/Section';
 import Grid from '../components/ui/Grid';
 import Button from '../components/ui/Button';
 import TextLink from '../components/ui/TextLink';
-import Eyebrow from '../components/ui/Eyebrow';
 import SectionHeader from '../components/ui/SectionHeader';
 import Tag from '../components/ui/Tag';
 import Stat from '../components/ui/Stat';
@@ -48,11 +47,10 @@ export default function Styleguide() {
     <main>
       <Section size="sm" tone="alt" border>
         <Container>
-          <Eyebrow>Dev only</Eyebrow>
-          <h1 className="text-display text-c-on mt-2">Styleguide</h1>
+          <h1 className="text-display text-c-on">Styleguide</h1>
           <p className="mt-4 max-w-measure text-c-on-muted">
             Every primitive, in every state, rendered against the live tokens. Not a
-            production route — not linked from navigation, not indexed.
+            production route — not linked from navigation, not indexed (dev-only).
           </p>
         </Container>
       </Section>
@@ -102,22 +100,16 @@ export default function Styleguide() {
             </div>
           </Block>
 
-          {/* EYEBROW + SECTIONHEADER */}
-          <Block title="Eyebrow & SectionHeader">
-            <div className="flex flex-col gap-4">
-              <Eyebrow index="01">Our Capabilities</Eyebrow>
-              <Eyebrow>No index numeral</Eyebrow>
-            </div>
+          {/* SECTIONHEADER — no eyebrow slot (retired site-wide, see
+              DESIGN-SYSTEM.md); heading is the true top of the block. */}
+          <Block title="SectionHeader">
             <SectionHeader
-              eyebrow="Our Capabilities"
-              index="01"
               heading="Our Capabilities"
               supporting="From offshore operations and marine logistics to aviation, infrastructure and industrial supply, MFAV brings multiple capabilities together to support complex operations."
               action={<Button variant="secondary" size="sm">Action slot</Button>}
             />
             <SectionHeader
               align="center"
-              eyebrow="Centered variant"
               heading="Industries We Serve"
               supporting="Used for scannable, non-hierarchical sections."
             />

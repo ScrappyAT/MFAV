@@ -1,6 +1,6 @@
 // Phase 4: the single content source driving ServiceDetail — one
 // template, six routes, no copy-pasted pages. Sub-capability names come
-// from DIVISIONS in ./divisions.js (Phase 2b / the mega-menu content) —
+// from DIVISIONS in ./divisions.js (Phase 2b division data) —
 // reused here, not re-invented; only their one-line descriptions are new.
 //
 // All copy is agent-authored (A7) and grounded in real industry

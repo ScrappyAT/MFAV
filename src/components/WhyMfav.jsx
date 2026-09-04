@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from './ui/Container';
 import SectionHeader from './ui/SectionHeader';
+import { useInView, revealClass } from '../hooks/useInView';
 
 // H2 is [AGENT-AUTHORED] per A7 — logged in COPY-FOR-REVIEW.md, not final
 // until client sign-off. Using the brief's own suggested line as written.
@@ -17,14 +18,19 @@ const DIFFERENTIATORS = [
 ];
 
 export default function WhyMfav() {
+  const [gridRef, gridInView] = useInView();
+
   return (
     <section className="bg-c-bg-alt">
       <Container className="py-section-sm md:py-section">
-        <SectionHeader align="center" eyebrow="Why MFAV" index="07" heading={HEADING} />
+        <SectionHeader align="center" heading={HEADING} />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 border-t border-l border-c-border">
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-3 border-t border-l border-c-border">
           {DIFFERENTIATORS.map((item, idx) => (
-            <div key={item.heading} className="border-r border-b border-c-border p-8">
+            <div
+              key={item.heading}
+              className={['border-r border-b border-c-border p-8', revealClass(gridInView, idx)].join(' ')}
+            >
               <span className="block text-eyebrow text-c-primary mb-4">{String(idx + 1).padStart(2, '0')}</span>
               <h3 className="text-lg font-bold text-c-on mb-2">{item.heading}</h3>
               <p className="text-c-on-muted leading-relaxed">{item.line}</p>

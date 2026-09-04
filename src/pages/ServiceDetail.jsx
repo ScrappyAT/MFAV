@@ -4,7 +4,6 @@ import { DIVISIONS } from '../content/divisions';
 import { SERVICES } from '../content/services';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
 import Container from '../components/ui/Container';
-import Eyebrow from '../components/ui/Eyebrow';
 import SectionHeader from '../components/ui/SectionHeader';
 import Button from '../components/ui/Button';
 import TextLink from '../components/ui/TextLink';
@@ -14,8 +13,8 @@ import NotFound from './NotFound';
 
 /**
  * ServiceDetail — Phase 4. ONE reusable template for all six division
- * routes, entirely data-driven from DIVISIONS (Phase 2b / mega-menu
- * content) + SERVICES (Phase 4 copy). No per-division page files.
+ * routes, entirely data-driven from DIVISIONS (Phase 2b division data)
+ * + SERVICES (Phase 4 copy). No per-division page files.
  */
 export default function ServiceDetail() {
   const { slug } = useParams();
@@ -25,7 +24,8 @@ export default function ServiceDetail() {
   // Hooks must run unconditionally — call before the not-found bail-out.
   useDocumentMeta(
     division ? division.name : 'Service Not Found',
-    division ? `${division.blurb} ${service?.positioning || ''}`.trim() : undefined
+    division ? `${division.blurb} ${service?.positioning || ''}`.trim() : undefined,
+    service?.image
   );
 
   if (!division || !service) return <NotFound />;
@@ -47,7 +47,12 @@ export default function ServiceDetail() {
         {service.graded && <div aria-hidden="true" className="grade-cool-tint absolute inset-0" />}
         <div aria-hidden="true" className="absolute inset-0 bg-c-scrim/80" />
 
-        <Container className="relative z-10 py-section-sm md:py-section-lg">
+        {/* pt-32 (mobile only) replaces py-section-sm's 80px top half —
+            80px (plus the breadcrumb above the H1) sat right at the edge
+            of the fixed 100px header, safe only by luck of the
+            breadcrumb's exact height; 128px gives real margin instead.
+            md+ is unaffected (py-section-lg's 180px was already safe). */}
+        <Container className="relative z-10 pt-32 pb-section-sm md:py-section-lg">
           <nav aria-label="Breadcrumb" className="mb-6 text-sm text-c-ondark/70">
             <TextLink to="/" onDark>Home</TextLink>
             <span className="mx-2">/</span>
@@ -55,7 +60,6 @@ export default function ServiceDetail() {
             <span className="mx-2">/</span>
             <span className="text-c-ondark">{division.name}</span>
           </nav>
-          <Eyebrow onDark className="mb-4">{division.name}</Eyebrow>
           <h1 className="text-hero-sm md:text-hero text-c-ondark mb-6 max-w-3xl">{division.name}</h1>
           <p className="max-w-measure text-lg text-c-ondark/85 leading-relaxed mb-8">{service.positioning}</p>
           <Button to="/contact" variant="primary" size="lg">
@@ -68,7 +72,7 @@ export default function ServiceDetail() {
       <Container className="py-section-sm md:py-section">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
           <div className="lg:col-span-7">
-            <Eyebrow className="mb-4">Overview</Eyebrow>
+            <h2 className="text-xl font-bold text-c-on mb-4">Overview</h2>
             <p className="text-lg text-c-on leading-relaxed">{service.overview}</p>
           </div>
           <div className="lg:col-span-5">
@@ -87,7 +91,7 @@ export default function ServiceDetail() {
       {/* 3. Capabilities */}
       <section className="bg-c-bg-alt">
         <Container className="py-section-sm md:py-section">
-          <SectionHeader eyebrow="Capabilities" heading={`${division.name} Capabilities`} />
+          <SectionHeader heading={`${division.name} Capabilities`} />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8">
             {service.capabilities.map((cap) => (
               <div key={cap.name} className="border-t border-c-border pt-5">
@@ -101,7 +105,7 @@ export default function ServiceDetail() {
 
       {/* 4. Approach / Process */}
       <Container className="py-section-sm md:py-section">
-        <SectionHeader eyebrow="Approach" heading="How We Work" />
+        <SectionHeader heading="How We Work" />
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
           {service.process.map((step, idx) => (
             <div key={step.title} className="relative pt-6 border-t-2 border-c-primary">
@@ -116,7 +120,7 @@ export default function ServiceDetail() {
       {/* 5. Benefits */}
       <section className="bg-c-bg-alt">
         <Container className="py-section-sm md:py-section">
-          <SectionHeader eyebrow="Benefits" heading="Why This Division" />
+          <SectionHeader heading="Why This Division" />
           <div className="grid grid-cols-1 md:grid-cols-2 border-t border-l border-c-border">
             {service.benefits.map((benefit) => (
               <div key={benefit} className="border-r border-b border-c-border p-6">
@@ -129,7 +133,7 @@ export default function ServiceDetail() {
 
       {/* 6. Relevant Industries */}
       <Container className="py-section-sm md:py-section">
-        <SectionHeader eyebrow="Industries" heading="Where This Applies" />
+        <SectionHeader heading="Where This Applies" />
         <div className="flex flex-wrap gap-3">
           {service.relevantIndustries.map((industry) => (
             <Link
@@ -147,7 +151,7 @@ export default function ServiceDetail() {
       {relatedDivisions.length > 0 && (
         <section className="bg-c-bg-alt">
           <Container className="py-section-sm md:py-section">
-            <SectionHeader eyebrow="Related" heading="Related Services" />
+            <SectionHeader heading="Related Services" />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {relatedDivisions.map((related) => (
                 <ServiceCard

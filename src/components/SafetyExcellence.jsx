@@ -1,6 +1,5 @@
 import React from 'react';
 import Container from './ui/Container';
-import Eyebrow from './ui/Eyebrow';
 import Button from './ui/Button';
 
 // Six points, agent-authored (A7, COPY-FOR-REVIEW.md). Commitment and
@@ -48,9 +47,6 @@ export default function SafetyExcellence() {
 
       <Container className="relative z-10 py-section-sm md:py-section">
         <div className="max-w-2xl">
-          <Eyebrow index="05" onDark className="mb-4">
-            Safety
-          </Eyebrow>
           <h2 className="text-display-sm md:text-display text-c-ondark mb-6">
             Safety at Every Level of Operation
           </h2>

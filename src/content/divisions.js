@@ -1,8 +1,11 @@
 // Shared division/nav data — the single source for the six service slugs
-// (A5) so the header mega-menu, footer links, and later the Services
+// (A5) so the footer links, Company.jsx's division grid, and the Services
 // overview / ServiceDetail template (Phase 4) never drift out of sync.
 //
-// `blurb` is agent-authored copy (one-line mega-menu descriptor) — logged
+// `blurb` is agent-authored copy (one-line division descriptor — written
+// for a header mega-menu that was built, then deliberately removed per a
+// later, approved reversal of the A5/§1c spec; `blurb` stayed since
+// Company.jsx and ServiceDetail's meta description still use it) — logged
 // here for COPY-FOR-REVIEW.md consolidation in Phase 3a, not yet
 // client-approved.
 export const DIVISIONS = [
@@ -18,6 +21,17 @@ export const DIVISIONS = [
     ],
   },
   {
+    id: 'equipment-ppe',
+    name: 'Equipment & PPE',
+    blurb: 'Equipment supply, PPE and industrial supplies.',
+    subCapabilities: [
+      'Equipment Supply',
+      'Personal Protective Equipment',
+      'Industrial Supplies',
+      'Marine Equipment',
+    ],
+  },
+  {
     id: 'aviation',
     name: 'Aviation',
     blurb: 'Private jet, charter, airline and helicopter services.',
@@ -27,17 +41,6 @@ export const DIVISIONS = [
       'Airline Services',
       'Helicopter Services',
       'Purchase & Sale of Helicopters',
-    ],
-  },
-  {
-    id: 'energy-infrastructure',
-    name: 'Energy & Infrastructure',
-    blurb: 'Pipeline installation and maintenance, and industrial infrastructure.',
-    subCapabilities: [
-      'Pipeline Installation',
-      'Pipeline Maintenance',
-      'Industrial Infrastructure',
-      'Technical Services',
     ],
   },
   {
@@ -52,14 +55,14 @@ export const DIVISIONS = [
     ],
   },
   {
-    id: 'equipment-ppe',
-    name: 'Equipment & PPE',
-    blurb: 'Equipment supply, PPE and industrial supplies.',
+    id: 'energy-infrastructure',
+    name: 'Energy & Infrastructure',
+    blurb: 'Pipeline installation and maintenance, and industrial infrastructure.',
     subCapabilities: [
-      'Equipment Supply',
-      'Personal Protective Equipment',
-      'Industrial Supplies',
-      'Marine Equipment',
+      'Pipeline Installation',
+      'Pipeline Maintenance',
+      'Industrial Infrastructure',
+      'Technical Services',
     ],
   },
   {

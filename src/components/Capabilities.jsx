@@ -3,6 +3,7 @@ import Container from './ui/Container';
 import SectionHeader from './ui/SectionHeader';
 import DivisionPanel from './ui/DivisionPanel';
 import { DIVISIONS } from '../content/divisions';
+import { useInView, revealClass } from '../hooks/useInView';
 
 // Only 4 of 6 divisions have a dedicated image asset (see TOKENS-GAPS.md /
 // Phase 0 audit) — marine-offshore and energy-infrastructure fall back to
@@ -37,18 +38,18 @@ const SPAN_BY_DIVISION = {
 // modal→routing replacement), so the old `onSelectDivision` callback
 // prop is gone — Home.jsx has been updated to match.
 export default function Capabilities() {
+  const [gridRef, gridInView] = useInView();
+
   return (
     <section id="capabilities" className="scroll-mt-24">
       <Container className="py-section-sm md:py-section">
         <SectionHeader
-          eyebrow="Our Capabilities"
-          index="01"
           heading="Our Capabilities"
           supporting="From offshore operations and marine logistics to aviation, infrastructure and industrial supply, MFAV brings multiple capabilities together to support complex operations."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">
-          {DIVISIONS.map((division) => (
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">
+          {DIVISIONS.map((division, idx) => (
             <DivisionPanel
               key={division.id}
               image={IMAGE_BY_DIVISION[division.id]}
@@ -58,6 +59,7 @@ export default function Capabilities() {
               to={`/services/${division.id}`}
               spanClassName={SPAN_BY_DIVISION[division.id]}
               graded={GRADED_DIVISIONS.has(division.id)}
+              className={revealClass(gridInView, idx)}
             />
           ))}
         </div>

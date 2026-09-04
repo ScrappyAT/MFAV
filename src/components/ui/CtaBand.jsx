@@ -7,10 +7,16 @@ import Button from './Button';
  * §8 ("reuse the Phase 3g component with division-specific copy"). Only
  * heading/body vary per caller; the two buttons stay standard across the
  * site (Request a Consultation → /contact, View Our Services → /services).
+ *
+ * `bg-c-primary` (the lighter brand blue) rather than `bg-c-primary-bg` —
+ * Footer.jsx always renders this immediately above its own navy
+ * (`bg-c-primary-bg`) link columns, so the two need distinct colors or
+ * the CTA band visually fuses into the footer below it instead of reading
+ * as its own section.
  */
 export default function CtaBand({ heading, body }) {
   return (
-    <div className="border-b border-c-ondark/15 bg-c-primary-bg">
+    <div className="bg-c-primary">
       <Container className="flex flex-col md:flex-row items-center justify-between gap-8 py-16">
         <div className="max-w-xl">
           <h2 className="text-display-sm text-c-ondark">{heading}</h2>

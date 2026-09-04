@@ -2,6 +2,7 @@ import React from 'react';
 import Container from './ui/Container';
 import SectionHeader from './ui/SectionHeader';
 import ServiceCard from './ui/ServiceCard';
+import { useInView, revealClass } from '../hooks/useInView';
 
 // H2 is [AGENT-AUTHORED] per A7 — logged in COPY-FOR-REVIEW.md, not final
 // until client sign-off. Using the brief's own suggested line as written.
@@ -60,11 +61,13 @@ const FEATURED = [
 ];
 
 export default function FeaturedServices() {
+  const [gridRef, gridInView] = useInView();
+
   return (
     <Container className="py-section-sm md:py-section">
-      <SectionHeader eyebrow="Featured Services" index="03" heading={HEADING} />
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {FEATURED.map((service) => (
+      <SectionHeader heading={HEADING} />
+      <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {FEATURED.map((service, idx) => (
           <ServiceCard
             key={service.id}
             image={service.image}
@@ -73,6 +76,7 @@ export default function FeaturedServices() {
             description={service.description}
             to={service.to}
             graded={service.graded}
+            className={revealClass(gridInView, idx)}
           />
         ))}
       </div>

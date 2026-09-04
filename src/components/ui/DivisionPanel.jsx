@@ -61,11 +61,13 @@ export default function DivisionPanel({
           />
         </h3>
         {subCapabilities.length > 0 && (
-          <ul className="flex flex-col gap-1 text-sm text-c-ondark/80 max-h-32 opacity-100 md:max-h-0 md:opacity-0 md:overflow-hidden md:transition-all md:duration-320 md:ease-standard md:group-hover:max-h-32 md:group-hover:opacity-100">
-            {subCapabilities.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
+          <div className="hover-reveal">
+            <ul className="flex flex-col gap-1 text-sm text-c-ondark/80">
+              {subCapabilities.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
         )}
       </div>
     </Link>

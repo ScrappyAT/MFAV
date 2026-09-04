@@ -109,6 +109,34 @@ export default {
         'exit': 'cubic-bezier(0.4, 0, 1, 1)',
       },
 
+      // --- Stagger steps for the Phase 6 section-reveal system: "~60ms
+      // stagger capped at six [children]". Named tokens rather than
+      // Tailwind's default delay-* scale so the exact 60ms cadence is
+      // explicit and grep-able, same convention as transitionDuration
+      // above. `Reveal`'s STAGGER_DELAY_CLASSES array is the only place
+      // that reads these class names, so Tailwind's JIT scanner can see
+      // the literal strings and generate the CSS. ---
+      transitionDelay: {
+        'stagger-0': '0ms',
+        'stagger-1': '60ms',
+        'stagger-2': '120ms',
+        'stagger-3': '180ms',
+        'stagger-4': '240ms',
+        'stagger-5': '300ms',
+      },
+
+      // --- Flex-grow ratio for the Hero's vertical-position spacers
+      // (Hero.jsx) — `flex-1` already exists as a stock Tailwind utility
+      // (`flex: 1 1 0%`) for the bottom spacer; `flex-6` is the only new
+      // step needed, at 6x the grow so the two spacers split leftover
+      // vertical space 6:1 (bumped from 5:1 when the header became
+      // permanently solid — see Hero.jsx). Added here rather than
+      // reached for as `flex-[6]` per A2.3 (no arbitrary Tailwind values
+      // in components). ---
+      flex: {
+        '6': '6 6 0%',
+      },
+
       // --- Z-index layers, named so a component never has to guess what
       // else is in the stack. ---
       zIndex: {
@@ -140,6 +168,15 @@ export default {
       // so the exact value is a token, not an arbitrary bracket value.
       minHeight: {
         'hero': '92vh',
+      },
+
+      // Fixed header height (100px, by request) — named so `h-header` is
+      // reachable without `h-[100px]` (A2.3). Also referenced by
+      // `index.css`'s global `scroll-margin-top` and by the mobile nav
+      // overlay's top offset in Header.jsx, so both stay in lockstep
+      // with the header's real height instead of drifting independently.
+      height: {
+        'header': '100px',
       },
     },
   },

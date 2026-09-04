@@ -4,6 +4,7 @@ import Container from './ui/Container';
 import SectionHeader from './ui/SectionHeader';
 import ProjectCard from './ui/ProjectCard';
 import TextLink from './ui/TextLink';
+import { useInView, revealClass } from '../hooks/useInView';
 
 // Every field below is an explicit placeholder (A3 §3d: "Invent nothing").
 // Descriptions stay at the level of "what kind of work this represents"
@@ -46,10 +47,12 @@ const PROJECTS = [
 ];
 
 export default function ProjectsSection() {
+  const [gridRef, gridInView] = useInView();
+
   return (
     <section id="projects" className="scroll-mt-24 bg-c-bg">
       <Container className="py-section-sm md:py-section">
-        <SectionHeader eyebrow="Projects" index="06" heading="Experience in Motion" />
+        <SectionHeader heading="Experience in Motion" />
 
         <div className="mb-8 flex items-start gap-3 rounded-token border border-c-border-hl bg-c-bg-alt p-4 text-sm text-c-on-muted">
           <AlertTriangle size={18} aria-hidden="true" className="shrink-0 mt-0.5 text-c-primary" />
@@ -60,8 +63,8 @@ export default function ProjectsSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {PROJECTS.map((project) => (
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {PROJECTS.map((project, idx) => (
             <ProjectCard
               key={project.id}
               image={project.image}
@@ -71,6 +74,7 @@ export default function ProjectsSection() {
               location="[LOCATION PLACEHOLDER]"
               description={project.description}
               graded={project.graded}
+              className={revealClass(gridInView, idx)}
             />
           ))}
         </div>

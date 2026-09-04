@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
+import PageTransition from './PageTransition';
 
 /**
  * Scroll restoration: plain top-of-page on a normal route change, or a
@@ -9,6 +10,15 @@ import Footer from './Footer';
  * footer's /about#leadership link). React Router v6 doesn't do this on
  * its own. Anchor targets get `scroll-margin-top` globally (index.css)
  * so this never lands them under the fixed header.
+ *
+ * Phase 6: smooth scrolling is scoped to anchor navigation only (A3
+ * Phase 6: "scroll-behavior: smooth on anchor links only... never hijack
+ * the wheel"). `html { scroll-behavior: smooth }` (index.css) makes this
+ * the default for any scroll on the page, which also caught the plain
+ * "jump to top" on an ordinary route change — every navigation was
+ * animating a scroll instead of snapping there. `behavior: 'instant'`
+ * here opts the non-anchor case back out explicitly; `scrollIntoView`'s
+ * default `behavior: 'smooth'` is what the CSS rule is actually for.
  */
 function ScrollManager() {
   const { pathname, hash } = useLocation();
@@ -17,11 +27,11 @@ function ScrollManager() {
     if (hash) {
       const el = document.getElementById(hash.slice(1));
       if (el) {
-        el.scrollIntoView();
+        el.scrollIntoView({ behavior: 'smooth' });
         return;
       }
     }
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   }, [pathname, hash]);
 
   return null;
@@ -39,7 +49,7 @@ export default function Layout() {
       </a>
       <Header />
       <div id="main-content">
-        <Outlet />
+        <PageTransition />
       </div>
       <Footer />
     </div>

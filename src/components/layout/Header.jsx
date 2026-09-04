@@ -1,66 +1,30 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, Mail, Phone } from 'lucide-react';
+import { Menu, X, Mail, Phone } from 'lucide-react';
 import Button from '../ui/Button';
 import Logo from './Logo';
-import { DIVISIONS, NAV_LINKS } from '../../content/divisions';
-
-const SCROLL_SOLID_AT = 80;
-const SCROLL_TRANSPARENT_AT = 40;
+import { NAV_LINKS } from '../../content/divisions';
 
 export default function Header() {
-  const [solid, setSolid] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
   const location = useLocation();
   const mobileNavRef = useRef(null);
-  const servicesRef = useRef(null);
   const menuButtonRef = useRef(null);
-
-  // Scroll-triggered header transition, with hysteresis (two different
-  // thresholds for entering vs leaving "solid") so it can't flicker at a
-  // single boundary value while the user scrolls near it.
-  useEffect(() => {
-    const handleScroll = () => {
-      setSolid((prev) => {
-        if (window.scrollY > SCROLL_SOLID_AT) return true;
-        if (window.scrollY < SCROLL_TRANSPARENT_AT) return false;
-        return prev;
-      });
-    };
-    handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   // Close everything on route change.
   useEffect(() => {
     setMobileOpen(false);
-    setServicesOpen(false);
   }, [location.pathname]);
 
   // Escape closes whichever overlay is open.
   useEffect(() => {
     const handleKey = (e) => {
       if (e.key !== 'Escape') return;
-      if (servicesOpen) setServicesOpen(false);
       if (mobileOpen) setMobileOpen(false);
     };
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
-  }, [servicesOpen, mobileOpen]);
-
-  // Close the mega-menu on outside click.
-  useEffect(() => {
-    if (!servicesOpen) return;
-    const handleClick = (e) => {
-      if (servicesRef.current && !servicesRef.current.contains(e.target)) {
-        setServicesOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClick);
-    return () => document.removeEventListener('mousedown', handleClick);
-  }, [servicesOpen]);
+  }, [mobileOpen]);
 
   // Lock body scroll + trap focus while the mobile nav is open.
   useEffect(() => {
@@ -100,29 +64,30 @@ export default function Header() {
     };
   }, [mobileOpen]);
 
-  const navTextClass = solid ? 'text-c-on hover:text-c-primary-bg' : 'text-white/90 hover:text-white';
-
   return (
-    <header
-      className={[
-        'fixed inset-x-0 top-0 z-header transition-colors duration-200 ease-standard',
-        solid
-          ? 'bg-c-bg border-b border-c-border py-3 shadow-token'
-          : 'py-5 border-b border-transparent',
-      ].join(' ')}
-    >
-      {/* Measured contrast failure (Phase 2 QA): white nav text over a
-          bright photo sky dropped as low as 1.82:1 with nothing behind
-          the transparent header but the page's own scrim, which is
-          weakest at the very top. This scrim is independent of whatever
-          image sits behind the header, on every page, not just the
-          Home hero. */}
-      {!solid && (
-        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-c-scrim/90 to-c-scrim/70" />
-      )}
-      <div className="relative z-10 mfav-container flex items-center justify-between gap-6">
+    <header className="fixed inset-x-0 top-0 z-header h-header bg-c-bg border-b border-c-border shadow-token">
+      {/* Permanently solid/light (by request) — this used to transition
+          from transparent-over-hero to this same solid state on scroll
+          (a `solid` state + scroll listener + hysteresis thresholds +
+          a contrast-rescue scrim for the transparent state's white-on-
+          bright-sky failure case). All of that is gone: with the header
+          never transparent, there's no transition to drive and no
+          low-contrast transparent state to rescue. See Hero.jsx for the
+          matching spacing adjustment this made necessary (the hero's
+          content block now sits under a permanently opaque bar instead
+          of a soft transparent-to-scrim gradient).
+
+          Fixed at `h-header` (100px, by request) rather than sized by
+          its own padding+content — the inner row below is `h-full` so
+          it fills that exact height and `items-center` centers the logo/
+          nav/CTA/hamburger within it (all well under 100px tall, so
+          nothing clips). */}
+      <div className="mfav-container h-full flex items-center justify-between gap-6">
         <Link to="/" className="shrink-0 rounded-token-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-c-primary">
-          <Logo />
+          {/* Bigger than the default h-10 — the 100px-tall header (see
+              above) has plenty of headroom, and the default size read as
+              too small next to the nav links. */}
+          <Logo className="h-16" />
         </Link>
 
         {/* Absolutely centered on the header itself (not just relative to
@@ -130,76 +95,15 @@ export default function Header() {
             plain flex justify-between only centers the nav relative to
             the logo/actions' combined width, not the header's true
             center, and the two rarely match. */}
-        <nav aria-label="Primary" className="hidden lg:flex items-center gap-8 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-          {NAV_LINKS.map((link) =>
-            link.name === 'Services' ? (
-              <div key={link.name} ref={servicesRef} className="relative">
-                <div className="flex items-center gap-1">
-                  <NavLink
-                    to={link.to}
-                    className={({ isActive }) =>
-                      [
-                        'text-sm font-medium transition-colors duration-200 ease-standard',
-                        navTextClass,
-                        isActive && 'border-b-2 border-c-primary',
-                      ]
-                        .filter(Boolean)
-                        .join(' ')
-                    }
-                  >
-                    {link.name}
-                  </NavLink>
-                  <button
-                    type="button"
-                    aria-expanded={servicesOpen}
-                    aria-controls="services-mega-menu"
-                    aria-label="Toggle Services menu"
-                    onClick={() => setServicesOpen((v) => !v)}
-                    onMouseEnter={() => setServicesOpen(true)}
-                    className={['rounded-token-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-c-primary', navTextClass].join(' ')}
-                  >
-                    <ChevronDown
-                      size={14}
-                      aria-hidden="true"
-                      className={['transition-transform duration-200 ease-standard', servicesOpen && 'rotate-180'].filter(Boolean).join(' ')}
-                    />
-                  </button>
-                </div>
-
-                {servicesOpen && (
-                  <div
-                    id="services-mega-menu"
-                    role="menu"
-                    onMouseLeave={() => setServicesOpen(false)}
-                    className="absolute left-1/2 top-full mt-4 w-screen max-w-content-lg -translate-x-1/2 rounded-token border border-c-border bg-c-surface p-8 shadow-token-modal"
-                  >
-                    <div className="grid grid-cols-3 gap-8">
-                      {DIVISIONS.map((division) => (
-                        <Link
-                          key={division.id}
-                          role="menuitem"
-                          to={`/services/${division.id}`}
-                          className="group flex flex-col gap-1.5 rounded-token-sm p-2 -m-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-c-primary"
-                        >
-                          <span className="font-bold text-c-on group-hover:text-c-primary-bg transition-colors duration-200 ease-standard">
-                            {division.name}
-                          </span>
-                          <span className="text-sm text-c-on-muted leading-snug">{division.blurb}</span>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            ) : (
+        <nav aria-label="Primary" className="hidden xl:flex items-center gap-8 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+          {NAV_LINKS.map((link) => (
               <NavLink
                 key={link.name}
                 to={link.to}
                 end={link.to === '/'}
                 className={({ isActive }) =>
                   [
-                    'text-sm font-medium transition-colors duration-200 ease-standard',
-                    navTextClass,
+                    'text-sm font-medium text-c-on transition-colors duration-200 ease-standard hover:text-c-primary-bg',
                     isActive && 'border-b-2 border-c-primary',
                   ]
                     .filter(Boolean)
@@ -208,12 +112,11 @@ export default function Header() {
               >
                 {link.name}
               </NavLink>
-            )
-          )}
+          ))}
         </nav>
 
         <div className="shrink-0 flex items-center gap-4">
-          <div className="hidden lg:block">
+          <div className="hidden xl:block">
             <Button to="/contact" variant="primary" size="sm">
               Request a Consultation
             </Button>
@@ -225,10 +128,7 @@ export default function Header() {
             aria-expanded={mobileOpen}
             aria-controls="mobile-nav"
             aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
-            className={[
-              'lg:hidden rounded-token border p-2 transition-colors duration-200 ease-standard',
-              solid ? 'text-c-on border-c-border' : 'text-white border-white/30',
-            ].join(' ')}
+            className="xl:hidden flex items-center justify-center h-11 w-11 rounded-token border border-c-border text-c-on transition-colors duration-200 ease-standard"
           >
             {mobileOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
@@ -240,7 +140,7 @@ export default function Header() {
         <div
           id="mobile-nav"
           ref={mobileNavRef}
-          className="lg:hidden fixed inset-0 top-0 z-header flex flex-col bg-c-primary-bg px-6 pt-24 pb-10 overflow-y-auto"
+          className="xl:hidden fixed inset-0 top-0 z-header flex flex-col bg-c-primary-bg px-6 pt-32 pb-10 overflow-y-auto"
           role="dialog"
           aria-modal="true"
           aria-label="Mobile navigation"
@@ -249,7 +149,7 @@ export default function Header() {
             type="button"
             onClick={() => setMobileOpen(false)}
             aria-label="Close navigation menu"
-            className="absolute right-6 top-6 text-white rounded-token border border-white/30 p-2"
+            className="absolute right-6 top-6 flex items-center justify-center h-11 w-11 text-white rounded-token border border-white/30"
           >
             <X size={22} />
           </button>

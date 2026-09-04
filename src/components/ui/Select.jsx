@@ -25,7 +25,7 @@ const Select = forwardRef(function Select(
           required={required}
           aria-invalid={!!error}
           aria-describedby={describedBy}
-          defaultValue=""
+          {...(rest.value === undefined ? { defaultValue: '' } : {})}
           className={[
             'w-full min-h-12 appearance-none rounded-token border bg-c-bg-alt pl-4 pr-10 py-3 text-base text-c-on',
             'transition-colors duration-200 ease-standard',

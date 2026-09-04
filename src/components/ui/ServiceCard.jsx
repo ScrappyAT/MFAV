@@ -24,7 +24,7 @@ export default function ServiceCard({ image, imageAlt, title, description, to, g
         alt={imageAlt || ''}
         loading="lazy"
         className={[
-          'absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-standard group-hover:scale-105',
+          'absolute inset-0 h-full w-full object-cover transition-transform duration-320 ease-standard group-hover:scale-105',
           graded && 'grade-cool',
         ].filter(Boolean).join(' ')}
       />
@@ -35,9 +35,9 @@ export default function ServiceCard({ image, imageAlt, title, description, to, g
       />
       <div className="relative z-10 p-6 flex flex-col gap-2">
         <h3 className="text-lg font-bold text-c-ondark">{title}</h3>
-        <p className="text-sm text-c-ondark/80 leading-relaxed opacity-100 md:max-h-0 md:opacity-0 md:overflow-hidden md:transition-all md:duration-320 md:ease-standard md:group-hover:max-h-32 md:group-hover:opacity-100">
-          {description}
-        </p>
+        <div className="hover-reveal">
+          <p className="text-sm text-c-ondark/80 leading-relaxed">{description}</p>
+        </div>
         <span className="mt-1 inline-flex items-center gap-1.5 text-sm font-semibold text-c-ondark-primary">
           Learn more
           <ArrowRight size={14} aria-hidden="true" className="transition-transform duration-200 ease-standard group-hover:translate-x-1" />

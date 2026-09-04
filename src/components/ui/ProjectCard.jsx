@@ -21,7 +21,7 @@ export default function ProjectCard({ image, imageAlt, sector, title, location, 
           alt={imageAlt || ''}
           loading="lazy"
           className={[
-            'h-full w-full object-cover transition-transform duration-700 ease-standard group-hover:scale-105',
+            'h-full w-full object-cover transition-transform duration-320 ease-standard group-hover:scale-105',
             graded && 'grade-cool',
           ].filter(Boolean).join(' ')}
         />

@@ -1,14 +1,23 @@
 import React from 'react';
-import Eyebrow from './Eyebrow';
+import { useInView, revealClass } from '../../hooks/useInView';
 
 /**
- * SectionHeader — eyebrow + heading + optional supporting paragraph +
- * optional right-aligned action. Left-aligned by default; pass `align =
- * "center"` for the few sections (e.g. Industries) that call for it.
+ * SectionHeader — heading + optional supporting paragraph + optional
+ * right-aligned action. Left-aligned by default; pass `align = "center"`
+ * for the few sections (e.g. Industries) that call for it.
+ *
+ * No eyebrow label — retired site-wide (previously an `Eyebrow` above the
+ * heading; see DESIGN-SYSTEM.md). The heading is the true top of a
+ * section's content now, so it sits directly on the section's own
+ * padding token with no compensating spacing needed.
+ *
+ * Carries the Phase 6 section-reveal (see `revealClass` in useInView.js)
+ * as a single unit — this is the highest-leverage place to wire it,
+ * since nearly every section on the site opens with a SectionHeader, so
+ * every one of them now reveals consistently for free instead of each
+ * page/section rolling its own scroll-trigger.
  */
 export default function SectionHeader({
-  eyebrow,
-  index,
   heading,
   headingLevel = 'h2',
   supporting,
@@ -19,21 +28,19 @@ export default function SectionHeader({
 }) {
   const Heading = headingLevel;
   const isCenter = align === 'center';
+  const [ref, inView] = useInView();
 
   return (
     <div
+      ref={ref}
       className={[
         'flex flex-col gap-4 mb-12 md:mb-16',
         isCenter ? 'items-center text-center' : 'md:flex-row md:items-end md:justify-between',
+        revealClass(inView),
         className,
       ].join(' ')}
     >
       <div className={isCenter ? 'max-w-2xl' : 'max-w-2xl'}>
-        {eyebrow && (
-          <Eyebrow index={index} onDark={onDark} className="mb-3">
-            {eyebrow}
-          </Eyebrow>
-        )}
         <Heading
           className={[
             'text-display-sm md:text-display',
