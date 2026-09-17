@@ -1,15 +1,14 @@
 import React, { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { AlertTriangle, Inbox } from 'lucide-react';
+import { Inbox } from 'lucide-react';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
 import { METADATA } from '../content/metadata';
+import { PROJECTS } from '../content/projects';
 import Container from '../components/ui/Container';
 import Section from '../components/ui/Section';
 import ProjectCard from '../components/ui/ProjectCard';
 
-// Every field is an explicit placeholder (A5 §5d: "All content is labeled
-// placeholder"). Sectors match the brief's filter list exactly. Titles and
-// locations are bracketed placeholders throughout — invent nothing.
+// Filter categories match COPY-APPROVED.md §8's chip list exactly.
 const SECTORS = [
   { slug: 'all', label: 'All' },
   { slug: 'marine-operations', label: 'Marine Operations' },
@@ -17,19 +16,6 @@ const SECTORS = [
   { slug: 'logistics', label: 'Logistics' },
   { slug: 'infrastructure', label: 'Infrastructure' },
   { slug: 'equipment-supply', label: 'Equipment Supply' },
-];
-
-const PROJECTS = [
-  { id: 'project-1', sectorSlug: 'marine-operations', sector: 'Marine Operations', description: 'Illustrative: offshore platform supply vessel chartering and journey management.', image: '/assets/images/hero_section.jpg', graded: true },
-  { id: 'project-2', sectorSlug: 'marine-operations', sector: 'Marine Operations', description: 'Illustrative: bunkering coordination and port agency support for a multi-vessel campaign.', image: '/assets/images/hero_section.jpg', graded: true },
-  { id: 'project-3', sectorSlug: 'offshore-support', sector: 'Offshore Support', description: 'Illustrative: aviation and rotary-wing crew transfer support for remote site operations.', image: '/assets/images/division_aviation.svg' },
-  { id: 'project-4', sectorSlug: 'offshore-support', sector: 'Offshore Support', description: 'Illustrative: private charter coordination for time-sensitive offshore personnel movement.', image: '/assets/images/division_aviation.svg' },
-  { id: 'project-5', sectorSlug: 'infrastructure', sector: 'Infrastructure', description: 'Illustrative: pipeline installation and engineering maintenance.', image: '/assets/images/who_we_are_plant.svg' },
-  { id: 'project-6', sectorSlug: 'infrastructure', sector: 'Infrastructure', description: 'Illustrative: industrial infrastructure inspection and integrity testing.', image: '/assets/images/who_we_are_plant.svg' },
-  { id: 'project-7', sectorSlug: 'logistics', sector: 'Logistics', description: 'Illustrative: heavy machinery haulage and port-to-site supply coordination.', image: '/assets/images/division_logistics.svg' },
-  { id: 'project-8', sectorSlug: 'logistics', sector: 'Logistics', description: 'Illustrative: abnormal-load route planning and permit coordination.', image: '/assets/images/division_logistics.svg' },
-  { id: 'project-9', sectorSlug: 'equipment-supply', sector: 'Equipment Supply', description: 'Illustrative: industrial equipment and PPE supply for site mobilisation.', image: '/assets/images/division_equipment.svg' },
-  { id: 'project-10', sectorSlug: 'equipment-supply', sector: 'Equipment Supply', description: 'Illustrative: marine-rated equipment supply for an offshore support contract.', image: '/assets/images/division_equipment.svg' },
 ];
 
 /**
@@ -78,15 +64,6 @@ export default function Projects() {
 
       <Section size="md">
         <Container>
-          <div className="mb-8 flex items-start gap-3 rounded-token border border-c-border-hl bg-c-bg-alt p-4 text-sm text-c-on-muted">
-            <AlertTriangle size={18} aria-hidden="true" className="shrink-0 mt-0.5 text-c-primary" />
-            <p>
-              This portfolio is illustrative and does not represent completed client
-              engagements. Project titles, locations and details are placeholders
-              pending real content from the client.
-            </p>
-          </div>
-
           {/* Filter chips */}
           <div role="group" aria-label="Filter projects by sector" className="mb-10 flex flex-wrap gap-2.5">
             {SECTORS.map((sector) => {
@@ -139,8 +116,8 @@ export default function Projects() {
                   image={project.image}
                   imageAlt=""
                   sector={project.sector}
-                  title="[PROJECT TITLE PLACEHOLDER]"
-                  location="[LOCATION PLACEHOLDER]"
+                  title={project.title}
+                  location={`${project.location} · ${project.date}`}
                   description={project.description}
                   graded={project.graded}
                 />

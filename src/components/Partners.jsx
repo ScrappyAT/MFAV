@@ -30,8 +30,12 @@ export default function Partners() {
             </span>
           ))}
         </div>
-        <p className="mt-8 text-center text-sm italic text-c-on-muted">
-          Logos shown are placeholders and do not represent real clients or partners.
+        <p className="mt-8 max-w-2xl mx-auto text-center text-c-on-muted leading-relaxed">
+          Our services support international oil and gas operators, EPC contractors and
+          marine operators working in Nigeria and the Gulf of Guinea.
+        </p>
+        <p className="mt-4 text-center text-sm italic text-c-on-muted">
+          Client marks shown are placeholders pending confirmation.
         </p>
       </Container>
     </section>

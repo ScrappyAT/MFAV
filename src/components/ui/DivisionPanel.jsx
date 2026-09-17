@@ -29,6 +29,7 @@ export default function DivisionPanel({
   return (
     <Link
       to={to}
+      aria-label={`Explore ${title}`}
       className={[
         'group relative flex flex-col justify-end overflow-hidden rounded-token border border-c-border',
         'min-h-80 bg-c-surface-low',

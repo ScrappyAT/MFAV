@@ -27,7 +27,7 @@ export default function Footer() {
       {/* Closing CTA band (A3 §3g) — the shared component, not hand-coded
           here; Phase 4's ServiceDetail template reuses the same one. */}
       <CtaBand
-        heading="Let’s Build the Right Solution for Your Operation."
+        heading="Let's Build the Right Solution for Your Operation."
         body="Tell us what you need. Our team will work with you to develop the right solution."
       />
 

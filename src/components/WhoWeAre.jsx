@@ -23,7 +23,7 @@ export default function WhoWeAre() {
             className={['absolute inset-0 h-full w-full object-cover reveal-image', inView && 'is-visible'].filter(Boolean).join(' ')}
           />
           <span className="absolute bottom-4 left-4 rounded-token-sm border border-c-border-hl bg-c-bg/90 px-3 py-1.5 text-micro uppercase text-c-on-muted">
-            [IMAGE CAPTION PLACEHOLDER]
+            [IMAGE CAPTION PLACEHOLDER — e.g. "Offshore support operations, Gulf of Guinea"]
           </span>
         </div>
 
@@ -38,17 +38,23 @@ export default function WhoWeAre() {
               <p>
                 M-FAV Offshore and Allied Services Limited is an integrated services
                 group operating across marine, offshore, aviation, logistics, energy,
-                infrastructure and industrial sectors.
+                infrastructure and industrial sectors. Our work sits where operations
+                are most demanding — offshore support vessels on station, pipeline
+                spreads, heavy loads moving on Nigerian roads, and crews who need the
+                right equipment before the shift starts.
               </p>
               <p>
-                Bringing these capabilities together under one accountable partner
-                reduces the coordination risk that comes with managing multiple
-                vendors across a complex operation — a single point of contact,
-                a single standard of delivery.
+                Complex operations fail at the seams between contractors. Bringing
+                vessel management, haulage, equipment supply, journey management and
+                technical procurement under one accountable partner removes those
+                seams. One point of coordination, one set of standards, one party
+                answerable for delivery.
               </p>
               <p>
-                Safety, discipline and international operating standards are the
-                constant across every division, regardless of sector or scale.
+                What stays constant across every division is how we operate: safety
+                before schedule, compliance with the regulatory framework we work
+                within, and transparent reporting that lets clients see what is
+                happening on their contract.
               </p>
             </div>
             <div className="mt-8">

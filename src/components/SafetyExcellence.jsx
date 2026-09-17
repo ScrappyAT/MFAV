@@ -2,35 +2,34 @@ import React from 'react';
 import Container from './ui/Container';
 import Button from './ui/Button';
 
-// Six points, agent-authored (A7, COPY-FOR-REVIEW.md). Commitment and
-// process only — no certification numbers, no standards claims, no
-// statistics (A3 §3c). The original version of this section quoted "IMO,
-// ICAO, NIPEX" compliance in a policy modal with no client-supplied data
-// behind it — removed entirely as part of this rewrite, not softened.
+// Six points, COPY-APPROVED.md §3.7. Commitment and process only — no
+// certification numbers, no standards claims, no statistics (A3 §3c).
+const INTRO = 'Safety is not a department here. It is the condition under which work is authorised to proceed, and the reason a job stops when something is wrong.';
+
 const POINTS = [
   {
-    title: 'Safety-first culture',
-    body: 'Safety is treated as a shared responsibility, built into how every operation is planned and run — not a step added at the end.',
+    title: 'Safety-First Culture',
+    body: 'Every person on an M-FAV job has the authority to stop work, and no one is penalised for using it.',
   },
   {
-    title: 'Operational discipline',
-    body: 'Standard operating procedures and pre-mission checks are followed consistently, across every division and every site.',
+    title: 'Operational Discipline',
+    body: 'Procedures, permits and pre-task briefings are followed as written, on every job, regardless of schedule pressure.',
   },
   {
-    title: 'Regulatory compliance',
-    body: 'Operations are structured to meet the regulatory expectations of the sectors and jurisdictions we work in.',
+    title: 'Regulatory Compliance',
+    body: 'We operate within the regulatory framework governing marine, offshore and industrial work in Nigeria, and maintain the registrations our scope requires.',
   },
   {
-    title: 'Risk management',
-    body: 'Hazards are identified and assessed before mobilisation, with mitigation built into the plan rather than added after the fact.',
+    title: 'Risk Management',
+    body: 'Hazards are identified and controlled before mobilisation, and reassessed when conditions change.',
   },
   {
-    title: 'Quality assurance',
-    body: 'Work is checked against defined standards at each stage of an operation, not only at handover.',
+    title: 'Quality Assurance',
+    body: 'Equipment, materials and subcontracted services are inspected against specification before they reach your operation.',
   },
   {
-    title: 'Environmental responsibility',
-    body: 'Operations are planned to limit environmental impact, from marine discharge to waste handling on site.',
+    title: 'Environmental Responsibility',
+    body: 'Marine and pipeline operations are planned to limit environmental impact and to meet the standards applicable to the work.',
   },
 ];
 
@@ -50,6 +49,7 @@ export default function SafetyExcellence() {
           <h2 className="text-display-sm md:text-display text-c-ondark mb-6">
             Safety at Every Level of Operation
           </h2>
+          <p className="text-c-ondark/85 leading-relaxed mb-8">{INTRO}</p>
 
           <dl className="flex flex-col">
             {POINTS.map((point) => (
