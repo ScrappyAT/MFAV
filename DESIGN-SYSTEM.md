@@ -1,4 +1,4 @@
-# MFAV Design System
+# M-FAV Design System
 
 The single reference for every token and every reusable primitive in this
 codebase. If a value isn't listed here, it isn't a token — don't use it in
@@ -188,7 +188,7 @@ longer exists in the codebase — if a diff reintroduces it, or reintroduces
 `SectionHeader`'s old `eyebrow`/`index` props, that's a regression, not a
 restoration. This is distinct from — and doesn't affect — the small bare
 numerals used as *list-item* markers within a section (ServiceDetail's
-process steps, Why MFAV's differentiator cards, the Industries page's
+process steps, Why M-FAV's differentiator cards, the Industries page's
 sector index): those number an item in a sequence, they don't label a
 heading, and they were kept.
 

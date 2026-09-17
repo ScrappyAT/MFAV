@@ -1,4 +1,4 @@
-# MFAV — Phase 0 Token & Repo Audit
+# M-FAV — Phase 0 Token & Repo Audit
 
 Generated during Phase 0 (audit only — no code changed). Reconciled directly against the files in this repo, not assumed.
 

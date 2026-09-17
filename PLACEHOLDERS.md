@@ -1,147 +1,81 @@
 # PLACEHOLDERS.md
 
-Consolidated, final checklist of every placeholder on the site awaiting
-real client content or a client decision — every phase, in one place, per
-the Phase 7e handover requirement. Nothing listed here is invented fact —
-each is a bracketed marker, an explicitly-labeled empty state, or an open
-decision, per A2.6/A2.7.
+Rebuilt from scratch in Pass 6 (CONTENT-UPDATE-BRIEF.md) against every
+placeholder A7 lists as still open, plus a fresh inventory of every
+bracketed marker actually in the codebase today. Supersedes the previous
+version in full — nothing here is carried over unverified.
 
 Legend: 🔲 content placeholder (client to supply) · ❓ decision needed
-(client to choose) · ✅ resolved during this build.
+(client to choose) · ✅ resolved.
 
-## Site-wide (Header / Footer — every page)
+---
 
-- ✅ **Registered office address — RESOLVED.** 26 Prof Kiumi Akingbehin
-  Street, off Awkuzu Street, off Omorinre Johnson Street, Lekki 105102,
-  Lagos, Nigeria. Live in the footer, the mobile nav, and `/contact`.
-- ✅ **General enquiry email — RESOLVED.** There is no separate
-  info@/enquiries@ address; support@mfavoffshore.com is the single public
-  address and the contact form's destination.
-- ✅ **RC number — RESOLVED: deliberately not displayed.** Not shown in
-  the footer legal line or anywhere else.
-- 🔲 Social icons (LinkedIn, X, Facebook, Instagram) — rendered as inert,
-  `aria-hidden` placeholders pending real profile URLs (`Footer.jsx`).
-  **Note for whoever wires them up:** once they become real links, give
-  each one an explicit `aria-label` and confirm the 36px (`h-9 w-9`) box
-  still clears the 44×44px touch-target guideline — it's fine inert
-  (nothing to click), but not once it's a real control.
-- ❓ `Privacy` / `Terms` — rendered as plain text, not links; no `/privacy`
-  or `/terms` route exists in the approved IA (A5). Decision needed: add
-  real pages, or omit permanently (`Footer.jsx`)
-- ✅ **Header mega-menu — deliberately removed, not a gap.** A5/§1c's
-  flyout mega-menu was built in an earlier pass, then explicitly reversed
-  by client decision: "Services" is a plain link to `/services` again, on
-  both the desktop bar and the mobile overlay, same as every other nav
-  item. `DIVISIONS[].blurb` (the mega-menu's one-line descriptor content)
-  stayed in `content/divisions.js` since Company.jsx's division grid and
-  ServiceDetail's meta description still use it — see README.md's
-  "Services nav item" section if this is revisited later.
-- ✅ **Logo — resolved.** Client's official full-color lockup (wordmark
-  baked in), two colorways (`mfav_logo.png` / `mfav_logo_ondark.png` — the
-  latter only recolors the wordmark, for navy-footer legibility). See
-  `IMAGES.md`.
-- ✅ **`public/favicon.svg` — resolved.** Deleted (confirmed unreferenced
-  first). The real favicon is `index.html`'s `<link rel="icon">` plus
-  `favicon.ico`/`apple-touch-icon.png`, all cropped from the same artwork's
-  icon mark — unaffected by the removal.
-- ❓ **`robots.txt`/`sitemap.xml` domain — placeholder.** Added in Phase 7c
-  to fix a failing SEO audit; both reference `https://www.mfavoffshore.com`
-  as a placeholder domain since no real production domain was supplied.
-  Update both files once the client confirms the live domain.
+## Global identity — resolved this session
 
-## Homepage (`/`)
+- ✅ Company name and motto — M-FAV Offshore and Allied Services Limited;
+  "Delivering Excellence at All Times."
+- ✅ Registered office address — 26 Prof Kiumi Akingbehin Street, off
+  Awkuzu Street, off Omorinre Johnson Street, Lekki 105102, Lagos,
+  Nigeria. Live in the footer, the mobile nav, and `/contact`.
+- ✅ General enquiry email — support@mfavoffshore.com is the single
+  public address (no separate info@/enquiries@). Also the contact form's
+  destination and the form's error-panel fallback address.
+- ✅ RC number — deliberately not displayed, anywhere.
 
-- 🔲 `[IMAGE CAPTION PLACEHOLDER]` — About/company-intro image caption
-  (`WhoWeAre.jsx`)
-- ✅ Projects/Operations cards — real project titles and descriptions
-  (COPY-APPROVED.md §3.8/A6.1), five of the eight sourced from
-  `content/projects.js`, one per sector. 🔲 Two of the five shown still
-  carry `[LOCATION PLACEHOLDER]`, and every card carries `[DATE
-  PLACEHOLDER]` (dates not yet supplied).
-- 🔲 Partners/Clients logos — generic placeholder marks, explicitly
-  captioned as not representing real clients (`Partners.jsx`)
+## Still outstanding — site-wide
+
+- 🔲 **Operating hours** — `[OPERATING HOURS PLACEHOLDER]` (`content/site.js`), shown on `/contact`.
+- 🔲 **Map embed** — `[MAP EMBED PLACEHOLDER]` (`content/site.js`), shown on `/contact`.
+- 🔲 **Careers email** — `[CAREERS EMAIL PLACEHOLDER]` (`Company.jsx` `#careers`). The deck's own suggestion (`careers@mfavoffshore.com`) is not applied — A7 treats it as a suggestion, not a decision.
+- 🔲 **Social media URLs** — LinkedIn, X, Facebook, Instagram icons render as inert, `aria-hidden` placeholders in the footer, no real destinations. Left exactly this way by explicit instruction this session; a decision is coming separately. Do not treat the inert state as a bug.
+- ❓ **Privacy / Terms** — no `/privacy` or `/terms` route exists. Rendered as plain, non-interactive text in the footer (not links, not `href="#"`). Decision needed: write real pages, or confirm permanent omission.
+
+## `/` (homepage)
+
+- 🔲 **Image caption** — `WhoWeAre.jsx`: `[IMAGE CAPTION PLACEHOLDER — e.g. "Offshore support operations, Gulf of Guinea"]`.
+- 🔲 **Projects teaser** — shows 5 of the 8 real projects (one per sector). Of those 5, 2 (2DHR Project Support, 20" EPWD Pipeline Project) still carry `[LOCATION PLACEHOLDER]`; all 5 carry `[DATE PLACEHOLDER]` (no dates supplied yet).
+- ❓ **Partners** — unattributed fallback line in use (COPY-APPROVED.md A6.3); generic placeholder marks, captioned as not representing real clients. Decision needed: secure consent to name Shell, Chevron, Saipem, TotalEnergies and First E&P, or keep unattributed permanently.
 
 ## `/about`
 
-- 🔲 `[NAME PLACEHOLDER 1–4]`, `[ROLE PLACEHOLDER 1–4]` — Leadership grid;
-  portraits are a neutral icon placeholder, not a photo (`About.jsx`
-  `#leadership`)
-- 🔲 `[CERTIFICATIONS PLACEHOLDER]` — Certifications section is
-  intentionally empty pending client-supplied, verifiable credentials
-  (`About.jsx` `#certifications`)
-- 🔲 Mission, Vision, Values and Safety-detail copy are agent-authored —
-  see `COPY-FOR-REVIEW.md`, not yet client-approved
+- 🔲 **Leadership** (`#leadership`) — 4 slots, each `[NAME PLACEHOLDER n]` / `[ROLE PLACEHOLDER n]` / `[BIO PLACEHOLDER — 40 WORDS]`, neutral icon in place of a portrait. The deck's own "recommended roles" (Managing Director, etc.) are not pre-filled — A7 treats them as suggestions.
+- 🔲 **Safety — regulatory registrations** (`#safety`) — rendered exactly as the deck gives it: "including `[VERIFY: NIMASA · Nigerian Navy · NUPRC/NMDPRA · NCDMB · NPA · NSCDC · FIRS]`." Needs confirmation of which registrations are actually current before publishing as fact.
+- 🔲 **Certifications** (`#certifications`) — explicitly empty block: `[CERTIFICATION LOGOS AND REFERENCE NUMBERS PLACEHOLDER]`. No "ISO certified" or standards claim exists anywhere without this being resolved first.
 
-## `/services`
+## `/services` and `/industries`
 
-- No bracketed placeholders — content is entirely sourced from the
-  division and service data. Intro copy is agent-authored — see
-  `COPY-FOR-REVIEW.md`.
-
-## `/industries`
-
-- No bracketed placeholders — the eight sector paragraphs are
-  agent-authored operational copy (no invented client-specific facts) —
-  see `COPY-FOR-REVIEW.md`.
+- No bracketed placeholders on either page. All copy is deck-sourced.
 
 ## `/projects`
 
-- ✅ All eight real projects (COPY-APPROVED.md §8/A6.1), same
-  `content/projects.js` source as the homepage. 🔲 Three carry
-  `[LOCATION PLACEHOLDER]`; every card carries `[DATE PLACEHOLDER]`.
-- ✅ Illustrative-content banner — removed; real project content no
-  longer needs it (A6.1).
+- 🔲 All eight real projects. Three (2DHR Project Support, 20" EPWD Pipeline Project, Offshore Seismic Survey Support) carry `[LOCATION PLACEHOLDER]`; all eight carry `[DATE PLACEHOLDER]`.
+- ❓ Operator naming — where consent isn't secured, counterparties should read generically ("a deepwater operator", etc.) per the deck's own instruction; currently no operator is named anywhere on this page.
+
+## Service detail pages (`/services/:slug`)
+
+- 🔲 **Aviation** — Support model (`[PLACEHOLDER: e.g. 24/7 charter desk with defined response time]`), Operator basis (`[PLACEHOLDER: own AOC, partner operators, or brokerage — confirm which]`), and the scope of "Airline Services" (`[PLACEHOLDER: specify — ground handling, crew logistics, procurement, technical support]`). This division is intentionally thinner than the other five — not padded to match.
+- 🔲 **Equipment & PPE** — three `[VERIFY]`-tagged facts: Portwest master-distributor status, in-house manufacturing facility, and ASTM standards posture. Sourced from the client's profile but not yet confirmed for publication.
+- 🔲 **Property & Investment** — Typical engagement model (`[PLACEHOLDER: lease, sale, joint venture, or investment partnership — confirm which]`) and the Investment capability's actual model (`[PLACEHOLDER: describe the actual investment model — this line is intentionally non-specific until confirmed]`). If investment participation is offered to third parties, the deck flags this needs legal review before publication — not yet done.
 
 ## `/company`
 
-- 🔲 `[CAREERS CONTENT PLACEHOLDER]` — careers teaser has no real open
-  roles yet (`Company.jsx` `#careers`)
-- 🔲 `[CAREERS EMAIL PLACEHOLDER]` — careers enquiry address
-  (`Company.jsx` `#careers`)
-- ✅ **Company profile download — removed, not a gap.** Client decision
-  (COPY-APPROVED.md §9.6): the download slot is omitted entirely, not
-  shipped as a disabled button. Deliberate deviation from
-  `MFAV-AGENT-BRIEF.md` Phase 5e — see the Pass 5 report.
-- 🔲 Structure/operating-model/governance/HSE-summary copy is
-  agent-authored — see `COPY-FOR-REVIEW.md`
+- 🔲 Careers email (see site-wide, above).
+- ✅ **Company profile download — removed, not a gap.** Deliberate deviation from `MFAV-AGENT-BRIEF.md` Phase 5e, per COPY-APPROVED.md §9.6 (Pass 5).
 
 ## `/contact`
 
-- ✅ Office address, phone, general-enquiry email, and the form's
-  error-panel fallback address — all resolved, see site-wide section
-  above. Procurement enquiries use procurement@mfavoffshore.com, labelled
-  separately in the info column.
-- 🔲 `[OPERATING HOURS PLACEHOLDER]` — office hours
-- 🔲 `[MAP EMBED PLACEHOLDER]` — fixed-aspect-ratio (16:9) block reserved
-  for a real map embed (no third-party embed wired without approval, per
-  A2.4)
-- ✅ Response time — resolved with deck copy ("within one business day";
-  urgent/operational matters by phone, 24/7), applied in the right column
-  and the success panel.
-- ❓ The submit handler is a documented **stub** (`stubSubmitEnquiry` in
-  `Contact.jsx`) — logs to the console only. No backend or third-party
-  form service is wired up; needs an explicit decision on what to
-  integrate (see `README.md` → "Wiring the contact form to a real backend").
+- 🔲 Operating hours, map embed (see site-wide, above).
+- ❓ **Submit handler is a documented stub** (`stubSubmitEnquiry` in `Contact.jsx`) — logs to the console only, no backend or third-party service wired. Needs an explicit decision on what to integrate before launch.
 
-## Service detail pages (`/services/:slug`, ×6)
+## Imagery
 
-- No bracketed placeholders in the six division pages themselves; every
-  unverifiable specific (certifications, client names, figures) was kept
-  out entirely rather than placeholder-marked, per A2.6/A2.7. All
-  capability/process/benefit copy is agent-authored — see
-  `COPY-FOR-REVIEW.md`.
-- 🔲 See `IMAGES.md` — only Marine & Offshore has photo-style imagery
-  today (reused from the homepage hero); the other five divisions use
-  abstract SVG placeholders, not photography.
+- 🔲 Every image slot site-wide remains placeholder photography or an abstract SVG illustration (see `IMAGES.md`). Only Marine & Offshore uses photo-style imagery today, reused from the homepage hero.
+- 🔲 `robots.txt` / `sitemap.xml` reference a placeholder production domain (`https://www.mfavoffshore.com`) — update once the live domain is confirmed.
 
-## Imagery (see `IMAGES.md` for full detail)
+## Open decisions carried from the deck itself (COPY-APPROVED.md §0 / §13)
 
-- 🔲 Every image slot site-wide is placeholder photography or an abstract
-  SVG illustration, pending real operational photography per the A4
-  imagery direction.
-
-## Copy
-
-- 🔲 Every agent-authored string across every page — consolidated in
-  `COPY-FOR-REVIEW.md`, organised by page/section, pending client
-  approval or replacement (A7).
+- Journey Management's canonical home is Logistics & Haulage (the deck's own decision, applied as such) — flagging in case you want to revisit it.
+- The stats band keeps "10+ Service Capabilities," not the "10+ Years of Operations" alternative — per your explicit Pass 2 instruction; the years claim was never verified and is not used.
+- The site tagline (COPY-APPROVED.md §1 — "Trusted Partner in Vessel Management and Safety Solutions" or its suggested broader alternative) is not applied anywhere; the deck presents it as an open choice rather than a decision, and every route's actual meta description instead uses the specific text given in §2.
+- The Corporate Aim pull-quote (§4.2) is not placed anywhere — no pull-quote treatment exists on `/about`, and the deck frames it as optional.
+- The `divisions.js` `blurb` field (used on `/company`'s division grid and folded into each service page's meta description) still carries its original agent-authored wording from before this session — you asked me to hold this pending your decision on whether it should instead use the deck's mega-menu descriptor text (§1). Still open.

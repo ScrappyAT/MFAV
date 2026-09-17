@@ -145,7 +145,7 @@ export default function Styleguide() {
               <IndustryCard
                 mark={<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="24" cy="24" r="18" /><path d="M6 24h36M24 6v36" /></svg>}
                 name="Oil & Gas"
-                relevance="Marine and logistics support across upstream and midstream operations."
+                relevance="Offshore support, procurement and logistics for upstream operations."
               />
               <ProjectCard
                 image={PLACEHOLDER_IMG}

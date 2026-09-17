@@ -1,6 +1,6 @@
-# MFAV Offshore & Allied Resources — Website
+# M-FAV Offshore and Allied Services Limited — Website
 
-Production marketing site for MFAV Offshore and Allied Resources, a
+Production marketing site for M-FAV Offshore and Allied Services Limited, a
 diversified Nigerian integrated services group (marine/offshore, aviation,
 energy & infrastructure, logistics & haulage, equipment & PPE, property &
 investment). React 18 + Vite 5 + Tailwind CSS 3 + React Router 6.

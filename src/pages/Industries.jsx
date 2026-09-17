@@ -69,6 +69,7 @@ export default function Industries() {
                   </div>
                   <div className="lg:col-span-8">
                     <p className="text-c-on-muted leading-relaxed max-w-measure mb-5">{industry.detail}</p>
+                    <span className="block text-eyebrow uppercase text-c-on-muted mb-2">Relevant divisions:</span>
                     <div className="flex flex-wrap gap-x-6 gap-y-2">
                       {relatedDivisions.map((division) => (
                         <TextLink key={division.id} to={`/services/${division.id}`}>
