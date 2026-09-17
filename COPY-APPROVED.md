@@ -380,16 +380,6 @@ Both are taken from your profile and lightly tightened for web reading. The orig
 **Local Capability** — Nigerian operations, Nigerian workforce, and in-country capacity built deliberately rather than imported.
 **Sustainability** — Operations planned to limit environmental impact and to contribute to the communities we work in.
 
-### 4.4 Leadership — anchor `#leadership`
-
-**H2** `[DRAFT]` Leadership
-**Intro** `[DRAFT]`
-> Our leadership team brings operational experience across marine, offshore and industrial sectors in Nigeria and West Africa.
-
-Grid of `[NAME PLACEHOLDER]` / `[ROLE PLACEHOLDER]` / `[BIO PLACEHOLDER — 40 words]`, with 4:5 neutral portraits.
-
-Recommended roles to fill: Managing Director · Operations Director · HSE Manager · Commercial/Procurement Lead. A named HSE lead matters more here than anywhere else on the site.
-
 ### 4.5 Safety — anchor `#safety`
 
 **H2** `[DRAFT]` Our Commitment to Safety
@@ -412,16 +402,6 @@ Note: list only bodies where the registration is current, and hold the certifica
 
 **Environmental Responsibility** `[DRAFT]`
 > Marine, pipeline and fuel-handling operations are planned to prevent spills and limit discharge. Waste from our operations is managed through licensed routes, and environmental requirements specific to a client's site or a regulator's conditions are incorporated into the job plan.
-
-### 4.6 Certifications `[PLACEHOLDER]`
-
-**H2** `[DRAFT]` Certifications & Registrations
-**Body** `[DRAFT]`
-> M-FAV maintains the registrations and certifications required for the scopes we undertake. Full documentation is provided during prequalification and tender.
-
-Then a labelled empty block: `[CERTIFICATION LOGOS AND REFERENCE NUMBERS PLACEHOLDER]`
-
-**Do not publish** "ISO certified" without the standard number (e.g. ISO 9001:2015), the certificate number and the certifying body. A procurement reviewer will check, and an unverifiable claim costs more credibility than the badge gains.
 
 ---
 
@@ -967,6 +947,8 @@ The `/company` page ends on the careers section followed by the CTA band. Nothin
 3. **A careers email.** Recommend `careers@`.
 4. **RC number — RESOLVED: deliberately not displayed.** Not shown in the footer legal line.
 5. **Social handles.** The brief specifies LinkedIn, X, Facebook and Instagram icons. Supply the real URLs or drop the icons — dead social links damage credibility more than absent ones. LinkedIn is the only one that matters for B2B procurement; consider shipping that alone.
+
+   The Leadership block (§4.4) and the Certifications block (§4.6) were removed from the site at client request. The footer's Leadership link goes with it; the Careers link is also dropped from the footer (Careers itself, §9.5, is unaffected — it just isn't linked from the footer any more).
 6. **Operating hours.**
 
 ### 11.2 Footer content
@@ -980,11 +962,8 @@ Line `[CLIENT-APPROVED]`: *Integrated marine, offshore, aviation, logistics and 
 | Link | Destination |
 |---|---|
 | About Us | `/about` |
-| Leadership | `/about#leadership` |
-| Projects | `/projects` |
-| Careers | `/company#careers` |
-
-Consider adding Company → `/company` and Industries → `/industries`, which the brief's table omits but which exist as routes.
+| Company | `/company` |
+| Industries | `/industries` |
 
 **Services column**
 
@@ -1044,8 +1023,6 @@ Everything the client must supply before launch.
 - [x] ~~RC number~~ — RESOLVED: deliberately not displayed
 - [ ] Careers email
 - [ ] Social media URLs, or confirmation to remove the icons
-- [ ] Leadership: names, roles, bios, portraits
-- [ ] Certification names, numbers and certifying bodies
 - [ ] Confirmation of current regulatory registrations (NIMASA, Navy, NUPRC/NMDPRA, NCDMB, NPA, NSCDC, FIRS)
 - [ ] Project dates for each entry in section 3.8
 - [ ] Verification of the "10+ years" claim

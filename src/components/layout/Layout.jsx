@@ -6,9 +6,10 @@ import PageTransition from './PageTransition';
 
 /**
  * Scroll restoration: plain top-of-page on a normal route change, or a
- * scroll to the matching element when the URL carries a hash (e.g. the
- * footer's /about#leadership link). React Router v6 doesn't do this on
- * its own. Anchor targets get `scroll-margin-top` globally (index.css)
+ * scroll to the matching element when the URL carries a hash (e.g. a
+ * page anchor like /about#safety, whether linked to or typed directly).
+ * React Router v6 doesn't do this on its own. Anchor targets get
+ * `scroll-margin-top` globally (index.css)
  * so this never lands them under the fixed header.
  *
  * Phase 6: smooth scrolling is scoped to anchor navigation only (A3

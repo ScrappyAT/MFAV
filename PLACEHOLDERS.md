@@ -38,9 +38,9 @@ Legend: 🔲 content placeholder (client to supply) · ❓ decision needed
 
 ## `/about`
 
-- 🔲 **Leadership** (`#leadership`) — 4 slots, each `[NAME PLACEHOLDER n]` / `[ROLE PLACEHOLDER n]` / `[BIO PLACEHOLDER — 40 WORDS]`, neutral icon in place of a portrait. The deck's own "recommended roles" (Managing Director, etc.) are not pre-filled — A7 treats them as suggestions.
 - 🔲 **Safety — regulatory registrations** (`#safety`) — rendered exactly as the deck gives it: "including `[VERIFY: NIMASA · Nigerian Navy · NUPRC/NMDPRA · NCDMB · NPA · NSCDC · FIRS]`." Needs confirmation of which registrations are actually current before publishing as fact.
-- 🔲 **Certifications** (`#certifications`) — explicitly empty block: `[CERTIFICATION LOGOS AND REFERENCE NUMBERS PLACEHOLDER]`. No "ISO certified" or standards claim exists anywhere without this being resolved first.
+- ✅ **Leadership — removed, not a gap.** The section (`#leadership`, its intro, portrait grid and every name/role/bio slot) was deleted at client request (COPY-APPROVED.md §4.4, removed). No leadership content exists on the site to placeholder any more.
+- ✅ **Certifications — removed, not a gap.** The section (`#certifications`, its heading, body and the empty placeholder block) was deleted at client request (COPY-APPROVED.md §4.6, removed). `/about#safety`'s `[VERIFY]` registration list is unaffected and stays.
 
 ## `/services` and `/industries`
 

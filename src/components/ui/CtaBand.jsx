@@ -20,7 +20,7 @@ export default function CtaBand({ heading, body }) {
       <Container className="flex flex-col md:flex-row items-center justify-between gap-8 py-16">
         <div className="max-w-xl">
           <h2 className="text-display-sm text-c-ondark">{heading}</h2>
-          <p className="mt-3 text-c-ondark/75">{body}</p>
+          <p className="mt-3 text-c-ondark">{body}</p>
         </div>
         <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0">
           <Button to="/contact" variant="onDark" size="md">

@@ -1,5 +1,4 @@
 import React from 'react';
-import { User, ShieldCheck } from 'lucide-react';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
 import { METADATA } from '../content/metadata';
 import Container from '../components/ui/Container';
@@ -14,17 +13,6 @@ const VALUES = [
   { name: 'Operational Excellence', body: 'Disciplined execution, maintained equipment and competent crews.' },
   { name: 'Local Capability', body: 'Nigerian operations, Nigerian workforce, and in-country capacity built deliberately rather than imported.' },
   { name: 'Sustainability', body: 'Operations planned to limit environmental impact and to contribute to the communities we work in.' },
-];
-
-// §4.4: "Grid of [NAME PLACEHOLDER] / [ROLE PLACEHOLDER] / [BIO PLACEHOLDER
-// — 40 words]" — the deck's own "recommended roles to fill" (Managing
-// Director, etc.) are suggestions, not decisions (A7), so roles stay
-// generic bracketed placeholders rather than naming a specific title.
-const LEADERSHIP_SLOTS = [
-  { name: '[NAME PLACEHOLDER 1]', role: '[ROLE PLACEHOLDER 1]', bio: '[BIO PLACEHOLDER — 40 WORDS]' },
-  { name: '[NAME PLACEHOLDER 2]', role: '[ROLE PLACEHOLDER 2]', bio: '[BIO PLACEHOLDER — 40 WORDS]' },
-  { name: '[NAME PLACEHOLDER 3]', role: '[ROLE PLACEHOLDER 3]', bio: '[BIO PLACEHOLDER — 40 WORDS]' },
-  { name: '[NAME PLACEHOLDER 4]', role: '[ROLE PLACEHOLDER 4]', bio: '[BIO PLACEHOLDER — 40 WORDS]' },
 ];
 
 // COPY-APPROVED.md §4.5, applied verbatim. The `[VERIFY: ...]` registration
@@ -157,28 +145,6 @@ export default function About() {
         </Container>
       </Section>
 
-      {/* Leadership */}
-      <section id="leadership" className="scroll-mt-24 bg-c-bg-alt">
-        <Container className="py-section-sm md:py-section">
-          <SectionHeader
-            heading="Leadership"
-            supporting="Our leadership team brings operational experience across marine, offshore and industrial sectors in Nigeria and West Africa."
-          />
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            {LEADERSHIP_SLOTS.map((slot) => (
-              <div key={slot.name} className="flex flex-col">
-                <div className="aspect-4/5 w-full rounded-token border border-c-border bg-c-surface-low flex items-center justify-center">
-                  <User size={40} strokeWidth={1.25} aria-hidden="true" className="text-c-on-muted/50" />
-                </div>
-                <p className="mt-4 font-bold text-c-on text-sm">{slot.name}</p>
-                <p className="text-sm text-c-on-muted">{slot.role}</p>
-                <p className="mt-2 text-sm text-c-on-muted leading-relaxed">{slot.bio}</p>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
-
       {/* Safety */}
       <section id="safety" className="scroll-mt-24 relative overflow-hidden bg-c-scrim">
         <img
@@ -208,24 +174,6 @@ export default function About() {
                 </div>
               ))}
             </dl>
-          </div>
-        </Container>
-      </section>
-
-      {/* Certifications — explicitly empty */}
-      <section id="certifications" className="scroll-mt-24 bg-c-bg py-section-sm md:py-section">
-        <Container>
-          <SectionHeader heading="Certifications & Registrations" />
-          <p className="max-w-measure text-c-on-muted leading-relaxed mb-6">
-            M-FAV maintains the registrations and certifications required for the scopes
-            we undertake. Full documentation is provided during prequalification and
-            tender.
-          </p>
-          <div className="max-w-measure rounded-token border border-dashed border-c-border-hl bg-c-bg-alt p-8 flex flex-col items-start gap-3">
-            <ShieldCheck size={28} strokeWidth={1.5} aria-hidden="true" className="text-c-on-muted" />
-            <p className="text-c-on-muted leading-relaxed">
-              <span className="font-semibold text-c-on">[CERTIFICATION LOGOS AND REFERENCE NUMBERS PLACEHOLDER]</span>
-            </p>
           </div>
         </Container>
       </section>

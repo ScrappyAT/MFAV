@@ -55,7 +55,6 @@ addresses does):
 **5. Placeholder bracket text I wrote to fit specific slots**, distinct
 from the deck's own placeholder markers (which are applied verbatim
 elsewhere):
-- `/about` Leadership: `[BIO PLACEHOLDER — 40 WORDS]` — the deck specifies a bio slot exists ("40 words") but not this exact bracket phrasing.
 - `/company` careers: `[CAREERS EMAIL PLACEHOLDER]` — deliberately generic rather than the deck's own bracketed suggestion (`[EMAIL PLACEHOLDER — suggested: careers@mfavoffshore.com]`), consistent with A7 treating suggested values as undecided.
 - `content/site.js`: `[OPERATING HOURS PLACEHOLDER]`, `[MAP EMBED PLACEHOLDER]` — same reasoning; the deck's own suggested hours are not baked in.
 

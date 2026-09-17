@@ -94,9 +94,6 @@ export default function Footer() {
             </h3>
             <ul className="flex flex-col gap-2.5 text-sm">
               <li><TextLink to="/about" onDark>About Us</TextLink></li>
-              <li><TextLink to="/about#leadership" onDark>Leadership</TextLink></li>
-              <li><TextLink to="/projects" onDark>Projects</TextLink></li>
-              <li><TextLink to="/company#careers" onDark>Careers</TextLink></li>
               <li><TextLink to="/company" onDark>Company</TextLink></li>
               <li><TextLink to="/industries" onDark>Industries</TextLink></li>
             </ul>

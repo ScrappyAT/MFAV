@@ -11,8 +11,8 @@ import TextLink from '../components/ui/TextLink';
 /**
  * Company (Phase 5e) — a group-level page distinct from /about: structure
  * at a glance, operating model, governance/HSE posture and the careers
- * teaser. /about covers mission, values, leadership and safety detail;
- * this page covers how the group itself is organised and run.
+ * teaser. /about covers mission, values and safety detail; this page
+ * covers how the group itself is organised and run.
  */
 export default function Company() {
   useDocumentMeta(METADATA.company.title, METADATA.company.description);
