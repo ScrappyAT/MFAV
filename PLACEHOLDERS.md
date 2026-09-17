@@ -98,9 +98,10 @@ Legend: 🔲 content placeholder (client to supply) · ❓ decision needed
   roles yet (`Company.jsx` `#careers`)
 - 🔲 `[CAREERS EMAIL PLACEHOLDER]` — careers enquiry address
   (`Company.jsx` `#careers`)
-- 🔲 `[COMPANY PROFILE PDF PLACEHOLDER]` — download button is disabled
-  (`aria-disabled`, keyboard-reachable, reason announced via
-  `aria-describedby`) until the client supplies the document (`Company.jsx`)
+- ✅ **Company profile download — removed, not a gap.** Client decision
+  (COPY-APPROVED.md §9.6): the download slot is omitted entirely, not
+  shipped as a disabled button. Deliberate deviation from
+  `MFAV-AGENT-BRIEF.md` Phase 5e — see the Pass 5 report.
 - 🔲 Structure/operating-model/governance/HSE-summary copy is
   agent-authored — see `COPY-FOR-REVIEW.md`
 

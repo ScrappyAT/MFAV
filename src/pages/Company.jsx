@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Download } from 'lucide-react';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
 import { METADATA } from '../content/metadata';
 import { DIVISIONS } from '../content/divisions';
@@ -8,7 +7,6 @@ import Container from '../components/ui/Container';
 import Section from '../components/ui/Section';
 import SectionHeader from '../components/ui/SectionHeader';
 import TextLink from '../components/ui/TextLink';
-import Button from '../components/ui/Button';
 
 /**
  * Company (Phase 5e) — a group-level page distinct from /about: structure
@@ -142,36 +140,6 @@ export default function Company() {
           </div>
         </Container>
       </section>
-
-      {/* Company profile download */}
-      <Section size="md">
-        <Container>
-          <SectionHeader heading="Company Profile" />
-          <div className="max-w-measure flex flex-col items-start gap-4">
-            <p id="company-profile-note" className="text-c-on-muted leading-relaxed">
-              [COMPANY PROFILE PDF PLACEHOLDER] — a downloadable overview of the group,
-              its divisions and its operating model, pending a client-supplied document.
-              The button below will activate once it's supplied.
-            </p>
-            {/* aria-disabled (not the native `disabled` attribute) so the
-                control stays keyboard-reachable and its reason is
-                announced via aria-describedby — a native `title` on a
-                disabled button is invisible to keyboard/touch users and
-                unreliable for screen readers. */}
-            <Button
-              type="button"
-              variant="secondary"
-              aria-disabled="true"
-              aria-describedby="company-profile-note"
-              onClick={(e) => e.preventDefault()}
-              className="opacity-50 cursor-not-allowed"
-            >
-              <Download size={16} aria-hidden="true" />
-              Download Company Profile (PDF)
-            </Button>
-          </div>
-        </Container>
-      </Section>
     </main>
   );
 }
