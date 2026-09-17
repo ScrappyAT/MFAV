@@ -1,235 +1,299 @@
-// Phase 4: the single content source driving ServiceDetail — one
-// template, six routes, no copy-pasted pages. Sub-capability names come
-// from DIVISIONS in ./divisions.js (Phase 2b division data) —
-// reused here, not re-invented; only their one-line descriptions are new.
+// Phase 4/Pass 3: the single content source driving ServiceDetail — one
+// template, six routes. All copy below is COPY-APPROVED.md §6, applied
+// verbatim (client-approved deck, not agent-authored — see
+// CONTENT-UPDATE-BRIEF.md A2). `[PLACEHOLDER: ...]` and `[VERIFY]`
+// markers inside values are reproduced exactly as the deck gives them,
+// consistent with how bracketed markers are rendered everywhere else on
+// the site (A2.6) — not resolved, not guessed, not dropped.
 //
-// All copy is agent-authored (A7) and grounded in real industry
-// terminology (OSVs, AHTS vessels, FPSOs, cathodic protection, etc.) —
-// that's what "sector-literate" means here, not a claim about M-FAV's own
-// track record. No specific claim M-FAV can't support (no client names,
-// no contract values, no certifications, no invented statistics) appears
-// anywhere in this file. Logged for COPY-FOR-REVIEW.md.
+// `overview` is an array of the deck's three paragraphs per division, not
+// a single string — ServiceDetail's Overview section maps over it,
+// rendering one <p> per entry (a narrowly-scoped exception authorised the
+// same way as the CTA-band double-render fix). Every consumer of
+// `service.overview` must treat it as an array; there is exactly one
+// (ServiceDetail.jsx's Overview section).
+//
+// `capabilities[].name`/`description` are each division's OWN list
+// (independent of `divisions.js`'s `subCapabilities`, which stays as the
+// homepage panel's plain sub-capability strings) — free to match the
+// deck's exact capability headings, including Marine & Offshore's fourth
+// one, which the deck names "Journey Management (marine interface)".
+// That same entry's deck description embeds a markdown link
+// (`[Logistics & Haulage](/services/logistics-haulage)`), which this
+// description slot renders as plain text, not markdown — rendered here
+// with the link text kept but the markdown syntax dropped, rather than
+// showing literal brackets/parentheses. The Related Services section
+// further down the same page already links to Logistics & Haulage.
+//
+// Per-division process steps: three divisions (Marine & Offshore,
+// Logistics & Haulage, Equipment & PPE) have deck-specified custom step
+// names, applied as written, not normalised to the default sequence.
+// Property & Investment's steps also differ from the stated default in
+// the deck's own content (Consultation, Assessment, Structuring,
+// Completion, Ongoing Support) even though the deck's own framing note
+// doesn't call it out alongside the other three — applied literally as
+// given regardless, flagged as an aside in the Pass 3 report.
 export const SERVICES = {
   'marine-offshore': {
-    positioning: 'Vessel operations and marine support built for the realities of working offshore.',
+    positioning: 'Vessel management, chartering and offshore support for operations that cannot afford downtime.',
     image: '/assets/images/hero_section.jpg',
     graded: true,
-    overview: 'Marine & Offshore covers the operational core of working at sea: chartering the right vessel for the job, running marine support alongside platform operations, and keeping personnel and cargo moving safely between shore and site. Work here is planned around tide, weather windows and vessel availability — not a fixed schedule.',
+    overview: [
+      'Offshore operations are measured in vessel availability. A craft off-hire for a certification lapse, a fuel transfer that misses a window, a crew change that slips a tide — each one costs more than the vessel day rate it interrupts.',
+      'M-FAV manages and charters offshore support craft including Fast Support Intervention Vessels, Anchor Handling Vessels, Platform Supply Vessels and specialised assets, and operates them in compliance with the regulatory and class requirements applicable to Nigerian waters. Our scope extends past the vessel itself to crew transfer, AGO supply coordination, security escort and offshore chandling — the support functions that determine whether an offshore programme runs to plan.',
+      'Operations are backed by experienced marine personnel and a proactive maintenance and certification posture, so vessel documentation is current before it is asked for rather than after.',
+    ],
     keyFacts: [
-      { label: 'Scope', value: 'Vessel chartering, offshore marine operations, marine support, journey management' },
-      { label: 'Typical engagement', value: 'Single-vessel charters through multi-vessel campaign support' },
-      { label: 'Sectors served', value: 'Oil & gas, maritime, energy, infrastructure' },
-      { label: 'Support model', value: 'Dedicated coordination from mobilisation through demobilisation' },
+      { label: 'Scope', value: 'Vessel management, chartering, offshore marine support, crew transfer, security escort, AGO coordination, offshore chandling' },
+      { label: 'Vessel types', value: 'FSIV · AHV · PSV · security escort vessels · specialised offshore assets' },
+      { label: 'Typical engagement', value: 'Spot charter through to long-term vessel management contracts' },
+      { label: 'Sectors served', value: 'Oil & Gas · Maritime · Energy' },
+      { label: 'Support model', value: '24/7 operational support with a named marine coordinator per contract' },
+      { label: 'Operating area', value: 'Nigerian waters and the Gulf of Guinea' },
     ],
     capabilities: [
-      { name: 'Offshore Marine Operations', description: 'Platform supply, crew transfer and marine coordination for offshore installations, run to the safety margins the environment demands.' },
-      { name: 'Vessel Chartering', description: 'Access to OSVs, AHTS vessels, tugs and barges, chartered and scheduled to match the scope and duration of the operation.' },
-      { name: 'Marine Support', description: 'Bunkering coordination, port agency support and technical assistance for vessels operating on long rotations.' },
-      { name: 'Journey Management', description: 'Structured planning and tracking for personnel and cargo movements between shore base and offshore site.' },
+      { name: 'Offshore Marine Operations', description: 'Day-to-day management of offshore support vessels: crewing, certification, maintenance planning, bunkering and voyage execution, with compliance maintained against the applicable regulatory and class requirements.' },
+      { name: 'Vessel Chartering', description: 'Sourcing and contracting the right vessel for the scope, whether a single mobilisation or a sustained campaign, with commercial terms and off-hire conditions made clear before signature.' },
+      { name: 'Marine Support', description: 'Crew transfer, AGO supply coordination, security escort and offshore chandling — the functions that keep an offshore facility supplied and its personnel moving safely.' },
+      { name: 'Journey Management (marine interface)', description: 'Coordination between vessel movements and onshore transport so crew rotations connect without exposure at the quayside or the airport. Full journey management sits under Logistics & Haulage.' },
     ],
     process: [
-      { title: 'Consultation', description: 'Understand the vessel, route and cargo requirements before anything is quoted.' },
-      { title: 'Assessment & Planning', description: 'Vessel selection, routing and weather-window planning against the operation’s timeline.' },
-      { title: 'Mobilisation', description: 'Vessel and crew mobilised, documentation and port clearances confirmed.' },
-      { title: 'Execution', description: 'Marine operations run against the plan, with a single point of contact for changes.' },
-      { title: 'Monitoring & Reporting', description: 'Journey tracking and post-voyage reporting through to demobilisation.' },
+      { title: 'Consultation', description: 'We establish the scope, duration, operating area and the client’s marine assurance requirements.' },
+      { title: 'Vessel & Scope Assessment', description: 'Vessel selection matched to scope, with certification, class status and crew competency verified before commitment.' },
+      { title: 'Mobilisation', description: 'Documentation, permits, crew mobilisation and pre-mobilisation inspection completed ahead of sailing.' },
+      { title: 'Execution', description: 'Operations run under an agreed marine procedure with daily position and status reporting.' },
+      { title: 'Monitoring & Reporting', description: 'Vessel performance, HSE events, fuel and downtime reported on an agreed cycle, with a close-out report at demobilisation.' },
     ],
     benefits: [
-      'Vessel options matched to the job, not a fixed fleet.',
-      'A single point of contact from charter through demobilisation.',
-      'Journey management built around personnel safety.',
-      'Marine support that understands offshore working conditions.',
+      'Vessel availability protected through planned maintenance and current certification.',
+      'One accountable contact across vessel, crew, fuel and escort requirements.',
+      'Compliance documentation maintained and audit-ready.',
+      'Local operating knowledge of Nigerian waters, ports and security conditions.',
+      'Commercial terms structured around your operating window, not a standard template.',
     ],
-    relevantIndustries: ['Oil & Gas', 'Maritime', 'Energy', 'Infrastructure'],
-    relatedServices: ['aviation', 'energy-infrastructure', 'logistics-haulage'],
+    relevantIndustries: ['Oil & Gas', 'Maritime', 'Energy'],
+    relatedServices: ['logistics-haulage', 'energy-infrastructure', 'equipment-ppe'],
     cta: {
-      heading: 'Ready to Move Your Next Operation by Sea?',
-      body: 'Tell us the vessel, route and timeline — we’ll put together the right marine solution.',
+      heading: 'Need Vessel Support for an Upcoming Operation?',
+      body: 'Tell us the scope and operating window. We will come back with a vessel and a plan.',
     },
   },
 
   aviation: {
-    positioning: 'Private and charter aviation for people and cargo that can’t wait on a scheduled flight.',
+    positioning: 'Charter and aircraft services arranged around operational schedules, not timetables.',
     image: '/assets/images/division_aviation.svg',
-    overview: 'Aviation covers private jet and helicopter charter, airline services, and the brokerage work around buying or selling rotary aircraft. Charter operations are built around the realities of aviation scheduling — crew duty times, aircraft availability, weather holds — not a promise of instant departure.',
+    overview: [
+      'Moving people to and from operational sites is rarely a scheduled-airline problem. Crew rotations run to shift patterns, offshore movements depend on weather windows, and executive travel changes at short notice.',
+      'M-FAV arranges fixed-wing and rotary aviation services covering private jet charter, ad-hoc and programme charter, helicopter services for offshore and remote site access, and support to airline operations. We work with approved operators and verify certification, insurance and crew currency before an aircraft is committed to a client movement.',
+      'Alongside charter, we advise on and broker helicopter purchase and sale transactions for clients acquiring or disposing of rotary assets.',
+    ],
     keyFacts: [
-      { label: 'Scope', value: 'Private jet services, charter services, airline services, helicopter services, purchase & sale of helicopters' },
-      { label: 'Typical engagement', value: 'Single charter through standing crew-rotation contracts' },
-      { label: 'Sectors served', value: 'Energy, maritime, corporate travel' },
-      { label: 'Support model', value: 'Charter coordination with defined lead times per aircraft type' },
+      { label: 'Scope', value: 'Private jet charter · charter services · airline services · helicopter services · helicopter purchase and sale' },
+      { label: 'Typical engagement', value: 'Ad-hoc movements, rotation programmes, and asset transactions' },
+      { label: 'Sectors served', value: 'Oil & Gas · Aviation · Energy · Corporate' },
+      { label: 'Support model', value: '[PLACEHOLDER: e.g. 24/7 charter desk with defined response time]' },
+      { label: 'Operator basis', value: '[PLACEHOLDER: own AOC, partner operators, or brokerage — confirm which]' },
     ],
     capabilities: [
-      { name: 'Private Jet Services', description: 'Executive charter for time-sensitive travel, booked against real aircraft and crew availability.' },
-      { name: 'Charter Services', description: 'On-demand charter coordination across fixed-wing and rotary aircraft for corporate and operational travel.' },
-      { name: 'Airline Services', description: 'Coordination with scheduled carriers for personnel travel where charter isn’t the right fit.' },
-      { name: 'Helicopter Services', description: 'Crew rotation, offshore transfer and executive helicopter charter, scheduled around flight-time limits and weather.' },
-      { name: 'Purchase & Sale of Helicopters', description: 'Brokerage and advisory support for acquiring or selling rotary aircraft, including technical inspection coordination.' },
+      { name: 'Private Jet Services', description: 'Executive fixed-wing charter for management and client travel, arranged to your schedule, with ground handling and arrival coordination included.' },
+      { name: 'Charter Services', description: 'Ad-hoc and programme charter for crew movement and time-critical passenger or cargo requirements.' },
+      { name: 'Airline Services', description: 'Support services to airline operations, including [PLACEHOLDER: specify — ground handling, crew logistics, procurement, technical support].' },
+      { name: 'Helicopter Services', description: 'Rotary operations for offshore and remote site access, crew rotation and medevac support, arranged with operators holding the relevant approvals.' },
+      { name: 'Purchase & Sale of Helicopters', description: 'Advisory and transaction support for clients acquiring or disposing of rotary aircraft, including sourcing, valuation input and transaction coordination.' },
     ],
     process: [
-      { title: 'Consultation', description: 'Confirm passenger count, route and timing against realistic aircraft availability.' },
-      { title: 'Assessment & Planning', description: 'Aircraft type, crew and permissions matched to the route and payload.' },
-      { title: 'Mobilisation', description: 'Aircraft, crew and ground handling confirmed ahead of departure.' },
-      { title: 'Execution', description: 'Charter operated to the confirmed schedule, with contingency for weather or delay.' },
-      { title: 'Monitoring & Reporting', description: 'Flight tracking and post-charter reporting.' },
+      { title: 'Consultation', description: 'Route, passenger numbers, payload, timing and any client aviation standard.' },
+      { title: 'Assessment & Planning', description: 'Aircraft type matched to the requirement; operator certification, insurance and crew currency verified.' },
+      { title: 'Mobilisation', description: 'Permits, slots, ground handling and passenger documentation arranged.' },
+      { title: 'Execution', description: 'Movement flown, with coordination through departure, transit and arrival.' },
+      { title: 'Monitoring & Reporting', description: 'Movement confirmation, and programme-level reporting on longer contracts.' },
     ],
     benefits: [
-      'Charter options across fixed-wing and rotary aircraft.',
-      'Scheduling built around real crew duty-time and weather constraints.',
-      'A single contact for both charter and aircraft brokerage.',
-      'Support for time-sensitive executive and crew travel.',
+      'Aircraft matched to the movement rather than the other way round.',
+      'Operator certification and insurance verified before commitment.',
+      'Coordination across air and ground legs of the same journey.',
+      'Short-notice capability for operational and medical movements.',
+      'Single commercial relationship across charter and asset transactions.',
     ],
-    relevantIndustries: ['Aviation', 'Oil & Gas', 'Maritime', 'Energy'],
+    relevantIndustries: ['Aviation', 'Oil & Gas', 'Energy'],
     relatedServices: ['marine-offshore', 'logistics-haulage'],
     cta: {
-      heading: 'Need Aircraft on the Ground, Not on Hold?',
-      body: 'Tell us the route and timing — we’ll confirm what’s actually available.',
+      heading: 'Have a Movement to Arrange?',
+      body: 'Send us the route, dates and passenger numbers and we will come back with options.',
     },
   },
 
   'energy-infrastructure': {
-    positioning: 'Pipeline and infrastructure work, from installation through to ongoing maintenance.',
+    positioning: 'Pipeline and infrastructure delivery executed to the standards the scope demands.',
     image: '/assets/images/who_we_are_plant.svg',
-    overview: 'Energy & Infrastructure covers the installation and upkeep of pipeline and industrial infrastructure — work measured in welds, pressure tests and inspection intervals, not just completion dates. Technical services support the infrastructure through its working life, not only at handover.',
+    overview: [
+      'Pipeline work is unforgiving. Lay tolerance, weld integrity, seabed conditions and weather windows all constrain the job, and the consequences of getting any of them wrong are measured in environmental damage and regulatory exposure, not just cost.',
+      'M-FAV supports pipeline installation, cable laying and subsea infrastructure work for offshore and onshore energy operations, using DP2-capable vessels and positioning technology appropriate to the accuracy the scope requires. We work in partnership with local and international contractors, taking the marine and support scope on projects where that is where we add most value.',
+      'The same discipline extends to industrial infrastructure and technical services onshore — installation, maintenance and support scopes delivered against specification and handed over with documentation.',
+    ],
     keyFacts: [
-      { label: 'Scope', value: 'Pipeline installation, pipeline maintenance, industrial infrastructure, technical services' },
-      { label: 'Typical engagement', value: 'Discrete installation projects through ongoing maintenance contracts' },
-      { label: 'Sectors served', value: 'Oil & gas, energy, infrastructure, industrial operations' },
-      { label: 'Support model', value: 'Technical teams engaged for the project duration or on a standing maintenance basis' },
+      { label: 'Scope', value: 'Pipeline installation · pipeline maintenance · cable laying · subsea infrastructure · industrial infrastructure · technical services' },
+      { label: 'Vessel capability', value: 'DP2-capable vessel support' },
+      { label: 'Typical engagement', value: 'Project-based scopes, and term maintenance contracts' },
+      { label: 'Sectors served', value: 'Oil & Gas · Energy · Infrastructure · Construction' },
+      { label: 'Delivery model', value: 'Direct delivery and partnership with local and international stakeholders' },
+      { label: 'Standards posture', value: 'Executed to the client specification and applicable safety and environmental requirements' },
     ],
     capabilities: [
-      { name: 'Pipeline Installation', description: 'Onshore and offshore pipeline installation, from route preparation through tie-in and pressure testing.' },
-      { name: 'Pipeline Maintenance', description: 'Inspection, integrity testing and corrosion management for pipelines already in service.' },
-      { name: 'Industrial Infrastructure', description: 'Construction and upkeep of industrial infrastructure supporting energy and processing operations.' },
-      { name: 'Technical Services', description: 'Engineering and technical support across installation, inspection and maintenance work.' },
+      { name: 'Pipeline Installation', description: 'Installation support for offshore and onshore pipelines, including lay support, positioning and marine spread coordination, executed under the project’s safety and environmental requirements.' },
+      { name: 'Pipeline Maintenance', description: 'Inspection support, repair scopes and maintenance campaigns on existing lines, planned to minimise production interruption.' },
+      { name: 'Industrial Infrastructure', description: 'Installation and support scopes on industrial facilities and associated infrastructure, delivered against specification with handover documentation.' },
+      { name: 'Technical Services', description: 'Engineering and inspection support, cable laying, and specialist technical scopes supporting energy and infrastructure assets.' },
     ],
     process: [
-      { title: 'Consultation', description: 'Understand the pipeline or infrastructure scope, site conditions and constraints.' },
-      { title: 'Assessment & Planning', description: 'Route survey, engineering review and materials planning ahead of mobilisation.' },
-      { title: 'Mobilisation', description: 'Crew, equipment and materials mobilised to site.' },
-      { title: 'Execution', description: 'Installation or maintenance work carried out against the engineering plan, with testing at each stage.' },
-      { title: 'Monitoring & Reporting', description: 'Inspection records, test results and handover documentation.' },
+      { title: 'Consultation', description: 'Scope, route, tolerances, environmental constraints and client standards.' },
+      { title: 'Assessment & Planning', description: 'Survey and site data reviewed, method statement and risk assessment prepared, marine spread and equipment defined.' },
+      { title: 'Mobilisation', description: 'Permits and regulatory notifications, vessel and equipment mobilisation, pre-works inspection.' },
+      { title: 'Execution', description: 'Works executed under the approved method statement with daily progress and HSE reporting.' },
+      { title: 'Monitoring & Reporting', description: 'As-built documentation, inspection records and close-out reporting.' },
     ],
     benefits: [
-      'Installation and maintenance under one technical team.',
-      'Testing and inspection built into every stage, not left to the end.',
-      'Experience with both onshore and offshore pipeline work.',
-      'Technical services that continue after installation is complete.',
+      'DP2-capable vessel support for precision offshore work.',
+      'Method statements and risk assessments prepared before mobilisation, not during.',
+      'Environmental controls built into the job plan.',
+      'Experience working alongside international EPC contractors on Nigerian scopes.',
+      'Documented handover that stands up to client and regulatory review.',
     ],
-    relevantIndustries: ['Oil & Gas', 'Energy', 'Infrastructure', 'Industrial Operations'],
-    relatedServices: ['marine-offshore', 'equipment-ppe'],
+    relevantIndustries: ['Oil & Gas', 'Energy', 'Infrastructure', 'Construction'],
+    relatedServices: ['marine-offshore', 'logistics-haulage', 'equipment-ppe'],
     cta: {
-      heading: 'Have a Pipeline or Infrastructure Scope to Plan?',
-      body: 'Tell us the scope and site conditions — we’ll bring in the right technical team.',
+      heading: 'Planning a Pipeline or Infrastructure Scope?',
+      body: 'Share the scope and constraints. We will tell you what we can deliver and how.',
     },
   },
 
   'logistics-haulage': {
-    positioning: 'Haulage and logistics coordination for equipment and materials that have to arrive on schedule.',
+    positioning: 'Heavy movement across Nigeria, tracked and accounted for from collection to delivery.',
     image: '/assets/images/division_logistics.svg',
-    overview: 'Logistics & Haulage moves heavy equipment and materials from port to site, coordinating haulage, transportation and journey management as one job rather than three separate handoffs. The work is planned around load limits, route restrictions and delivery windows.',
+    overview: [
+      'Nigerian road logistics is a security and compliance problem as much as a transport one. Route conditions, checkpoint delays, product security and driver welfare all determine whether a load arrives intact and on time.',
+      'M-FAV provides onshore and offshore haulage for petroleum products, machinery, spare parts, plant and raw materials including sand, cement, metals and chemicals. Movements are tracked and monitored in real time, and high-value or hazardous loads are planned with route assessment and, where required, escort.',
+      'We also deliver journey management for personnel — airport meet-and-greet, executive transport, pilot escort vehicles, armed and plain-clothed security details, and arrival and departure clearance — with serviced executive accommodation available for visiting personnel.',
+    ],
     keyFacts: [
-      { label: 'Scope', value: 'Haulage services, equipment transportation, journey management, logistics support' },
-      { label: 'Typical engagement', value: 'Single consignment moves through ongoing site-supply logistics' },
-      { label: 'Sectors served', value: 'Construction, energy, industrial operations, infrastructure' },
-      { label: 'Support model', value: 'Route and load planning ahead of every haulage job' },
+      { label: 'Scope', value: 'Haulage · equipment transportation · journey management · logistics support · offshore AGO supply' },
+      { label: 'Cargo types', value: 'Petroleum products (AGO) · machinery and plant · spares · sand, cement, metals · chemicals' },
+      { label: 'Typical engagement', value: 'Single movements, scheduled supply contracts, and term journey management' },
+      { label: 'Sectors served', value: 'Oil & Gas · Logistics · Construction · Industrial Operations' },
+      { label: 'Support model', value: 'Real-time tracking with 24/7 movement coordination' },
+      { label: 'Coverage', value: 'Nationwide, Nigeria' },
     ],
     capabilities: [
-      { name: 'Haulage Services', description: 'Heavy and abnormal load haulage, planned against route and weight restrictions.' },
-      { name: 'Equipment Transportation', description: 'Port-to-site transport for industrial equipment and machinery, including loading and securing.' },
-      { name: 'Journey Management', description: 'Route planning and tracking for haulage movements, with contingency for road and weather conditions.' },
-      { name: 'Logistics Support', description: 'Coordination of multi-leg equipment and materials moves across suppliers and sites.' },
+      { name: 'Haulage Services', description: 'Onshore and offshore haulage of petroleum products, industrial materials and equipment, with real-time tracking and delivery confirmation on every movement.' },
+      { name: 'Equipment Transportation', description: 'Movement of plant, machinery and project cargo, including route assessment and lifting coordination for oversized loads.' },
+      { name: 'Journey Management', description: 'Secure personnel movement: airport reception, executive transport, escort vehicles, security details, and arrival and departure clearance, supported by serviced executive accommodation with workstations and conference facilities.' },
+      { name: 'Logistics Support', description: 'Coordination of supply into offshore and remote operations, including offshore AGO supply and vessel chandling.' },
     ],
     process: [
-      { title: 'Consultation', description: 'Confirm load dimensions, weight and delivery timeline.' },
-      { title: 'Assessment & Planning', description: 'Route survey and permit requirements checked against the load.' },
-      { title: 'Mobilisation', description: 'Haulage vehicles, escorts and permits confirmed ahead of the move.' },
-      { title: 'Execution', description: 'Load moved to plan, with journey tracking throughout.' },
-      { title: 'Monitoring & Reporting', description: 'Delivery confirmation and reporting on route conditions encountered.' },
+      { title: 'Consultation', description: 'Cargo or personnel profile, origin and destination, timing and any client security requirement.' },
+      { title: 'Route & Risk Assessment', description: 'Route surveyed, security posture assessed, escort and timing decided.' },
+      { title: 'Mobilisation', description: 'Vehicles, drivers and permits confirmed; pre-movement inspection and briefing completed.' },
+      { title: 'Execution', description: 'Movement tracked in real time with checkpoint-to-checkpoint status.' },
+      { title: 'Monitoring & Reporting', description: 'Proof of delivery, exception reporting and movement close-out.' },
     ],
     benefits: [
-      'Route and permit planning done before the load moves, not during.',
-      'Haulage capacity for abnormal and heavy loads.',
-      'Journey management that tracks the load, not just books the truck.',
-      'One point of contact from port to site.',
+      'Real-time visibility of every movement from dispatch to delivery.',
+      'Route and security risk assessed before departure.',
+      'Hazardous and high-value cargo handled under defined controls.',
+      'Personnel movement and cargo movement coordinated under one contract.',
+      'Nationwide coverage with local route knowledge.',
     ],
-    relevantIndustries: ['Construction', 'Logistics', 'Industrial Operations', 'Infrastructure'],
-    relatedServices: ['marine-offshore', 'equipment-ppe'],
+    relevantIndustries: ['Logistics', 'Oil & Gas', 'Construction', 'Industrial Operations'],
+    relatedServices: ['marine-offshore', 'equipment-ppe', 'energy-infrastructure'],
     cta: {
-      heading: 'Got a Load That Needs to Move Without Surprises?',
-      body: 'Tell us the dimensions, weight and route — we’ll plan it before it moves.',
+      heading: 'Have a Load or a Movement to Plan?',
+      body: 'Tell us what is moving, from where and by when. We will plan the route and confirm the cost.',
     },
   },
 
   'equipment-ppe': {
-    positioning: 'Industrial equipment and certified PPE, supplied and maintained to the specification the job requires.',
+    positioning: 'Certified equipment and protective gear, sourced to specification and delivered on schedule.',
     image: '/assets/images/division_equipment.svg',
-    overview: 'Equipment & PPE supplies the machinery, tools, marine equipment and protective gear operations depend on — sourced to specification and supported after delivery, not just sold and forgotten.',
+    overview: [
+      'Procurement fails in two directions. Cheap sourcing puts uncertified equipment on a worksite, and slow sourcing stops the worksite entirely. Both are avoidable with the right supplier relationships and honest lead times.',
+      'M-FAV supplies personal protective equipment, marine equipment, industrial consumables and technical equipment for oil production, drilling and petrochemical operations. Sourcing is competitive but specification-led: items are procured against the applicable standards and inspected before they reach your site.',
+      'We are a master distributor for Portwest, and we manufacture protective workwear locally in our own facility. In-house production means customised workwear — client branding, specific fabrics, sizing for your workforce — produced in-country with shorter lead times than imported equivalents.',
+    ],
     keyFacts: [
-      { label: 'Scope', value: 'Equipment supply, personal protective equipment, industrial supplies, marine equipment' },
-      { label: 'Typical engagement', value: 'One-off equipment orders through standing supply arrangements' },
-      { label: 'Sectors served', value: 'Marine, energy, construction, industrial operations' },
-      { label: 'Support model', value: 'Supply against specification, with ongoing availability for repeat orders' },
+      { label: 'Scope', value: 'PPE · locally manufactured workwear · marine equipment · industrial supplies · technical procurement' },
+      { label: 'Distribution', value: 'Master distributor for Portwest [VERIFY]' },
+      { label: 'Manufacturing', value: 'In-house workwear production facility, Nigeria [VERIFY]' },
+      { label: 'Typical engagement', value: 'One-off supply, scheduled replenishment, and term supply contracts' },
+      { label: 'Sectors served', value: 'Oil & Gas · Maritime · Construction · Industrial Operations' },
+      { label: 'Standards posture', value: 'Procured against applicable standards including ASTM specifications [VERIFY]' },
     ],
     capabilities: [
-      { name: 'Equipment Supply', description: 'Industrial machinery, generators, pumps and tools sourced to the specification the operation requires.' },
-      { name: 'Personal Protective Equipment', description: 'Certified PPE — safety wear, protective gear and site-specific equipment — supplied for crews working in hazardous conditions.' },
-      { name: 'Industrial Supplies', description: 'General industrial consumables and supplies for site and vessel operations.' },
-      { name: 'Marine Equipment', description: 'Equipment and gear specified for marine and offshore operating conditions.' },
+      { name: 'Personal Protective Equipment', description: 'Helmets, eye and hearing protection, gloves, coveralls, safety footwear, fall-arrest harnesses and high-visibility clothing, supplied against the standards your site requires.' },
+      { name: 'Locally Manufactured Workwear', description: 'Customised coveralls and workwear produced in our own facility, allowing client-specific branding, fabric and sizing with shorter lead times and lower landed cost than imported alternatives.' },
+      { name: 'Marine Equipment', description: 'Deck equipment, safety equipment, rigging and marine consumables for vessel operations.' },
+      { name: 'Industrial Supplies', description: 'Consumables, tools and spares supporting continuous industrial operations.' },
+      { name: 'Equipment Supply & Technical Procurement', description: 'Sourcing of technical equipment for oil production, drilling and petrochemical operations, with supplier evaluation, inspection and compliance checks built into the process.' },
     ],
     process: [
-      { title: 'Consultation', description: 'Confirm the equipment or PPE specification and quantity required.' },
-      { title: 'Assessment & Planning', description: 'Sourcing against specification, with lead times confirmed upfront.' },
-      { title: 'Mobilisation', description: 'Equipment prepared and dispatched to site.' },
-      { title: 'Execution', description: 'Delivery confirmed against the order and specification.' },
-      { title: 'Monitoring & Reporting', description: 'Ongoing availability tracked for repeat and standing orders.' },
+      { title: 'Consultation', description: 'Specification, quantities, standards required and delivery window.' },
+      { title: 'Sourcing & Supplier Evaluation', description: 'Suppliers evaluated on certification, quality record and lead time reliability, not price alone.' },
+      { title: 'Quality Assurance', description: 'Inspection and compliance checks against specification before dispatch.' },
+      { title: 'Delivery', description: 'Delivered to site or vessel on the confirmed schedule, with documentation.' },
+      { title: 'Replenishment & Support', description: 'Scheduled replenishment and consumption tracking on term contracts.' },
     ],
     benefits: [
-      'Equipment and PPE sourced to specification, not substituted.',
-      'Support for both one-off orders and standing supply arrangements.',
-      'Marine-rated equipment for offshore operating conditions.',
-      'Lead times confirmed before the order is placed.',
+      'Specification-led sourcing rather than lowest-cost substitution.',
+      'Local manufacturing capacity shortening lead times on workwear.',
+      'Inspection and compliance checks before goods reach your site.',
+      'Supplier relationships that hold quality and price across repeat orders.',
+      'Documented procurement supporting audit and local content reporting.',
     ],
-    relevantIndustries: ['Industrial Operations', 'Maritime', 'Construction', 'Energy'],
-    relatedServices: ['marine-offshore', 'logistics-haulage'],
+    relevantIndustries: ['Oil & Gas', 'Maritime', 'Construction', 'Industrial Operations'],
+    relatedServices: ['logistics-haulage', 'marine-offshore', 'energy-infrastructure'],
     cta: {
-      heading: 'Need Equipment or PPE Sourced to Spec?',
-      body: 'Tell us the specification and quantity — we’ll confirm lead time before you order.',
+      heading: 'Need Equipment to Specification and on Schedule?',
+      body: 'Send us your specification and quantities. We will confirm price and lead time.',
     },
   },
 
   'property-investment': {
-    positioning: 'Industrial and commercial property, and the investment work that sits alongside it.',
+    positioning: 'Industrial and port-adjacent property and asset opportunities.',
     image: '/assets/images/division_property.svg',
-    overview: 'Property & Investment covers industrial and commercial real estate and the asset opportunities around it — port-adjacent land, serviced industrial yards and facilities that support operational businesses, evaluated with the same operational discipline as the rest of the group.',
+    overview: [
+      'Operations need somewhere to work from. Yard space near a port, warehousing within reach of a supply base, and industrial facilities with the access and services that heavy operations require are consistently harder to find in Nigeria than the operations they support.',
+      'M-FAV holds and develops property interests aligned with the sectors we serve, and works with partners on asset and investment opportunities across industrial and port-adjacent real estate.',
+      'This division operates on the same basis as the rest of the group: clear terms, documented process and a single accountable point of contact.',
+    ],
     keyFacts: [
-      { label: 'Scope', value: 'Property, investment, asset opportunities' },
-      { label: 'Typical engagement', value: 'Individual property or asset transactions through ongoing portfolio involvement' },
-      { label: 'Sectors served', value: 'Industrial, logistics, energy-adjacent property' },
-      { label: 'Support model', value: 'Direct engagement on each opportunity, evaluated on its own merits' },
+      { label: 'Scope', value: 'Property · investment · asset opportunities' },
+      { label: 'Asset focus', value: 'Industrial and port-adjacent property, yards, warehousing and operational facilities' },
+      { label: 'Typical engagement', value: '[PLACEHOLDER: lease, sale, joint venture, or investment partnership — confirm which]' },
+      { label: 'Sectors served', value: 'Oil & Gas · Logistics · Infrastructure · Industrial Operations' },
+      { label: 'Enquiry route', value: 'Direct enquiry through the contact page' },
     ],
     capabilities: [
-      { name: 'Property', description: 'Commercial and industrial property, including port-adjacent land and serviced industrial yards.' },
-      { name: 'Investment', description: 'Asset investment structured around industrial and operational property.' },
-      { name: 'Asset Opportunities', description: 'Identification and evaluation of industrial property and asset opportunities as they arise.' },
+      { name: 'Property', description: 'Industrial, commercial and port-adjacent property interests suited to operational use, including yard space, warehousing and facilities with the access heavy operations require.' },
+      { name: 'Investment', description: 'Participation in and structuring of opportunities in the sectors we operate across. [PLACEHOLDER: describe the actual investment model — this line is intentionally non-specific until confirmed]' },
+      { name: 'Asset Opportunities', description: 'Identification and structuring of asset opportunities, including operational assets relevant to marine, logistics and industrial activity.' },
     ],
     process: [
-      { title: 'Consultation', description: 'Understand the property or investment objective.' },
-      { title: 'Assessment & Planning', description: 'Site, asset or opportunity assessed against the objective.' },
-      { title: 'Mobilisation', description: 'Terms and documentation prepared for the transaction or engagement.' },
-      { title: 'Execution', description: 'Transaction or investment carried out to agreed terms.' },
-      { title: 'Monitoring & Reporting', description: 'Ongoing oversight for property and asset positions held.' },
+      { title: 'Consultation', description: 'Requirement, location, operational use and timeline.' },
+      { title: 'Assessment', description: 'Suitability, access, services and title reviewed.' },
+      { title: 'Structuring', description: 'Commercial terms structured and documented.' },
+      { title: 'Completion', description: 'Transaction or agreement completed with legal and regulatory requirements met.' },
+      { title: 'Ongoing Support', description: 'Continued support where M-FAV retains an operational role.' },
     ],
     benefits: [
-      'Industrial and commercial property evaluated with operational insight.',
-      'Access to port-adjacent and industrial-yard opportunities.',
-      'Asset opportunities assessed on their individual merits.',
-      'Direct engagement rather than a generic investment product.',
+      'Property assessed for operational suitability, not just floor area.',
+      'Understanding of what marine, logistics and industrial users actually need from a site.',
+      'Clear commercial terms and documented process.',
+      'Access to a group that can also operate from the site it places you in.',
     ],
-    relevantIndustries: ['Infrastructure', 'Logistics', 'Industrial Operations'],
-    relatedServices: ['energy-infrastructure', 'logistics-haulage'],
+    relevantIndustries: ['Infrastructure', 'Logistics', 'Industrial Operations', 'Oil & Gas'],
+    relatedServices: ['logistics-haulage', 'energy-infrastructure'],
     cta: {
-      heading: 'Evaluating an Industrial Property or Asset?',
-      body: 'Tell us the opportunity — we’ll evaluate it on its own merits.',
+      heading: 'Looking for Operational Property or an Asset Opportunity?',
+      body: 'Tell us your requirement and we will come back with what is available.',
     },
   },
 };

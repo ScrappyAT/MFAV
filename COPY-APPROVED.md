@@ -935,7 +935,7 @@ The `/company` page ends on the careers section followed by the CTA band. Nothin
 > **Enquiry received.** Thank you — your enquiry has reached our team. We respond to enquiries within one business day. For urgent operational matters, call `[PHONE]`.
 
 **Error panel** `[DRAFT]`
-> **We couldn't send your enquiry.** Something went wrong on our end. Please try again, or email us directly at `[EMAIL]`.
+> **We couldn't send your enquiry.** Something went wrong on our end. Please try again, or email us directly at support@mfavoffshore.com.
 
 **Honeypot label** (visually hidden) — *Leave this field blank*
 
@@ -943,14 +943,15 @@ The `/company` page ends on the careers section followed by the CTA band. Nothin
 
 | Item | Content | Status |
 |---|---|---|
-| Address | `[ADDRESS PLACEHOLDER]` | **Missing — see 11.1** |
+| Address | 26 Prof Kiumi Akingbehin Street, off Awkuzu Street, off Omorinre Johnson Street, Lekki 105102, Lagos, Nigeria | [CLIENT-SUPPLIED] |
 | Phone | +234 (0) 810 642 1702 | `[VERIFY]` |
 | Phone | +234 (0) 708 668 1182 | `[VERIFY]` |
-| General enquiries | `[EMAIL PLACEHOLDER — suggested: info@mfavoffshore.com]` | **Missing** |
-| Support | support@mfavoffshore.com | `[VERIFY]` |
+| Enquiries | support@mfavoffshore.com | [CLIENT-SUPPLIED] |
 | Procurement | procurement@mfavoffshore.com | `[VERIFY]` |
 | Operating hours | `[HOURS PLACEHOLDER — suggested: Monday–Friday, 08:00–17:00 WAT. Operational support available 24/7.]` | **Missing** |
 | Map | `[MAP EMBED PLACEHOLDER]` | **Missing** |
+
+**Email decision, resolved:** there is no separate general-enquiry address. support@mfavoffshore.com is the single public address and the destination for the contact form. info@ and enquiries@ are no longer proposed anywhere. Keep procurement@ on the contact page only, labelled for procurement and supplier enquiries — it does not appear in the footer.
 
 **Response time note** `[DRAFT]`
 > We respond to enquiries within one business day. Operational and urgent matters are handled 24/7 by phone.
@@ -961,10 +962,10 @@ The `/company` page ends on the careers section followed by the CTA band. Nothin
 
 ### 11.1 What is missing — fill these before launch
 
-1. **Registered office address.** Nothing in either document. Needed for the footer, the contact page, the map embed and your `LocalBusiness` schema. If you have more than one location (Lagos and Port Harcourt, for example), list the head office in the footer and all of them on the contact page.
-2. **A general enquiry email.** You have support@ and procurement@ only. The contact form needs a destination that is neither — recommend `info@` or `enquiries@`.
+1. **Registered office address — RESOLVED.** 26 Prof Kiumi Akingbehin Street, off Awkuzu Street, off Omorinre Johnson Street, Lekki 105102, Lagos, Nigeria.
+2. **A general enquiry email — RESOLVED.** support@mfavoffshore.com is the single public address; no separate `info@`/`enquiries@` address exists.
 3. **A careers email.** Recommend `careers@`.
-4. **RC number.** Nigerian companies normally display this. It is a cheap credibility signal for procurement readers and belongs in the footer legal line.
+4. **RC number — RESOLVED: deliberately not displayed.** Not shown in the footer legal line.
 5. **Social handles.** The brief specifies LinkedIn, X, Facebook and Instagram icons. Supply the real URLs or drop the icons — dead social links damage credibility more than absent ones. LinkedIn is the only one that matters for B2B procurement; consider shipping that alone.
 6. **Operating hours.**
 
@@ -998,19 +999,18 @@ Consider adding Company → `/company` and Industries → `/industries`, which t
 
 **Contact column**
 ```
-[ADDRESS PLACEHOLDER]
-[CITY, STATE], Nigeria
+26 Prof Kiumi Akingbehin Street
+off Awkuzu Street, off Omorinre Johnson Street
+Lekki 105102, Lagos, Nigeria
 
 +234 (0) 810 642 1702
 +234 (0) 708 668 1182
 
-info@mfavoffshore.com          [PLACEHOLDER — confirm]
-procurement@mfavoffshore.com
+support@mfavoffshore.com
 ```
 
 **Legal line**
 > © 2026 M-FAV Offshore and Allied Services Limited. All Rights Reserved.
-> `[RC PLACEHOLDER — e.g. RC 1234567]`
 
 **Small links** Privacy Policy `/privacy` · Terms of Use `/terms`
 
@@ -1034,14 +1034,14 @@ Everything the client must supply before launch.
 **Critical — blocks launch**
 - [x] ~~Final company name~~ — RESOLVED: M-FAV Offshore and Allied Services Limited, per the logo
 - [x] ~~Motto~~ — RESOLVED: Delivering Excellence at All Times
-- [ ] Registered office address (all locations)
-- [ ] General enquiry email address
-- [ ] Contact form submission destination
+- [x] ~~Registered office address~~ — RESOLVED: 26 Prof Kiumi Akingbehin Street, off Awkuzu Street, off Omorinre Johnson Street, Lekki 105102, Lagos, Nigeria
+- [x] ~~General enquiry email address~~ — RESOLVED: support@mfavoffshore.com (the single public address)
+- [x] ~~Contact form submission destination~~ — RESOLVED: support@mfavoffshore.com
 - [ ] Operating hours
 - [ ] Confirmation on naming Shell, Chevron, Saipem, TotalEnergies, First E&P — consent obtained, or use the unattributed fallback
 
 **Important**
-- [ ] RC number
+- [x] ~~RC number~~ — RESOLVED: deliberately not displayed
 - [ ] Careers email
 - [ ] Social media URLs, or confirmation to remove the icons
 - [ ] Leadership: names, roles, bios, portraits

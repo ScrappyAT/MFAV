@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, Link } from 'react-router-dom';
 import { Inbox } from 'lucide-react';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
 import { METADATA } from '../content/metadata';
@@ -53,11 +53,10 @@ export default function Projects() {
             margin. md+ gets pt-0 since Section's own md padding
             (144px) was already safe. */}
         <Container className="pt-12 md:pt-0">
-          <h1 className="text-display md:text-hero-sm text-c-on mb-6 max-w-3xl">Experience in Motion</h1>
+          <h1 className="text-display md:text-hero-sm text-c-on mb-6 max-w-3xl">Projects & Operations</h1>
           <p className="max-w-measure text-lg text-c-on-muted leading-relaxed">
-            A representative view of the kind of work M-FAV’s divisions take on. Filter by
-            sector to see how that looks across marine, offshore, logistics,
-            infrastructure and equipment engagements.
+            A selection of the marine, offshore, logistics and infrastructure
+            operations M-FAV has supported.
           </p>
         </Container>
       </Section>
@@ -106,7 +105,10 @@ export default function Projects() {
           {filtered.length === 0 ? (
             <div className="flex flex-col items-center gap-3 rounded-token border border-dashed border-c-border-hl py-16 text-center">
               <Inbox size={32} strokeWidth={1.5} aria-hidden="true" className="text-c-on-muted" />
-              <p className="text-c-on-muted">No projects match this filter yet.</p>
+              <p className="text-c-on-muted">
+                No projects match this filter yet. <span className="font-semibold text-c-on">View all projects</span> or{' '}
+                <Link to="/contact" className="underline underline-offset-2 hover:text-c-on">get in touch</Link> to discuss a specific capability.
+              </p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

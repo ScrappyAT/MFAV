@@ -6,40 +6,50 @@ import Container from '../components/ui/Container';
 import Section from '../components/ui/Section';
 import SectionHeader from '../components/ui/SectionHeader';
 
-// Agent-authored copy throughout this file (A7) — logged in
-// COPY-FOR-REVIEW.md. No unverifiable size/history claims, no invented
-// people, no fabricated credentials (A2.6/A2.7).
+// COPY-APPROVED.md §4.3 — hairline-separated list, applied verbatim.
 const VALUES = [
-  { name: 'Safety', body: 'Every operation is planned and run with the safety of our people and partners as the first consideration, not a constraint applied afterward.' },
-  { name: 'Integrity', body: 'We do what we say we will do, and we say plainly when we can’t — with clients, regulators and each other.' },
-  { name: 'Excellence', body: 'Work is checked against defined standards at every stage, across every division, regardless of scale.' },
-  { name: 'Accountability', body: 'One partner, one point of contact, one standard of delivery — across marine, aviation, logistics and every other division.' },
-  { name: 'Collaboration', body: 'Complex operations move multiple teams at once; we coordinate them as one, not as a chain of handoffs.' },
+  { name: 'Safety', body: 'Work proceeds only when it is safe to proceed. Schedule never overrides that.' },
+  { name: 'Integrity', body: 'We describe our capability accurately, price transparently and report honestly, including when something has gone wrong.' },
+  { name: 'Accountability', body: 'One point of responsibility on every engagement, from mobilisation to close-out.' },
+  { name: 'Operational Excellence', body: 'Disciplined execution, maintained equipment and competent crews.' },
+  { name: 'Local Capability', body: 'Nigerian operations, Nigerian workforce, and in-country capacity built deliberately rather than imported.' },
+  { name: 'Sustainability', body: 'Operations planned to limit environmental impact and to contribute to the communities we work in.' },
 ];
 
+// §4.4: "Grid of [NAME PLACEHOLDER] / [ROLE PLACEHOLDER] / [BIO PLACEHOLDER
+// — 40 words]" — the deck's own "recommended roles to fill" (Managing
+// Director, etc.) are suggestions, not decisions (A7), so roles stay
+// generic bracketed placeholders rather than naming a specific title.
 const LEADERSHIP_SLOTS = [
-  '[NAME PLACEHOLDER 1] — [ROLE PLACEHOLDER 1]',
-  '[NAME PLACEHOLDER 2] — [ROLE PLACEHOLDER 2]',
-  '[NAME PLACEHOLDER 3] — [ROLE PLACEHOLDER 3]',
-  '[NAME PLACEHOLDER 4] — [ROLE PLACEHOLDER 4]',
+  { name: '[NAME PLACEHOLDER 1]', role: '[ROLE PLACEHOLDER 1]', bio: '[BIO PLACEHOLDER — 40 WORDS]' },
+  { name: '[NAME PLACEHOLDER 2]', role: '[ROLE PLACEHOLDER 2]', bio: '[BIO PLACEHOLDER — 40 WORDS]' },
+  { name: '[NAME PLACEHOLDER 3]', role: '[ROLE PLACEHOLDER 3]', bio: '[BIO PLACEHOLDER — 40 WORDS]' },
+  { name: '[NAME PLACEHOLDER 4]', role: '[ROLE PLACEHOLDER 4]', bio: '[BIO PLACEHOLDER — 40 WORDS]' },
 ];
 
+// COPY-APPROVED.md §4.5, applied verbatim. The `[VERIFY: ...]` registration
+// list is rendered as written per A6.2 — not resolved, not turned into an
+// "ISO certified"-style claim.
 const SAFETY_DETAIL = [
   {
-    title: 'Culture',
-    body: 'Safety is treated as a shared responsibility rather than a compliance checkbox — every person on an operation, regardless of division or seniority, has standing to stop work they judge unsafe. That expectation is set before mobilisation, not discovered on site.',
+    title: 'Safety Culture',
+    body: 'Every M-FAV operation begins with a briefing and ends with a close-out. Personnel at every level hold stop-work authority, and exercising it is treated as correct practice rather than disruption. Incidents and near misses are reported, investigated and closed out with corrective actions that are tracked to completion.',
   },
   {
-    title: 'Compliance posture',
-    body: 'Operations are structured to meet the regulatory expectations of the sectors and jurisdictions we work in. Where a division operates under a specific regulatory regime — maritime, aviation, or otherwise — its procedures are built around that regime’s requirements, not a generic policy applied uniformly across the group.',
+    title: 'Regulatory Compliance',
+    body: 'Our operations are conducted within the regulatory framework governing marine and offshore work in Nigeria. M-FAV maintains registrations and clearances with the relevant authorities for the scopes we undertake, including [VERIFY: NIMASA · Nigerian Navy · NUPRC/NMDPRA · NCDMB · NPA · NSCDC · FIRS]. Documentation is available to clients on request during prequalification.',
   },
   {
-    title: 'Risk management',
-    body: 'Hazards are identified and assessed before mobilisation, with mitigation designed into the operating plan rather than bolted on afterward. Risk assessment is revisited when conditions change — a shifting weather window, a route restriction, a change in scope — rather than treated as a one-time sign-off.',
+    title: 'Risk Management',
+    body: 'Risk assessment precedes mobilisation on every scope. Vessel movements, haulage routes and journey management plans are assessed for operational, security and environmental risk, and controls are re-evaluated when conditions change — weather, sea state, security posture or scope variation.',
   },
   {
-    title: 'Environmental responsibility',
-    body: 'Operations are planned to limit environmental impact across the full range of what the group does — marine discharge, waste handling on site, and the footprint of haulage and logistics work. This is a planning input, not an afterthought raised only when a project draws scrutiny.',
+    title: 'Quality Assurance',
+    body: 'Equipment and materials are inspected against specification before delivery. Subcontracted services are evaluated before engagement and monitored through delivery. Where a specification cannot be met, the client is told before substitution, not after.',
+  },
+  {
+    title: 'Environmental Responsibility',
+    body: 'Marine, pipeline and fuel-handling operations are planned to prevent spills and limit discharge. Waste from our operations is managed through licensed routes, and environmental requirements specific to a client\'s site or a regulator\'s conditions are incorporated into the job plan.',
   },
 ];
 
@@ -63,11 +73,10 @@ export default function About() {
             top edge; 128px clears it with margin. md+ is unaffected
             (py-section-lg's 180px was already safe). */}
         <Container className="relative z-10 pt-32 pb-section-sm md:py-section-lg">
-          <h1 className="text-hero-sm md:text-hero text-c-ondark mb-6 max-w-3xl">About M-FAV</h1>
+          <h1 className="text-hero-sm md:text-hero text-c-ondark mb-6 max-w-3xl">An Integrated Partner for Demanding Operations</h1>
           <p className="max-w-measure text-lg text-c-ondark/85 leading-relaxed">
-            An integrated industrial services group built around capability, safety and
-            accountability — one partner across marine, offshore, aviation, logistics,
-            energy, infrastructure and industrial sectors.
+            M-FAV brings marine, offshore, aviation, logistics, energy and industrial
+            capabilities together under one accountable structure.
           </p>
         </Container>
       </section>
@@ -77,24 +86,24 @@ export default function About() {
         <Container>
           <div className="max-w-measure flex flex-col gap-5 text-c-on-muted leading-relaxed text-lg">
             <p>
-              M-FAV Offshore and Allied Services Limited is a diversified Nigerian integrated
-              services group operating across marine, offshore, aviation, logistics,
-              energy, infrastructure, equipment and PPE, and property and investment.
-              Each division carries its own operational discipline, but all of them
-              answer to the same standard.
+              M-FAV Offshore and Allied Services Limited is a Nigerian integrated services
+              group working across marine and offshore operations, aviation, energy and
+              infrastructure, logistics and haulage, equipment and protective equipment
+              supply, and property and investment.
             </p>
             <p>
-              Bringing these capabilities together under one accountable partner reduces
-              the coordination risk that comes with managing multiple vendors across a
-              complex operation. Where a project touches several domains — a vessel
-              charter that also needs haulage and equipment on the ground, or an
-              infrastructure scope that needs both technical crews and PPE supply — that
-              coordination happens inside one organisation instead of across several
-              contracts.
+              Our operational base is Nigeria and the wider Gulf of Guinea — waters and
+              roads where conditions, security and regulation all shape how work gets
+              done. That context is the reason clients use us: capability is only useful
+              if it can be delivered here, on schedule, without incident, and with
+              documentation that stands up to audit.
             </p>
             <p>
-              Safety, discipline and international operating standards are the constant
-              across every division, regardless of sector or scale.
+              We work for international operators, EPC contractors, marine operators and
+              industrial clients. Some engage us for a single vessel charter or a PPE
+              supply contract. Others use several divisions at once, which is where the
+              integrated model earns its place — fewer interfaces, fewer handover gaps,
+              and one party accountable when something needs to change mid-operation.
             </p>
           </div>
         </Container>
@@ -116,16 +125,18 @@ export default function About() {
           <div className="bg-c-primary-bg px-6 md:px-14 py-16 md:py-20 flex flex-col justify-center">
             <h2 className="text-xl font-bold text-c-ondark mb-4">Mission</h2>
             <p className="text-display-sm text-c-ondark leading-snug">
-              To deliver integrated marine, offshore, aviation, logistics, energy and
-              industrial solutions with safety and operational excellence at the core of
-              every engagement.
+              To contribute, in a profitable and socially responsible manner, to the
+              sustainable development of the maritime and offshore support services
+              industry in Nigeria and the entire Gulf of Guinea.
             </p>
           </div>
           <div className="bg-c-bg-alt px-6 md:px-14 py-16 md:py-20 flex flex-col justify-center">
             <h2 className="text-xl font-bold text-c-on mb-4">Vision</h2>
             <p className="text-display-sm text-c-on leading-snug">
-              To be the accountable partner operators turn to for complex,
-              multi-discipline operations across Nigeria and beyond.
+              To be a leading indigenous provider of world-class support and marine
+              services to the oil and gas, manufacturing and shipping industries in
+              Nigeria and the Gulf of Guinea — driven by sustainability, innovation,
+              quality, safety and exceptional expertise.
             </p>
           </div>
         </div>
@@ -151,21 +162,19 @@ export default function About() {
         <Container className="py-section-sm md:py-section">
           <SectionHeader
             heading="Leadership"
-            supporting="Team profiles are pending client-supplied names, roles and portraits — no individuals are represented below."
+            supporting="Our leadership team brings operational experience across marine, offshore and industrial sectors in Nigeria and West Africa."
           />
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            {LEADERSHIP_SLOTS.map((slot) => {
-              const [name, role] = slot.split(' — ');
-              return (
-                <div key={slot} className="flex flex-col">
-                  <div className="aspect-4/5 w-full rounded-token border border-c-border bg-c-surface-low flex items-center justify-center">
-                    <User size={40} strokeWidth={1.25} aria-hidden="true" className="text-c-on-muted/50" />
-                  </div>
-                  <p className="mt-4 font-bold text-c-on text-sm">{name}</p>
-                  <p className="text-sm text-c-on-muted">{role}</p>
+            {LEADERSHIP_SLOTS.map((slot) => (
+              <div key={slot.name} className="flex flex-col">
+                <div className="aspect-4/5 w-full rounded-token border border-c-border bg-c-surface-low flex items-center justify-center">
+                  <User size={40} strokeWidth={1.25} aria-hidden="true" className="text-c-on-muted/50" />
                 </div>
-              );
-            })}
+                <p className="mt-4 font-bold text-c-on text-sm">{slot.name}</p>
+                <p className="text-sm text-c-on-muted">{slot.role}</p>
+                <p className="mt-2 text-sm text-c-on-muted leading-relaxed">{slot.bio}</p>
+              </div>
+            ))}
           </div>
         </Container>
       </section>
@@ -181,9 +190,16 @@ export default function About() {
         <div aria-hidden="true" className="absolute inset-0 bg-c-scrim/90" />
         <Container className="relative z-10 py-section-sm md:py-section">
           <div className="max-w-3xl">
-            <h2 className="text-display-sm md:text-display text-c-ondark mb-8">
-              Safety at Every Level of Operation
+            <h2 className="text-display-sm md:text-display text-c-ondark mb-6">
+              Our Commitment to Safety
             </h2>
+            <p className="text-c-ondark/85 leading-relaxed mb-8">
+              Excellence in delivery is not separable from safety. A scope completed on
+              schedule but with an incident behind it has not been delivered well, and we
+              do not account for it that way. Safety is the condition under which our
+              work is authorised to proceed, and the reason a job stops when conditions
+              change.
+            </p>
             <dl className="flex flex-col">
               {SAFETY_DETAIL.map((item) => (
                 <div key={item.title} className="py-6 border-t border-c-ondark/15 first:border-t-0">
@@ -199,14 +215,16 @@ export default function About() {
       {/* Certifications — explicitly empty */}
       <section id="certifications" className="scroll-mt-24 bg-c-bg py-section-sm md:py-section">
         <Container>
-          <SectionHeader heading="Certifications" />
+          <SectionHeader heading="Certifications & Registrations" />
+          <p className="max-w-measure text-c-on-muted leading-relaxed mb-6">
+            M-FAV maintains the registrations and certifications required for the scopes
+            we undertake. Full documentation is provided during prequalification and
+            tender.
+          </p>
           <div className="max-w-measure rounded-token border border-dashed border-c-border-hl bg-c-bg-alt p-8 flex flex-col items-start gap-3">
             <ShieldCheck size={28} strokeWidth={1.5} aria-hidden="true" className="text-c-on-muted" />
             <p className="text-c-on-muted leading-relaxed">
-              <span className="font-semibold text-c-on">[CERTIFICATIONS PLACEHOLDER]</span> — this
-              section is intentionally empty. Regulatory memberships and certifications will
-              be published here once supplied and verified by the client. M-FAV does not
-              publish unverified credentials.
+              <span className="font-semibold text-c-on">[CERTIFICATION LOGOS AND REFERENCE NUMBERS PLACEHOLDER]</span>
             </p>
           </div>
         </Container>

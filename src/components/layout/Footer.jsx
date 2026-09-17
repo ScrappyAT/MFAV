@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Mail, Phone, MapPin, Linkedin, Twitter, Facebook, Instagram } from 'lucide-react';
 import TextLink from '../ui/TextLink';
 import CtaBand from '../ui/CtaBand';
 import Logo from './Logo';
 import { DIVISIONS } from '../../content/divisions';
-import { FOOTER_BRAND_LINE, MOTTO, COPYRIGHT, RC_PLACEHOLDER, CONTACT } from '../../content/site';
+import { FOOTER_BRAND_LINE, MOTTO, COPYRIGHT, CONTACT } from '../../content/site';
 
 // No real social URLs exist yet (client hasn't supplied handles). Per A2.6
 // these render as non-interactive placeholders rather than fake `href="#"`
@@ -18,6 +18,14 @@ const SOCIALS = [
 ];
 
 export default function Footer() {
+  const { pathname } = useLocation();
+  // ServiceDetail.jsx renders its own division-specific CtaBand as item 8
+  // of its template; without this check, the six /services/:slug routes
+  // would show that band and then this generic one back to back. Every
+  // other route (including /services itself, which has no CtaBand of its
+  // own) keeps this instance — it's deck §3.11 on the homepage.
+  const hideOnServiceDetail = /^\/services\/[^/]+\/?$/.test(pathname);
+
   return (
     // `bg-black` here, not the shared `c-primary-bg` navy token — by
     // request, just for the footer surface itself. CtaBand paints its own
@@ -26,10 +34,12 @@ export default function Footer() {
     <footer className="bg-black text-c-ondark">
       {/* Closing CTA band (A3 §3g) — the shared component, not hand-coded
           here; Phase 4's ServiceDetail template reuses the same one. */}
-      <CtaBand
-        heading="Let's Build the Right Solution for Your Operation."
-        body="Tell us what you need. Our team will work with you to develop the right solution."
-      />
+      {!hideOnServiceDetail && (
+        <CtaBand
+          heading="Let's Build the Right Solution for Your Operation."
+          body="Tell us what you need. Our team will work with you to develop the right solution."
+        />
+      )}
 
       {/* Main footer links — py-section-sm (not py-16 like CtaBand) so this
           black surface reads as substantial in its own right rather than
@@ -101,9 +111,12 @@ export default function Footer() {
               <li className="flex items-start gap-2">
                 <MapPin size={16} aria-hidden="true" className="shrink-0 mt-0.5 text-c-ondark-primary" />
                 <span>
-                  {CONTACT.address}
-                  <br />
-                  {CONTACT.addressLine2}
+                  {CONTACT.addressLines.map((line, idx) => (
+                    <React.Fragment key={line}>
+                      {idx > 0 && <br />}
+                      {line}
+                    </React.Fragment>
+                  ))}
                 </span>
               </li>
               {CONTACT.phones.map((phone) => (
@@ -114,11 +127,7 @@ export default function Footer() {
               ))}
               <li className="flex items-center gap-2">
                 <Mail size={16} aria-hidden="true" className="shrink-0 text-c-ondark-primary" />
-                <span>{CONTACT.generalEmail}</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Mail size={16} aria-hidden="true" className="shrink-0 text-c-ondark-primary" />
-                <span>{CONTACT.procurementEmail}</span>
+                <span>{CONTACT.email}</span>
               </li>
             </ul>
           </div>
@@ -128,10 +137,7 @@ export default function Footer() {
       {/* Copyright bar */}
       <div className="border-t border-c-ondark/15">
         <div className="mfav-container flex flex-col sm:flex-row items-center justify-between gap-4 py-8 text-sm text-c-ondark/70">
-          <p className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
-            <span>{COPYRIGHT}</span>
-            <span>{RC_PLACEHOLDER}</span>
-          </p>
+          <p>{COPYRIGHT}</p>
           {/* No /privacy or /terms route exists in the A5 IA — rendered as
               plain text rather than a fake href="#" link. Flagged in the
               Phase 1 report as an open question (add real pages, or omit). */}

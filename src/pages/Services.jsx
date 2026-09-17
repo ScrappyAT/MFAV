@@ -36,9 +36,10 @@ export default function Services() {
         <Container className="relative z-10 pt-32 pb-section-sm md:py-section-lg">
           <h1 className="text-hero-sm md:text-hero text-c-ondark mb-6 max-w-3xl">Our Services</h1>
           <p className="max-w-measure text-lg text-c-ondark/85 leading-relaxed">
-            Six divisions, one accountable partner. Each operates to its own technical
-            discipline; all of them are coordinated as a single point of contact for
-            operations that touch more than one domain.
+            Six divisions, one operating standard. Each works as a standalone service
+            line, and together they cover the marine, aviation, logistics,
+            infrastructure and supply requirements of a complex operation — without the
+            coordination risk of managing five separate contractors.
           </p>
         </Container>
       </section>

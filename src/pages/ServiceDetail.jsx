@@ -75,7 +75,11 @@ export default function ServiceDetail() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
           <div className="lg:col-span-7">
             <h2 className="text-xl font-bold text-c-on mb-4">Overview</h2>
-            <p className="text-lg text-c-on leading-relaxed">{service.overview}</p>
+            <div className="flex flex-col gap-4">
+              {service.overview.map((paragraph, idx) => (
+                <p key={idx} className="text-lg text-c-on leading-relaxed">{paragraph}</p>
+              ))}
+            </div>
           </div>
           <div className="lg:col-span-5">
             <dl className="flex flex-col">

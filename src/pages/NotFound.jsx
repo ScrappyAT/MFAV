@@ -14,11 +14,16 @@ export default function NotFound() {
         <Container className="flex flex-col items-start gap-6">
           <h1 className="text-display text-c-ondark">Page Not Found</h1>
           <p className="max-w-measure text-c-ondark/75">
-            The page you&rsquo;re looking for doesn&rsquo;t exist or has moved.
+            The page you requested doesn't exist or has moved.
           </p>
-          <Button to="/" variant="onDark" trailingArrow>
-            Back to Home
-          </Button>
+          <div className="flex flex-col sm:flex-row items-start gap-4">
+            <Button to="/" variant="onDark" trailingArrow>
+              Return Home
+            </Button>
+            <Button to="/services" variant="onDark">
+              View Our Services
+            </Button>
+          </div>
         </Container>
       </Section>
     </main>

@@ -180,7 +180,7 @@ export default function Header() {
             </Button>
             <div className="flex flex-col gap-2 text-sm text-white/70">
               <span className="flex items-center gap-2">
-                <Mail size={16} aria-hidden="true" /> {CONTACT.generalEmail}
+                <Mail size={16} aria-hidden="true" /> {CONTACT.email}
               </span>
               {CONTACT.phones.map((phone) => (
                 <span key={phone} className="flex items-center gap-2">

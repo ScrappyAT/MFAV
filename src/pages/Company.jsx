@@ -30,11 +30,11 @@ export default function Company() {
             (144px) was already safe. */}
         <Container className="pt-12 md:pt-0">
           <h1 className="text-display md:text-hero-sm text-c-on mb-6 max-w-3xl">
-            M-FAV Offshore and Allied Services Limited
+            The Company
           </h1>
           <p className="max-w-measure text-lg text-c-on-muted leading-relaxed">
-            A single group operating six distinct divisions, coordinated under one
-            operating model, one governance posture and one HSE policy.
+            How M-FAV is structured, how we operate, and the standards that apply
+            across every division.
           </p>
         </Container>
       </Section>
@@ -43,6 +43,12 @@ export default function Company() {
       <Section size="md">
         <Container>
           <SectionHeader heading="Divisions at a Glance" />
+          <p className="max-w-measure text-c-on-muted leading-relaxed mb-8">
+            M-FAV operates as six divisions under one management structure. Each
+            division holds its own operational leadership and technical capability;
+            commercial, HSE and quality functions are shared across the group so that
+            standards do not vary by service line.
+          </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 border-t border-l border-c-border">
             {DIVISIONS.map((division) => (
               <Link
@@ -64,18 +70,16 @@ export default function Company() {
           <SectionHeader heading="How the Group Operates" />
           <div className="max-w-measure flex flex-col gap-4 text-c-on-muted leading-relaxed">
             <p>
-              Each division is run by people who understand its specific operating
-              conditions — a marine charter is planned differently from a pipeline
-              installation, and a helicopter rotation differently from a haulage move.
-              What sits above that is a single coordination layer: one commercial
-              contact, one delivery standard, and one escalation path regardless of
-              which division or combination of divisions a project touches.
+              Every engagement is assigned a single accountable contact who holds the
+              scope from enquiry to close-out, regardless of how many divisions are
+              involved. Where a client uses several services — a vessel, a haulage
+              programme and a PPE contract, for example — coordination happens inside
+              M-FAV rather than on the client's desk.
             </p>
             <p>
-              For engagements that cross divisions — a project that needs marine
-              transport, equipment supply and site infrastructure work together — that
-              coordination happens inside the group rather than across separate
-              external contracts.
+              Operations are planned before mobilisation, executed against a documented
+              method, and reported on an agreed cycle. Variations are raised in
+              writing, priced and agreed before work proceeds.
             </p>
           </div>
         </Container>
@@ -87,16 +91,16 @@ export default function Company() {
           <SectionHeader heading="Governance & Standards" />
           <div className="max-w-measure flex flex-col gap-4 text-c-on-muted leading-relaxed">
             <p>
-              Operational decisions are made against documented standards, not
-              case-by-case judgement calls — from how a vessel charter is contracted to
-              how equipment is specified and inspected before it reaches site.
+              M-FAV maintains the registrations and clearances required for the scopes
+              we undertake, and operates within the regulatory framework governing
+              marine, offshore and industrial work in Nigeria. Documentation is made
+              available during prequalification and tender.
             </p>
             <p>
-              Where a division operates under a specific regulatory regime, its
-              procedures are built around that regime’s requirements. M-FAV does not
-              publish certifications or regulatory memberships it cannot verify — see
-              the <TextLink to="/about#certifications">Certifications</TextLink> section
-              of About for the current status of that documentation.
+              Our commercial conduct is governed by transparent documentation, ethical
+              procurement practice and clear contract terms. Supplier and subcontractor
+              relationships are subject to evaluation before engagement and review
+              through delivery.
             </p>
           </div>
         </Container>
@@ -108,12 +112,13 @@ export default function Company() {
           <SectionHeader heading="Health, Safety & Environment" />
           <div className="max-w-measure flex flex-col gap-4 text-c-on-muted leading-relaxed">
             <p>
-              Safety-first culture, operational discipline, risk management and
-              environmental responsibility apply as one policy across every division —
-              not a stricter standard for offshore work and a looser one for haulage or
-              supply. The full detail behind that policy — culture, compliance posture,
-              risk management and environmental responsibility — is set out on the{' '}
-              <TextLink to="/about#safety">About page</TextLink>.
+              Delivering Excellence at All Times sets the standard our work is held to,
+              and safe execution is the first condition of meeting it. In practice that
+              means stop-work authority at every level, risk assessment before
+              mobilisation, incident and near-miss reporting with tracked corrective
+              actions, and environmental controls built into the job plan rather than
+              added to it. The full statement is on our{' '}
+              <TextLink to="/about#safety">safety page</TextLink>.
             </p>
           </div>
         </Container>
@@ -123,11 +128,16 @@ export default function Company() {
       <section id="careers" className="scroll-mt-24 bg-c-primary-bg">
         <Container className="py-section-sm md:py-section">
           <div className="max-w-measure">
-            <h2 className="text-display-sm text-c-ondark mb-4">Work Across the Group</h2>
-            <p className="text-c-ondark/75 leading-relaxed mb-2">
-              [CAREERS CONTENT PLACEHOLDER] — open roles across M-FAV’s divisions will be
-              listed here once supplied by the client. In the meantime, enquiries can be
-              sent to [CAREERS EMAIL PLACEHOLDER].
+            <h2 className="text-display-sm text-c-ondark mb-4">Careers at M-FAV</h2>
+            <p className="text-c-ondark/75 leading-relaxed mb-4">
+              We hire marine personnel, drivers and logistics coordinators, HSE
+              professionals, procurement specialists and operational support staff.
+              Experience in offshore, marine or heavy industrial environments matters;
+              so does a demonstrated commitment to working safely.
+            </p>
+            <p className="text-c-ondark/75 leading-relaxed">
+              To register interest, send your CV and the role you are interested in to
+              [CAREERS EMAIL PLACEHOLDER].
             </p>
           </div>
         </Container>

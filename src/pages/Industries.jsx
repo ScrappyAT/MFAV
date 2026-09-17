@@ -36,8 +36,9 @@ export default function Industries() {
         <Container className="relative z-10 pt-32 pb-section-sm md:py-section-lg">
           <h1 className="text-hero-sm md:text-hero text-c-ondark mb-6 max-w-3xl">Industries We Serve</h1>
           <p className="max-w-measure text-lg text-c-ondark/85 leading-relaxed">
-            Eight sectors, one set of capabilities applied differently depending on what
-            each operation actually needs.
+            Our capabilities were built for environments where operations are
+            technically demanding, heavily regulated and expensive to interrupt. Below
+            is how each division applies to the sectors we work in.
           </p>
         </Container>
       </section>

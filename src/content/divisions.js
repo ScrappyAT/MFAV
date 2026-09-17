@@ -8,6 +8,14 @@
 // Company.jsx and ServiceDetail's meta description still use it) — logged
 // here for COPY-FOR-REVIEW.md consolidation in Phase 3a, not yet
 // client-approved.
+// Order is canonical (COPY-APPROVED.md's own consistent table/section
+// order throughout — §1, §3.2, §5, §6.1-6.6 — and A5 of the original
+// brief): Marine & Offshore, Aviation, Energy & Infrastructure, Logistics
+// & Haulage, Equipment & PPE, Property & Investment. Every consumer
+// (Capabilities grid, Footer, Company's division grid, Services overview
+// rows, Contact's service dropdown) maps this single array directly, so
+// reordering it here fixes all of them at once rather than leaving one
+// surface (the footer) diverging from a duplicated list.
 export const DIVISIONS = [
   {
     id: 'marine-offshore',
@@ -18,17 +26,6 @@ export const DIVISIONS = [
       'Vessel Chartering',
       'Marine Support',
       'Journey Management',
-    ],
-  },
-  {
-    id: 'equipment-ppe',
-    name: 'Equipment & PPE',
-    blurb: 'Equipment supply, PPE and industrial supplies.',
-    subCapabilities: [
-      'Equipment Supply',
-      'Personal Protective Equipment',
-      'Industrial Supplies',
-      'Marine Equipment',
     ],
   },
   {
@@ -44,6 +41,17 @@ export const DIVISIONS = [
     ],
   },
   {
+    id: 'energy-infrastructure',
+    name: 'Energy & Infrastructure',
+    blurb: 'Pipeline installation and maintenance, and industrial infrastructure.',
+    subCapabilities: [
+      'Pipeline Installation',
+      'Pipeline Maintenance',
+      'Industrial Infrastructure',
+      'Technical Services',
+    ],
+  },
+  {
     id: 'logistics-haulage',
     name: 'Logistics & Haulage',
     blurb: 'Haulage, equipment transportation and journey management.',
@@ -55,14 +63,14 @@ export const DIVISIONS = [
     ],
   },
   {
-    id: 'energy-infrastructure',
-    name: 'Energy & Infrastructure',
-    blurb: 'Pipeline installation and maintenance, and industrial infrastructure.',
+    id: 'equipment-ppe',
+    name: 'Equipment & PPE',
+    blurb: 'Equipment supply, PPE and industrial supplies.',
     subCapabilities: [
-      'Pipeline Installation',
-      'Pipeline Maintenance',
-      'Industrial Infrastructure',
-      'Technical Services',
+      'Equipment Supply',
+      'Personal Protective Equipment',
+      'Industrial Supplies',
+      'Marine Equipment',
     ],
   },
   {

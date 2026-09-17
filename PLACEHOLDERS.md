@@ -11,11 +11,14 @@ Legend: 🔲 content placeholder (client to supply) · ❓ decision needed
 
 ## Site-wide (Header / Footer — every page)
 
-- 🔲 `[EMAIL PLACEHOLDER]` — mobile nav contact line (`Header.jsx`)
-- 🔲 `[PHONE PLACEHOLDER]` — mobile nav contact line (`Header.jsx`)
-- 🔲 `[ADDRESS PLACEHOLDER]` — footer Contact column (`Footer.jsx`)
-- 🔲 `[EMAIL PLACEHOLDER]` — footer Contact column (`Footer.jsx`)
-- 🔲 `[PHONE PLACEHOLDER]` — footer Contact column (`Footer.jsx`)
+- ✅ **Registered office address — RESOLVED.** 26 Prof Kiumi Akingbehin
+  Street, off Awkuzu Street, off Omorinre Johnson Street, Lekki 105102,
+  Lagos, Nigeria. Live in the footer, the mobile nav, and `/contact`.
+- ✅ **General enquiry email — RESOLVED.** There is no separate
+  info@/enquiries@ address; support@mfavoffshore.com is the single public
+  address and the contact form's destination.
+- ✅ **RC number — RESOLVED: deliberately not displayed.** Not shown in
+  the footer legal line or anywhere else.
 - 🔲 Social icons (LinkedIn, X, Facebook, Instagram) — rendered as inert,
   `aria-hidden` placeholders pending real profile URLs (`Footer.jsx`).
   **Note for whoever wires them up:** once they become real links, give
@@ -50,8 +53,11 @@ Legend: 🔲 content placeholder (client to supply) · ❓ decision needed
 
 - 🔲 `[IMAGE CAPTION PLACEHOLDER]` — About/company-intro image caption
   (`WhoWeAre.jsx`)
-- 🔲 `[PROJECT TITLE PLACEHOLDER]` × 5, `[LOCATION PLACEHOLDER]` × 5 —
-  Projects/Operations cards (`ProjectsSection.jsx`)
+- ✅ Projects/Operations cards — real project titles and descriptions
+  (COPY-APPROVED.md §3.8/A6.1), five of the eight sourced from
+  `content/projects.js`, one per sector. 🔲 Two of the five shown still
+  carry `[LOCATION PLACEHOLDER]`, and every card carries `[DATE
+  PLACEHOLDER]` (dates not yet supplied).
 - 🔲 Partners/Clients logos — generic placeholder marks, explicitly
   captioned as not representing real clients (`Partners.jsx`)
 
@@ -80,10 +86,11 @@ Legend: 🔲 content placeholder (client to supply) · ❓ decision needed
 
 ## `/projects`
 
-- 🔲 `[PROJECT TITLE PLACEHOLDER]` × 10, `[LOCATION PLACEHOLDER]` × 10 —
-  every card in the filterable portfolio (`Projects.jsx`)
-- 🔲 Persistent illustrative-content banner stating the portfolio does not
-  represent completed engagements (`Projects.jsx`)
+- ✅ All eight real projects (COPY-APPROVED.md §8/A6.1), same
+  `content/projects.js` source as the homepage. 🔲 Three carry
+  `[LOCATION PLACEHOLDER]`; every card carries `[DATE PLACEHOLDER]`.
+- ✅ Illustrative-content banner — removed; real project content no
+  longer needs it (A6.1).
 
 ## `/company`
 
@@ -99,16 +106,17 @@ Legend: 🔲 content placeholder (client to supply) · ❓ decision needed
 
 ## `/contact`
 
-- 🔲 `[ADDRESS PLACEHOLDER]` — office address
-- 🔲 `[PHONE PLACEHOLDER]` — office phone
-- 🔲 `[EMAIL PLACEHOLDER]` × 2 — office email, and the fallback address
-  shown in the error state
+- ✅ Office address, phone, general-enquiry email, and the form's
+  error-panel fallback address — all resolved, see site-wide section
+  above. Procurement enquiries use procurement@mfavoffshore.com, labelled
+  separately in the info column.
 - 🔲 `[OPERATING HOURS PLACEHOLDER]` — office hours
 - 🔲 `[MAP EMBED PLACEHOLDER]` — fixed-aspect-ratio (16:9) block reserved
   for a real map embed (no third-party embed wired without approval, per
   A2.4)
-- 🔲 `[RESPONSE TIME PLACEHOLDER]` × 2 — expected reply window, shown in
-  the right column and in the success panel
+- ✅ Response time — resolved with deck copy ("within one business day";
+  urgent/operational matters by phone, 24/7), applied in the right column
+  and the success panel.
 - ❓ The submit handler is a documented **stub** (`stubSubmitEnquiry` in
   `Contact.jsx`) — logs to the console only. No backend or third-party
   form service is wired up; needs an explicit decision on what to

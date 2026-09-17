@@ -18,8 +18,8 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MIN_HUMAN_SUBMIT_MS = 1500;
 
 const SERVICE_OPTIONS = [
-  ...DIVISIONS.map((d) => ({ value: d.id, label: d.name })),
   { value: 'general', label: 'General Enquiry' },
+  ...DIVISIONS.map((d) => ({ value: d.id, label: d.name })),
 ];
 
 /**
@@ -36,13 +36,13 @@ function stubSubmitEnquiry(payload) {
 
 function validate(values) {
   const errors = {};
-  if (!values.fullName.trim()) errors.fullName = 'Enter your full name.';
+  if (!values.fullName.trim()) errors.fullName = 'Please enter your name.';
   if (!values.email.trim()) {
-    errors.email = 'Enter your email address.';
+    errors.email = 'Please enter your email address.';
   } else if (!EMAIL_RE.test(values.email.trim())) {
-    errors.email = 'Enter a valid email address, e.g. name@company.com.';
+    errors.email = 'Please enter a valid email address, e.g. name@company.com';
   }
-  if (!values.message.trim()) errors.message = 'Enter a message.';
+  if (!values.message.trim()) errors.message = 'Please tell us how we can help.';
   return errors;
 }
 
@@ -149,10 +149,11 @@ export default function Contact() {
             margin. md+ gets pt-0 since Section's own md padding
             (144px) was already safe. */}
         <Container className="pt-12 md:pt-0">
-          <h1 className="text-display md:text-hero-sm text-c-on mb-6 max-w-3xl">Get in Touch</h1>
+          <h1 className="text-display md:text-hero-sm text-c-on mb-6 max-w-3xl">Contact Us</h1>
           <p className="max-w-measure text-lg text-c-on-muted leading-relaxed">
-            Tell us what you need. Our team will work with you to develop the right
-            solution.
+            Tell us what you need. Give us the scope, the location and the timeline,
+            and the right person will come back to you rather than a general
+            acknowledgement.
           </p>
         </Container>
       </Section>
@@ -172,11 +173,12 @@ export default function Contact() {
                         tabIndex={-1}
                         className="text-xl font-bold text-c-on mb-2 focus:outline-none"
                       >
-                        Enquiry Sent
+                        Enquiry received.
                       </h2>
                       <p className="text-c-on-muted leading-relaxed">
-                        Thank you — we’ve received your enquiry and will be in touch.
-                        [RESPONSE TIME PLACEHOLDER].
+                        Thank you — your enquiry has reached our team. We respond to
+                        enquiries within one business day. For urgent operational
+                        matters, call {CONTACT.phones[0]}.
                       </p>
                     </div>
                   </div>
@@ -186,10 +188,10 @@ export default function Contact() {
                   <div className="flex items-start gap-3">
                     <XCircle size={28} aria-hidden="true" className="shrink-0 text-c-error" />
                     <div>
-                      <h2 className="text-xl font-bold text-c-on mb-2">Something Went Wrong</h2>
+                      <h2 className="text-xl font-bold text-c-on mb-2">We couldn't send your enquiry.</h2>
                       <p className="text-c-on-muted leading-relaxed mb-4">
-                        Your enquiry couldn’t be sent. Please try again, or reach us
-                        directly at [EMAIL PLACEHOLDER].
+                        Something went wrong on our end. Please try again, or email us
+                        directly at support@mfavoffshore.com.
                       </p>
                       <Button type="button" variant="secondary" onClick={() => setStatus('idle')}>
                         Try Again
@@ -207,7 +209,7 @@ export default function Contact() {
                     >
                       <div className="flex items-center gap-2 font-bold text-c-error mb-2">
                         <AlertCircle size={18} aria-hidden="true" />
-                        Please fix the following before submitting:
+                        There {Object.keys(errors).length === 1 ? 'is' : 'are'} {Object.keys(errors).length} problem{Object.keys(errors).length === 1 ? '' : 's'} with this form
                       </div>
                       <ul className="flex flex-col gap-1 pl-1">
                         {FIELD_ORDER.filter((f) => errors[f]).map((f) => (
@@ -296,7 +298,7 @@ export default function Contact() {
                         no arbitrary values needed); real visitors never
                         interact with it. */}
                     <div aria-hidden="true" className="sr-only">
-                      <label htmlFor="field-website">Website</label>
+                      <label htmlFor="field-website">Leave this field blank</label>
                       <input
                         id="field-website"
                         name="website"
@@ -316,7 +318,7 @@ export default function Contact() {
                     loading={status === 'submitting'}
                     className="mt-8 w-full sm:w-auto"
                   >
-                    Submit Enquiry
+                    {status === 'submitting' ? 'Sending…' : 'Submit Enquiry'}
                   </Button>
                 </form>
               )}
@@ -328,7 +330,14 @@ export default function Contact() {
               <ul className="flex flex-col gap-4 text-c-on-muted mb-8">
                 <li className="flex items-start gap-3">
                   <MapPin size={18} aria-hidden="true" className="shrink-0 mt-0.5 text-c-primary" />
-                  <span>{CONTACT.address}</span>
+                  <span>
+                    {CONTACT.addressLines.map((line, idx) => (
+                      <React.Fragment key={line}>
+                        {idx > 0 && <br />}
+                        {line}
+                      </React.Fragment>
+                    ))}
+                  </span>
                 </li>
                 {CONTACT.phones.map((phone) => (
                   <li key={phone} className="flex items-center gap-3">
@@ -338,15 +347,11 @@ export default function Contact() {
                 ))}
                 <li className="flex items-center gap-3">
                   <Mail size={18} aria-hidden="true" className="shrink-0 text-c-primary" />
-                  <span>{CONTACT.generalEmail}</span>
+                  <span><span className="font-semibold text-c-on">General enquiries:</span> {CONTACT.email}</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <Mail size={18} aria-hidden="true" className="shrink-0 text-c-primary" />
-                  <span>{CONTACT.supportEmail}</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Mail size={18} aria-hidden="true" className="shrink-0 text-c-primary" />
-                  <span>{CONTACT.procurementEmail}</span>
+                  <span><span className="font-semibold text-c-on">Procurement:</span> {CONTACT.procurementEmail}</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Clock size={18} aria-hidden="true" className="shrink-0 mt-0.5 text-c-primary" />
@@ -359,8 +364,8 @@ export default function Contact() {
               </div>
 
               <p className="text-sm text-c-on-muted leading-relaxed">
-                [RESPONSE TIME PLACEHOLDER] — we aim to reply to every enquiry within
-                that window.
+                We respond to enquiries within one business day. Operational and urgent
+                matters are handled 24/7 by phone.
               </p>
             </div>
           </div>
