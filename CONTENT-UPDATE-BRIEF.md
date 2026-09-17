@@ -2,7 +2,7 @@
 
 **Companion to `MFAV-AGENT-BRIEF.md`. Read that first; this amends it.**
 
-**How to use this file:** drop it and `COPY-FOR-REVIEW.md` in the repo root. Paste `SECTION A` into the agent once. Then fire the passes in `SECTION B` **one at a time, in order**. Do not paste all passes at once.
+**How to use this file:** drop it and `COPY-APPROVED.md` in the repo root. Paste `SECTION A` into the agent once. Then fire the passes in `SECTION B` **one at a time, in order**. Do not paste all passes at once.
 
 ---
 
@@ -10,11 +10,32 @@
 
 ## A1. What has changed
 
-The client has supplied the full approved copy for every route. It lives in `COPY-FOR-REVIEW.md` in the repo root. Your job in this session is to apply it to the existing build — not to rewrite the site, not to redesign anything, and not to author new copy.
+The client has supplied the full approved copy for every route. It lives in `COPY-APPROVED.md` in the repo root. Your job in this session is to apply it to the existing build — not to rewrite the site, not to redesign anything, and not to author new copy.
+
+## A1a. Two similarly-named files. Do not confuse them.
+
+| File | What it is | Status |
+|---|---|---|
+| `COPY-APPROVED.md` | Client-approved copy. The **target state**. Written by the client's content writer, not by you. | Authoritative |
+| `COPY-FOR-REVIEW.md` | Your own Phase 7e deliverable — the record of the strings **you** authored. Describes the **current state**. | Historical record |
+
+`COPY-FOR-REVIEW.md` is not an instruction and it is not a competing source of copy. It is useful in Pass 0 as the inventory of what is live now, so you can diff current against target. **Do not edit it during Passes 1–5.**
+
+At the end of Pass 6, regenerate `COPY-FOR-REVIEW.md` so it once again reflects what is actually on the site — which, after this session, should be `COPY-APPROVED.md` almost in full, with every remaining authored string clearly identified. Do not simply copy one file over the other.
+
+## A1b. The build is post-Phase-7. Later passes changed things the copy deck does not know about.
+
+The copy deck was written from `MFAV-AGENT-BRIEF.md`, not from the finished site, so it describes some elements as the original brief specified them rather than as they were finally built. Your own Phase 7e notes record at least one such change: **eyebrow labels were retired sitewide in a later pass.**
+
+Where the deck names a section element that no longer exists in the built design — an eyebrow, a numeral, a label, a control — **the deck is supplying the words for that element, not an instruction to reinstate it.** If the element is gone, the string is simply not needed. Do not add retired elements back to satisfy the deck.
+
+This applies to presentation only. It never applies to body copy, headings, service descriptions, form strings or metadata, all of which must be applied in full.
+
+List every instance of this in your Pass 0 audit so the client can confirm each one.
 
 ## A2. Authority order — read this twice
 
-Where the two documents disagree, **`COPY-FOR-REVIEW.md` wins.** It is newer and it is client-approved.
+Where the two documents disagree, **`COPY-APPROVED.md` wins.** It is newer and it is client-approved.
 
 This overrides `MFAV-AGENT-BRIEF.md` section A7. Strings that A7 marked client-approved and verbatim-inviolable **have been revised**, including the H1, the hero body, the footer brand line and the copyright line. Apply the revisions. Do not preserve the older wording on the grounds that A7 told you it was fixed. Do not "improve", condense, re-tone or re-punctuate the new copy either — it is final text, not a draft to work from.
 
@@ -89,7 +110,7 @@ Collect every one into `PLACEHOLDERS.md` as the original brief requires.
 **Write no content in this pass.**
 
 1. Inventory what exists: which routes are built, which sections of each are built, and where copy currently lives (content files vs inline JSX).
-2. Produce a coverage table mapping every section of `COPY-FOR-REVIEW.md` to its current state: **present / partially present / missing / not yet built**.
+2. Produce a coverage table mapping every section of `COPY-APPROVED.md` to its current state: **present / partially present / missing / not yet built**.
 3. List every file containing the old company name or the old motto.
 4. Flag every place where applying the new copy will break a layout — specifically: the hero H1 at 375px, nav and footer labels, the capability panel sub-lists, and any heading that has grown in length.
 5. State which content files you will create or restructure under A4.
@@ -137,68 +158,4 @@ Report, then stop.
 
 Apply deck section 6 to all six divisions through the single `ServiceDetail` template and one content source. Each division has: positioning line, overview, key facts table, capabilities, approach steps, benefits, relevant industries, related services, and its own CTA band copy.
 
-Note that three divisions have **division-specific process step names** rather than the default sequence — Marine & Offshore, Logistics & Haulage and Equipment & PPE. Apply the names as written per division. Do not normalise them.
-
-Aviation and Property & Investment carry more placeholders than the other four. That is intended. Do not pad them with authored copy to match the others' length.
-
-**QA gate:** all six render from one template and one content file. Unique `h1`, `<title>` and meta description each. No authored copy remains anywhere in the six. Definition of Done.
-
-Report, then stop.
-
----
-
-## PASS 4 — Inner pages
-
-Apply, in this order: `/about` (deck 4), `/services` (deck 5), `/industries` (deck 7), `/projects` (deck 8), `/company` (deck 9), `/contact` (deck 10), and the 404 (deck 12).
-
-- `/about`: confirm the `#leadership` and `#safety` anchors resolve with correct `scroll-margin-top`.
-- `/company`: confirm `#careers` resolves.
-- `/contact`: apply the full field set, select options, every validation message, the loading state, and both the success and error panels. The error summary heading pluralises with the count.
-- `/projects`: filter chips, empty-state copy, and the same real project data as Pass 2.
-
-**QA gate:** every anchor resolves. The contact form is fully screen-reader navigable and error states are announced. Definition of Done.
-
-Report, then stop.
-
----
-
-## PASS 5 — Removal: company profile download
-
-The client has decided the company profile PDF is **not going on the website**.
-
-Remove the download slot from `/company` entirely — the control, the disabled state, the tooltip, the file placeholder and any supporting copy. Ship no button. `/company` ends on the careers section followed by the CTA band.
-
-This is a deliberate deviation from `MFAV-AGENT-BRIEF.md` Phase 5e. Log it as a deviation in your report rather than reinstating it.
-
-**QA gate:** no reference to a profile download remains in the codebase or in `PLACEHOLDERS.md`.
-
-Report, then stop.
-
----
-
-## PASS 6 — Verification sweep
-
-1. Read `COPY-FOR-REVIEW.md` end to end against the live site and confirm **every string** is applied, section by section. Report any you could not place.
-2. Confirm no copy you authored in earlier sessions survives anywhere. The deck is the only source of words on this site.
-3. Rebuild `PLACEHOLDERS.md` from scratch against A7 above.
-4. Confirm no operator or client name appears anywhere, including `alt` text, metadata and structured data.
-5. Confirm no certification or standards claim exists beyond the exact wording supplied.
-6. Re-run Lighthouse on `/` and one service page, mobile profile. Report actual numbers.
-7. Confirm zero instances of the old name or old motto.
-
-**Final gate — answer plainly.** Is every word on the site traceable to `COPY-FOR-REVIEW.md`? Is any claim on the site unverifiable? Did any copy change break a layout you silently worked around instead of reporting? Where reality falls short, say so specifically rather than declaring done.
-
----
-
-# SECTION C — REPLY FORMAT
-
-Report after every pass, in this shape:
-
-1. **Applied** — files changed, and which deck sections landed in each.
-2. **Deviated** — anything done differently, and why.
-3. **Blocked** — copy you could not apply, and what is in the way.
-4. **Placeholders** — every one still outstanding.
-5. **QA results** — measured numbers, not assertions.
-6. **Next** — the following pass. Then stop and wait.
-
-Never mark a pass complete with unapplied copy, unverified contrast, or a layout break you worked around by editing the client's words.
+Note that three divisions have **division-specific process step names** rather than the default sequence — Marine & Offshore, Logistics & Haulage
