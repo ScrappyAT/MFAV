@@ -95,7 +95,7 @@ export default function Styleguide() {
               <TextLink href="#">Inline link</TextLink>
               <TextLink href="#" standalone>Learn more</TextLink>
               <div className="rounded-token bg-c-primary-bg p-6">
-                <TextLink href="#" onDark standalone>Discover MFAV</TextLink>
+                <TextLink href="#" onDark standalone>Discover M-FAV</TextLink>
               </div>
             </div>
           </Block>
@@ -105,7 +105,7 @@ export default function Styleguide() {
           <Block title="SectionHeader">
             <SectionHeader
               heading="Our Capabilities"
-              supporting="From offshore operations and marine logistics to aviation, infrastructure and industrial supply, MFAV brings multiple capabilities together to support complex operations."
+              supporting="From offshore operations and marine logistics to aviation, infrastructure and industrial supply, M-FAV brings multiple capabilities together to support complex operations."
               action={<Button variant="secondary" size="sm">Action slot</Button>}
             />
             <SectionHeader

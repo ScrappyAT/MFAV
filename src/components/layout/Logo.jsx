@@ -1,4 +1,5 @@
 import React from 'react';
+import { LOGO_ALT } from '../../content/site';
 
 /**
  * Logo — the one shared brand lockup, consumed by both Header and Footer
@@ -35,7 +36,7 @@ export default function Logo({ className = 'h-10', onDark = false }) {
   return (
     <img
       src={src}
-      alt="MFAV Offshore and Allied Services Ltd"
+      alt={LOGO_ALT}
       width={801}
       height={423}
       className={['w-auto', className].join(' ')}

@@ -5,6 +5,7 @@ import TextLink from '../ui/TextLink';
 import CtaBand from '../ui/CtaBand';
 import Logo from './Logo';
 import { DIVISIONS } from '../../content/divisions';
+import { FOOTER_BRAND_LINE, MOTTO, COPYRIGHT, RC_PLACEHOLDER, CONTACT } from '../../content/site';
 
 // No real social URLs exist yet (client hasn't supplied handles). Per A2.6
 // these render as non-interactive placeholders rather than fake `href="#"`
@@ -41,7 +42,10 @@ export default function Footer() {
               <Logo onDark />
             </Link>
             <p className="text-sm text-c-ondark/70 max-w-sm leading-relaxed">
-              Integrated marine, offshore, aviation, logistics and industrial solutions.
+              {FOOTER_BRAND_LINE}
+            </p>
+            <p className="text-micro uppercase tracking-wide text-c-ondark-primary">
+              {MOTTO}
             </p>
             <div className="flex items-center gap-3 pt-2">
               {SOCIALS.map(({ name, Icon }) => (
@@ -83,6 +87,8 @@ export default function Footer() {
               <li><TextLink to="/about#leadership" onDark>Leadership</TextLink></li>
               <li><TextLink to="/projects" onDark>Projects</TextLink></li>
               <li><TextLink to="/company#careers" onDark>Careers</TextLink></li>
+              <li><TextLink to="/company" onDark>Company</TextLink></li>
+              <li><TextLink to="/industries" onDark>Industries</TextLink></li>
             </ul>
           </div>
 
@@ -94,15 +100,25 @@ export default function Footer() {
             <ul className="flex flex-col gap-3 text-sm text-c-ondark/80">
               <li className="flex items-start gap-2">
                 <MapPin size={16} aria-hidden="true" className="shrink-0 mt-0.5 text-c-ondark-primary" />
-                <span>[ADDRESS PLACEHOLDER]</span>
+                <span>
+                  {CONTACT.address}
+                  <br />
+                  {CONTACT.addressLine2}
+                </span>
+              </li>
+              {CONTACT.phones.map((phone) => (
+                <li key={phone} className="flex items-center gap-2">
+                  <Phone size={16} aria-hidden="true" className="shrink-0 text-c-ondark-primary" />
+                  <span>{phone}</span>
+                </li>
+              ))}
+              <li className="flex items-center gap-2">
+                <Mail size={16} aria-hidden="true" className="shrink-0 text-c-ondark-primary" />
+                <span>{CONTACT.generalEmail}</span>
               </li>
               <li className="flex items-center gap-2">
                 <Mail size={16} aria-hidden="true" className="shrink-0 text-c-ondark-primary" />
-                <span>[EMAIL PLACEHOLDER]</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Phone size={16} aria-hidden="true" className="shrink-0 text-c-ondark-primary" />
-                <span>[PHONE PLACEHOLDER]</span>
+                <span>{CONTACT.procurementEmail}</span>
               </li>
             </ul>
           </div>
@@ -112,7 +128,10 @@ export default function Footer() {
       {/* Copyright bar */}
       <div className="border-t border-c-ondark/15">
         <div className="mfav-container flex flex-col sm:flex-row items-center justify-between gap-4 py-8 text-sm text-c-ondark/70">
-          <p>&copy; 2026 MFAV Offshore and Allied Resources. All Rights Reserved.</p>
+          <p className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
+            <span>{COPYRIGHT}</span>
+            <span>{RC_PLACEHOLDER}</span>
+          </p>
           {/* No /privacy or /terms route exists in the A5 IA — rendered as
               plain text rather than a fake href="#" link. Flagged in the
               Phase 1 report as an open question (add real pages, or omit). */}

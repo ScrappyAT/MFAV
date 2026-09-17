@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { DIVISIONS } from '../content/divisions';
 import { SERVICES } from '../content/services';
+import { METADATA } from '../content/metadata';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
 import Container from '../components/ui/Container';
 import SectionHeader from '../components/ui/SectionHeader';
@@ -20,11 +21,12 @@ export default function ServiceDetail() {
   const { slug } = useParams();
   const division = DIVISIONS.find((d) => d.id === slug);
   const service = SERVICES[slug];
+  const meta = METADATA[`services/${slug}`];
 
   // Hooks must run unconditionally — call before the not-found bail-out.
   useDocumentMeta(
-    division ? division.name : 'Service Not Found',
-    division ? `${division.blurb} ${service?.positioning || ''}`.trim() : undefined,
+    meta ? meta.title : METADATA.notFound.title,
+    meta ? meta.description : METADATA.notFound.description,
     service?.image
   );
 

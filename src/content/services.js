@@ -5,8 +5,8 @@
 //
 // All copy is agent-authored (A7) and grounded in real industry
 // terminology (OSVs, AHTS vessels, FPSOs, cathodic protection, etc.) —
-// that's what "sector-literate" means here, not a claim about MFAV's own
-// track record. No specific claim MFAV can't support (no client names,
+// that's what "sector-literate" means here, not a claim about M-FAV's own
+// track record. No specific claim M-FAV can't support (no client names,
 // no contract values, no certifications, no invented statistics) appears
 // anywhere in this file. Logged for COPY-FOR-REVIEW.md.
 export const SERVICES = {

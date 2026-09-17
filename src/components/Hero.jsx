@@ -77,9 +77,9 @@ export default function Hero({ onRequestConsultation }) {
                 Integrated Solutions. Built for What Moves the World.
               </h1>
               <p className="max-w-measure text-lg text-c-ondark/85 leading-relaxed">
-                MFAV Offshore and Allied Resources delivers integrated marine, offshore,
-                aviation, logistics, energy, infrastructure and industrial solutions with
-                safety and operational excellence at the core.
+                M-FAV Offshore and Allied Services Limited delivers integrated marine,
+                offshore, aviation, logistics, energy, infrastructure and industrial
+                solutions with safety and operational excellence at the core.
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <Button to="/services" variant="primary" size="lg" trailingArrow>

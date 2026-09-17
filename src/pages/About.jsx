@@ -1,6 +1,7 @@
 import React from 'react';
 import { User, ShieldCheck } from 'lucide-react';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
+import { METADATA } from '../content/metadata';
 import Container from '../components/ui/Container';
 import Section from '../components/ui/Section';
 import SectionHeader from '../components/ui/SectionHeader';
@@ -43,10 +44,7 @@ const SAFETY_DETAIL = [
 ];
 
 export default function About() {
-  useDocumentMeta(
-    'About MFAV',
-    'MFAV Offshore and Allied Resources: an integrated industrial services group across marine, aviation, logistics, energy and infrastructure — our mission, values, leadership and safety commitment.'
-  );
+  useDocumentMeta(METADATA.about.title, METADATA.about.description);
 
   return (
     <main>
@@ -65,7 +63,7 @@ export default function About() {
             top edge; 128px clears it with margin. md+ is unaffected
             (py-section-lg's 180px was already safe). */}
         <Container className="relative z-10 pt-32 pb-section-sm md:py-section-lg">
-          <h1 className="text-hero-sm md:text-hero text-c-ondark mb-6 max-w-3xl">About MFAV</h1>
+          <h1 className="text-hero-sm md:text-hero text-c-ondark mb-6 max-w-3xl">About M-FAV</h1>
           <p className="max-w-measure text-lg text-c-ondark/85 leading-relaxed">
             An integrated industrial services group built around capability, safety and
             accountability — one partner across marine, offshore, aviation, logistics,
@@ -79,7 +77,7 @@ export default function About() {
         <Container>
           <div className="max-w-measure flex flex-col gap-5 text-c-on-muted leading-relaxed text-lg">
             <p>
-              MFAV Offshore and Allied Resources is a diversified Nigerian integrated
+              M-FAV Offshore and Allied Services Limited is a diversified Nigerian integrated
               services group operating across marine, offshore, aviation, logistics,
               energy, infrastructure, equipment and PPE, and property and investment.
               Each division carries its own operational discipline, but all of them
@@ -207,7 +205,7 @@ export default function About() {
             <p className="text-c-on-muted leading-relaxed">
               <span className="font-semibold text-c-on">[CERTIFICATIONS PLACEHOLDER]</span> — this
               section is intentionally empty. Regulatory memberships and certifications will
-              be published here once supplied and verified by the client. MFAV does not
+              be published here once supplied and verified by the client. M-FAV does not
               publish unverified credentials.
             </p>
           </div>

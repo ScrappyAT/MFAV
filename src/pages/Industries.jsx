@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
+import { METADATA } from '../content/metadata';
 import { INDUSTRIES } from '../content/industries';
 import { DIVISIONS } from '../content/divisions';
 import Container from '../components/ui/Container';
@@ -14,10 +15,7 @@ import TextLink from '../components/ui/TextLink';
  * two or three divisions that actually serve it.
  */
 export default function Industries() {
-  useDocumentMeta(
-    'Industries We Serve',
-    'How MFAV Offshore and Allied Resources’ marine, aviation, logistics and infrastructure capabilities apply across oil & gas, maritime, energy, aviation, construction, infrastructure, logistics and industrial operations.'
-  );
+  useDocumentMeta(METADATA.industries.title, METADATA.industries.description);
 
   return (
     <main>

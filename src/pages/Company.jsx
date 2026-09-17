@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Download } from 'lucide-react';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
+import { METADATA } from '../content/metadata';
 import { DIVISIONS } from '../content/divisions';
 import Container from '../components/ui/Container';
 import Section from '../components/ui/Section';
@@ -16,10 +17,7 @@ import Button from '../components/ui/Button';
  * this page covers how the group itself is organised and run.
  */
 export default function Company() {
-  useDocumentMeta(
-    'Company',
-    'MFAV Offshore and Allied Resources: group structure, operating model, governance and HSE posture, and careers.'
-  );
+  useDocumentMeta(METADATA.company.title, METADATA.company.description);
 
   return (
     <main>
@@ -32,7 +30,7 @@ export default function Company() {
             (144px) was already safe. */}
         <Container className="pt-12 md:pt-0">
           <h1 className="text-display md:text-hero-sm text-c-on mb-6 max-w-3xl">
-            MFAV Offshore and Allied Resources
+            M-FAV Offshore and Allied Services Limited
           </h1>
           <p className="max-w-measure text-lg text-c-on-muted leading-relaxed">
             A single group operating six distinct divisions, coordinated under one
@@ -95,7 +93,7 @@ export default function Company() {
             </p>
             <p>
               Where a division operates under a specific regulatory regime, its
-              procedures are built around that regime’s requirements. MFAV does not
+              procedures are built around that regime’s requirements. M-FAV does not
               publish certifications or regulatory memberships it cannot verify — see
               the <TextLink to="/about#certifications">Certifications</TextLink> section
               of About for the current status of that documentation.
@@ -127,7 +125,7 @@ export default function Company() {
           <div className="max-w-measure">
             <h2 className="text-display-sm text-c-ondark mb-4">Work Across the Group</h2>
             <p className="text-c-ondark/75 leading-relaxed mb-2">
-              [CAREERS CONTENT PLACEHOLDER] — open roles across MFAV’s divisions will be
+              [CAREERS CONTENT PLACEHOLDER] — open roles across M-FAV’s divisions will be
               listed here once supplied by the client. In the meantime, enquiries can be
               sent to [CAREERS EMAIL PLACEHOLDER].
             </p>

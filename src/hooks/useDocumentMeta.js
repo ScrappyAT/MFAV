@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
+import { BRAND_NAME_SHORT } from '../content/site';
 
-const SITE_NAME = 'MFAV Offshore & Allied Resources';
+const SITE_NAME = BRAND_NAME_SHORT;
 
 // Placeholder production domain — the same one already used in
 // public/robots.txt and public/sitemap.xml (see PLACEHOLDERS.md for the
@@ -32,8 +33,10 @@ const DEFAULT_OG_IMAGE = `${SITE_URL}/assets/images/hero_section.jpg`;
  * doesn't vary by route, so it's a single static <script> in index.html
  * instead of being torn down and rebuilt on every navigation.
  *
- * @param {string|undefined} title - page title (falls back to the site
- *   name alone, e.g. the homepage)
+ * @param {string|undefined} title - the complete, final <title> string for
+ *   the route (content/metadata.js supplies one per route verbatim from
+ *   COPY-APPROVED.md §2 — no site-name suffix is appended here any more;
+ *   falls back to the short brand name if a route doesn't pass one)
  * @param {string|undefined} description - meta description / OG+Twitter
  *   description
  * @param {string} [image] - absolute or root-relative image URL for
@@ -41,7 +44,7 @@ const DEFAULT_OG_IMAGE = `${SITE_URL}/assets/images/hero_section.jpg`;
  */
 export function useDocumentMeta(title, description, image) {
   useEffect(() => {
-    const fullTitle = title ? `${title} | ${SITE_NAME}` : SITE_NAME;
+    const fullTitle = title || SITE_NAME;
     const ogImage = image
       ? image.startsWith('http') ? image : `${SITE_URL}${image}`
       : DEFAULT_OG_IMAGE;

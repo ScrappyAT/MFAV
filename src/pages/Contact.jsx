@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Mail, Phone, MapPin, Clock, CheckCircle2, XCircle, AlertCircle } from 'lucide-react';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
+import { METADATA } from '../content/metadata';
+import { CONTACT } from '../content/site';
 import { DIVISIONS } from '../content/divisions';
 import Container from '../components/ui/Container';
 import Section from '../components/ui/Section';
@@ -48,10 +50,7 @@ const FIELD_ORDER = ['fullName', 'email', 'message'];
 const FIELD_LABELS = { fullName: 'Full Name', email: 'Email', message: 'Message' };
 
 export default function Contact() {
-  useDocumentMeta(
-    'Contact',
-    'Get in touch with MFAV Offshore and Allied Resources — request a consultation across marine, offshore, aviation, logistics, energy and industrial services.'
-  );
+  useDocumentMeta(METADATA.contact.title, METADATA.contact.description);
 
   const [values, setValues] = useState({
     fullName: '',
@@ -329,24 +328,34 @@ export default function Contact() {
               <ul className="flex flex-col gap-4 text-c-on-muted mb-8">
                 <li className="flex items-start gap-3">
                   <MapPin size={18} aria-hidden="true" className="shrink-0 mt-0.5 text-c-primary" />
-                  <span>[ADDRESS PLACEHOLDER]</span>
+                  <span>{CONTACT.address}</span>
                 </li>
+                {CONTACT.phones.map((phone) => (
+                  <li key={phone} className="flex items-center gap-3">
+                    <Phone size={18} aria-hidden="true" className="shrink-0 text-c-primary" />
+                    <span>{phone}</span>
+                  </li>
+                ))}
                 <li className="flex items-center gap-3">
-                  <Phone size={18} aria-hidden="true" className="shrink-0 text-c-primary" />
-                  <span>[PHONE PLACEHOLDER]</span>
+                  <Mail size={18} aria-hidden="true" className="shrink-0 text-c-primary" />
+                  <span>{CONTACT.generalEmail}</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <Mail size={18} aria-hidden="true" className="shrink-0 text-c-primary" />
-                  <span>[EMAIL PLACEHOLDER]</span>
+                  <span>{CONTACT.supportEmail}</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Mail size={18} aria-hidden="true" className="shrink-0 text-c-primary" />
+                  <span>{CONTACT.procurementEmail}</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Clock size={18} aria-hidden="true" className="shrink-0 mt-0.5 text-c-primary" />
-                  <span>[OPERATING HOURS PLACEHOLDER]</span>
+                  <span>{CONTACT.hours}</span>
                 </li>
               </ul>
 
               <div className="aspect-16/9 w-full rounded-token border border-c-border bg-c-surface-low flex items-center justify-center mb-6">
-                <span className="text-sm text-c-on-muted uppercase tracking-wide">[MAP EMBED PLACEHOLDER]</span>
+                <span className="text-sm text-c-on-muted uppercase tracking-wide">{CONTACT.map}</span>
               </div>
 
               <p className="text-sm text-c-on-muted leading-relaxed">

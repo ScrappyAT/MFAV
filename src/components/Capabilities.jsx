@@ -45,7 +45,7 @@ export default function Capabilities() {
       <Container className="py-section-sm md:py-section">
         <SectionHeader
           heading="Our Capabilities"
-          supporting="From offshore operations and marine logistics to aviation, infrastructure and industrial supply, MFAV brings multiple capabilities together to support complex operations."
+          supporting="From offshore operations and marine logistics to aviation, infrastructure and industrial supply, M-FAV brings multiple capabilities together to support complex operations."
         />
 
         <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
+import { METADATA } from '../content/metadata';
 import Hero from '../components/Hero';
 import WhoWeAre from '../components/WhoWeAre';
 import Capabilities from '../components/Capabilities';
@@ -16,10 +17,7 @@ import Partners from '../components/Partners';
 // (onRequestConsultation, onSelectDivision, onSelectService,
 // onSelectProject) are gone as of the Phase 2/3 rewrites.
 export default function Home() {
-  useDocumentMeta(
-    undefined,
-    'MFAV Offshore and Allied Resources delivers integrated marine, offshore, aviation, logistics, energy, infrastructure and industrial solutions with safety and operational excellence at the core.'
-  );
+  useDocumentMeta(METADATA.home.title, METADATA.home.description);
 
   return (
     <main>

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  /* MFAV always runs the light (white) palette — no dark-mode switch.
+  /* M-FAV always runs the light (white) palette — no dark-mode switch.
      All color values sourced from mfav design tokens.json
      (color > material-theme > sys > light). */
   color-scheme: light;

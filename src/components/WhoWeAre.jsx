@@ -36,8 +36,8 @@ export default function WhoWeAre() {
             </h2>
             <div className="flex flex-col gap-4 text-c-on-muted leading-relaxed">
               <p>
-                MFAV Offshore and Allied Resources is an integrated services group
-                operating across marine, offshore, aviation, logistics, energy,
+                M-FAV Offshore and Allied Services Limited is an integrated services
+                group operating across marine, offshore, aviation, logistics, energy,
                 infrastructure and industrial sectors.
               </p>
               <p>
@@ -53,7 +53,7 @@ export default function WhoWeAre() {
             </div>
             <div className="mt-8">
               <TextLink to="/about" standalone>
-                Discover MFAV
+                Discover M-FAV
               </TextLink>
             </div>
           </div>

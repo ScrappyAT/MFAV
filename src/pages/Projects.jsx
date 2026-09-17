@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { AlertTriangle, Inbox } from 'lucide-react';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
+import { METADATA } from '../content/metadata';
 import Container from '../components/ui/Container';
 import Section from '../components/ui/Section';
 import ProjectCard from '../components/ui/ProjectCard';
@@ -38,10 +39,7 @@ const PROJECTS = [
  * is linkable/shareable and survives a refresh.
  */
 export default function Projects() {
-  useDocumentMeta(
-    'Projects',
-    'An illustrative portfolio of MFAV Offshore and Allied Resources’ marine, offshore, logistics, infrastructure and equipment engagements, pending client-supplied project content.'
-  );
+  useDocumentMeta(METADATA.projects.title, METADATA.projects.description);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const activeSector = searchParams.get('sector') || 'all';
@@ -71,7 +69,7 @@ export default function Projects() {
         <Container className="pt-12 md:pt-0">
           <h1 className="text-display md:text-hero-sm text-c-on mb-6 max-w-3xl">Experience in Motion</h1>
           <p className="max-w-measure text-lg text-c-on-muted leading-relaxed">
-            A representative view of the kind of work MFAV’s divisions take on. Filter by
+            A representative view of the kind of work M-FAV’s divisions take on. Filter by
             sector to see how that looks across marine, offshore, logistics,
             infrastructure and equipment engagements.
           </p>

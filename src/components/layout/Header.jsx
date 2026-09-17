@@ -4,6 +4,7 @@ import { Menu, X, Mail, Phone } from 'lucide-react';
 import Button from '../ui/Button';
 import Logo from './Logo';
 import { NAV_LINKS } from '../../content/divisions';
+import { CONTACT } from '../../content/site';
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -179,11 +180,13 @@ export default function Header() {
             </Button>
             <div className="flex flex-col gap-2 text-sm text-white/70">
               <span className="flex items-center gap-2">
-                <Mail size={16} aria-hidden="true" /> [EMAIL PLACEHOLDER]
+                <Mail size={16} aria-hidden="true" /> {CONTACT.generalEmail}
               </span>
-              <span className="flex items-center gap-2">
-                <Phone size={16} aria-hidden="true" /> [PHONE PLACEHOLDER]
-              </span>
+              {CONTACT.phones.map((phone) => (
+                <span key={phone} className="flex items-center gap-2">
+                  <Phone size={16} aria-hidden="true" /> {phone}
+                </span>
+              ))}
             </div>
           </div>
         </div>

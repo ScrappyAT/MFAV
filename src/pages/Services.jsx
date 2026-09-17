@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
+import { METADATA } from '../content/metadata';
 import { DIVISIONS } from '../content/divisions';
 import { SERVICES } from '../content/services';
 import Container from '../components/ui/Container';
@@ -13,10 +14,7 @@ import TextLink from '../components/ui/TextLink';
  * drift out of sync with the division pages this links to.
  */
 export default function Services() {
-  useDocumentMeta(
-    'Our Services',
-    'MFAV Offshore and Allied Resources: six integrated divisions across marine, aviation, energy, logistics, equipment and property — one accountable partner for complex operations.'
-  );
+  useDocumentMeta(METADATA.services.title, METADATA.services.description);
 
   return (
     <main>

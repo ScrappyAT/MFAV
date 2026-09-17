@@ -8,7 +8,7 @@ import { ArrowRight } from 'lucide-react';
  * index.css), never a color-only change (A3: "never a color-only change").
  *
  * `standalone` adds a trailing arrow that translates on hover, for
- * "Learn more →" / "Discover MFAV →" style links.
+ * "Learn more →" / "Discover M-FAV →" style links.
  */
 export default function TextLink({
   to,

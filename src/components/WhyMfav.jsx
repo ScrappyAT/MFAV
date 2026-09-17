@@ -5,7 +5,7 @@ import { useInView, revealClass } from '../hooks/useInView';
 
 // H2 is [AGENT-AUTHORED] per A7 — logged in COPY-FOR-REVIEW.md, not final
 // until client sign-off. Using the brief's own suggested line as written.
-const HEADING = 'Why MFAV';
+const HEADING = 'Why M-FAV';
 
 // Client-approved copy (A7) — reproduced verbatim, exactly as given.
 const DIFFERENTIATORS = [
