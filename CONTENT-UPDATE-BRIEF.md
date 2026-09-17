@@ -92,7 +92,6 @@ These are still unresolved and must stay as clearly-labelled placeholders. Do no
 - Operating hours
 - RC number
 - Social media URLs
-- Leadership names, roles, bios, portraits
 - Project dates
 - Aviation operator basis, and the scope of "Airline Services"
 - Property & Investment engagement model
