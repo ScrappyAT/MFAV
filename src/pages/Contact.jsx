@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Mail, Phone, MapPin, Clock, CheckCircle2, XCircle, AlertCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, CheckCircle2, XCircle, AlertCircle } from 'lucide-react';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
 import { METADATA } from '../content/metadata';
 import { CONTACT } from '../content/site';
@@ -353,14 +353,16 @@ export default function Contact() {
                   <Mail size={18} aria-hidden="true" className="shrink-0 text-c-primary" />
                   <span><span className="font-semibold text-c-on">Procurement:</span> {CONTACT.procurementEmail}</span>
                 </li>
-                <li className="flex items-start gap-3">
-                  <Clock size={18} aria-hidden="true" className="shrink-0 mt-0.5 text-c-primary" />
-                  <span>{CONTACT.hours}</span>
-                </li>
               </ul>
 
-              <div className="aspect-16/9 w-full rounded-token border border-c-border bg-c-surface-low flex items-center justify-center mb-6">
-                <span className="text-sm text-c-on-muted uppercase tracking-wide">{CONTACT.map}</span>
+              <div className="aspect-16/9 w-full rounded-token border border-c-border bg-c-surface-low overflow-hidden mb-6">
+                <iframe
+                  src={CONTACT.mapEmbedUrl}
+                  title={CONTACT.mapEmbedTitle}
+                  className="h-full w-full border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
               </div>
 
               <p className="text-sm text-c-on-muted leading-relaxed">

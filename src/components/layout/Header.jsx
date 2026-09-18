@@ -118,7 +118,12 @@ export default function Header() {
 
         <div className="shrink-0 flex items-center gap-4">
           <div className="hidden xl:block">
-            <Button to="/contact" variant="primary" size="sm">
+            <Button
+              to="/contact"
+              variant="primary"
+              size="sm"
+              aria-current={location.pathname === '/contact' ? 'page' : undefined}
+            >
               Request a Consultation
             </Button>
           </div>
@@ -175,7 +180,13 @@ export default function Header() {
           </nav>
 
           <div className="mt-auto flex flex-col gap-6 pt-10">
-            <Button to="/contact" variant="onDark" size="lg" className="w-full">
+            <Button
+              to="/contact"
+              variant="onDark"
+              size="lg"
+              className="w-full"
+              aria-current={location.pathname === '/contact' ? 'page' : undefined}
+            >
               Request a Consultation
             </Button>
             <div className="flex flex-col gap-2 text-sm text-white/70">

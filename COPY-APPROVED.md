@@ -57,7 +57,11 @@ OFFSHORE AND ALLIED SERVICES LTD
 > Integrated marine, offshore, aviation, logistics and industrial solutions.
 
 **Navigation labels** `[CLIENT-APPROVED]`
-Home · About Us · Services · Industries · Projects · Company · Contact
+Home · About Us · Services · Industries · Projects · Company
+
+Note: Contact is deliberately not a nav item. The header CTA below is the
+sole header route to `/contact` — by client decision, having both a nav
+link and a CTA to the same destination was duplicative.
 
 **Header CTA** `[CLIENT-APPROVED]` — Request a Consultation
 
@@ -928,8 +932,7 @@ The `/company` page ends on the careers section followed by the CTA band. Nothin
 | Phone | +234 (0) 708 668 1182 | `[VERIFY]` |
 | Enquiries | support@mfavoffshore.com | [CLIENT-SUPPLIED] |
 | Procurement | procurement@mfavoffshore.com | `[VERIFY]` |
-| Operating hours | `[HOURS PLACEHOLDER — suggested: Monday–Friday, 08:00–17:00 WAT. Operational support available 24/7.]` | **Missing** |
-| Map | `[MAP EMBED PLACEHOLDER]` | **Missing** |
+| Map | Google Maps embed of the Lekki office address | [CLIENT-SUPPLIED] |
 
 **Email decision, resolved:** there is no separate general-enquiry address. support@mfavoffshore.com is the single public address and the destination for the contact form. info@ and enquiries@ are no longer proposed anywhere. Keep procurement@ on the contact page only, labelled for procurement and supplier enquiries — it does not appear in the footer.
 
@@ -949,7 +952,8 @@ The `/company` page ends on the careers section followed by the CTA band. Nothin
 5. **Social handles.** The brief specifies LinkedIn, X, Facebook and Instagram icons. Supply the real URLs or drop the icons — dead social links damage credibility more than absent ones. LinkedIn is the only one that matters for B2B procurement; consider shipping that alone.
 
    The Leadership block (§4.4) and the Certifications block (§4.6) were removed from the site at client request. The footer's Leadership link goes with it; the Careers link is also dropped from the footer (Careers itself, §9.5, is unaffected — it just isn't linked from the footer any more).
-6. **Operating hours.**
+
+   **The map — RESOLVED.** A Google Maps embed of the Lekki office address is now used on `/contact`; see §10.2.
 
 ### 11.2 Footer content
 
@@ -1016,7 +1020,6 @@ Everything the client must supply before launch.
 - [x] ~~Registered office address~~ — RESOLVED: 26 Prof Kiumi Akingbehin Street, off Awkuzu Street, off Omorinre Johnson Street, Lekki 105102, Lagos, Nigeria
 - [x] ~~General enquiry email address~~ — RESOLVED: support@mfavoffshore.com (the single public address)
 - [x] ~~Contact form submission destination~~ — RESOLVED: support@mfavoffshore.com
-- [ ] Operating hours
 - [ ] Confirmation on naming Shell, Chevron, Saipem, TotalEnergies, First E&P — consent obtained, or use the unattributed fallback
 
 **Important**

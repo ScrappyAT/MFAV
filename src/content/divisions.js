@@ -81,6 +81,9 @@ export const DIVISIONS = [
   },
 ];
 
+// Contact deliberately excluded (COPY-APPROVED.md §1) — the header CTA
+// ("Request a Consultation") is the sole header route to /contact; a nav
+// link to the same destination was duplicative.
 export const NAV_LINKS = [
   { name: 'Home', to: '/' },
   { name: 'About Us', to: '/about' },
@@ -88,5 +91,4 @@ export const NAV_LINKS = [
   { name: 'Industries', to: '/industries' },
   { name: 'Projects', to: '/projects' },
   { name: 'Company', to: '/company' },
-  { name: 'Contact', to: '/contact' },
 ];

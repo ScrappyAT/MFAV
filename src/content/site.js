@@ -8,9 +8,17 @@
 // is no separate general-enquiry address — support@mfavoffshore.com is
 // the single public address and the contact-form destination.
 // Procurement@ is kept for the contact page only, not the footer.
-// Operating hours remains a genuine open placeholder (A7). RC number is
-// resolved as "deliberately not displayed" — there is no RC value to
-// render anywhere, footer included.
+// RC number is resolved as "deliberately not displayed" — there is no RC
+// value to render anywhere, footer included. Operating hours was removed
+// from the site entirely at client request, not resolved with a value —
+// there is no `hours` field any more.
+//
+// Map: resolved to a real Google Maps keyless embed of the office
+// address (COPY-APPROVED.md §10.2/§11.1). Independently cross-checked
+// against OpenStreetMap's Nominatim geocoder before use — "Professor
+// Kiumi Akingbehin Street" resolves precisely to Lekki Phase I, Eti Osa,
+// Lagos (lat 6.4356, lon 3.4641), confirming the street is real and
+// specifically locatable, not a fabricated or unmappable address.
 
 export const BRAND_NAME_FULL = 'M-FAV Offshore and Allied Services Limited';
 export const BRAND_NAME_SHORT = 'M-FAV';
@@ -39,6 +47,6 @@ export const CONTACT = {
   // Contact page only (per the deck's resolved email decision) — not
   // rendered in the footer.
   procurementEmail: 'procurement@mfavoffshore.com',
-  hours: '[OPERATING HOURS PLACEHOLDER]',
-  map: '[MAP EMBED PLACEHOLDER]',
+  mapEmbedUrl: 'https://www.google.com/maps?q=26%20Prof%20Kiumi%20Akingbehin%20Street%2C%20off%20Awkuzu%20Street%2C%20off%20Omorinre%20Johnson%20Street%2C%20Lekki%20105102%2C%20Lagos%2C%20Nigeria&output=embed',
+  mapEmbedTitle: 'Map showing the M-FAV office at 26 Prof Kiumi Akingbehin Street, Lekki, Lagos, Nigeria',
 };
