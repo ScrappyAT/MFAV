@@ -81,7 +81,7 @@ export const SERVICES = {
 
   aviation: {
     positioning: 'Charter and aircraft services arranged around operational schedules, not timetables.',
-    image: '/assets/images/division_aviation.svg',
+    image: '/assets/images/division_aviation.jpg',
     overview: [
       'Moving people to and from operational sites is rarely a scheduled-airline problem. Crew rotations run to shift patterns, offshore movements depend on weather windows, and executive travel changes at short notice.',
       'M-FAV arranges fixed-wing and rotary aviation services covering private jet charter, ad-hoc and programme charter, helicopter services for offshore and remote site access, and support to airline operations. We work with approved operators and verify certification, insurance and crew currency before an aircraft is committed to a client movement.',
@@ -125,7 +125,7 @@ export const SERVICES = {
 
   'energy-infrastructure': {
     positioning: 'Pipeline and infrastructure delivery executed to the standards the scope demands.',
-    image: '/assets/images/who_we_are_plant.svg',
+    image: '/assets/images/energy and infrasture division.png',
     overview: [
       'Pipeline work is unforgiving. Lay tolerance, weld integrity, seabed conditions and weather windows all constrain the job, and the consequences of getting any of them wrong are measured in environmental damage and regulatory exposure, not just cost.',
       'M-FAV supports pipeline installation, cable laying and subsea infrastructure work for offshore and onshore energy operations, using DP2-capable vessels and positioning technology appropriate to the accuracy the scope requires. We work in partnership with local and international contractors, taking the marine and support scope on projects where that is where we add most value.',
@@ -169,7 +169,7 @@ export const SERVICES = {
 
   'logistics-haulage': {
     positioning: 'Heavy movement across Nigeria, tracked and accounted for from collection to delivery.',
-    image: '/assets/images/division_logistics.svg',
+    image: '/assets/images/division_logistics.jpeg',
     overview: [
       'Nigerian road logistics is a security and compliance problem as much as a transport one. Route conditions, checkpoint delays, product security and driver welfare all determine whether a load arrives intact and on time.',
       'M-FAV provides onshore and offshore haulage for petroleum products, machinery, spare parts, plant and raw materials including sand, cement, metals and chemicals. Movements are tracked and monitored in real time, and high-value or hazardous loads are planned with route assessment and, where required, escort.',
@@ -213,7 +213,7 @@ export const SERVICES = {
 
   'equipment-ppe': {
     positioning: 'Certified equipment and protective gear, sourced to specification and delivered on schedule.',
-    image: '/assets/images/division_equipment.svg',
+    image: '/assets/images/division_equipment.png',
     overview: [
       'Procurement fails in two directions. Cheap sourcing puts uncertified equipment on a worksite, and slow sourcing stops the worksite entirely. Both are avoidable with the right supplier relationships and honest lead times.',
       'M-FAV supplies personal protective equipment, marine equipment, industrial consumables and technical equipment for oil production, drilling and petrochemical operations. Sourcing is competitive but specification-led: items are procured against the applicable standards and inspected before they reach your site.',
@@ -258,7 +258,7 @@ export const SERVICES = {
 
   'property-investment': {
     positioning: 'Industrial and port-adjacent property and asset opportunities.',
-    image: '/assets/images/division_property.svg',
+    image: '/assets/images/division_property.jpeg',
     overview: [
       'Operations need somewhere to work from. Yard space near a port, warehousing within reach of a supply base, and industrial facilities with the access and services that heavy operations require are consistently harder to find in Nigeria than the operations they support.',
       'M-FAV holds and develops property interests aligned with the sectors we serve, and works with partners on asset and investment opportunities across industrial and port-adjacent real estate.',

@@ -11,11 +11,11 @@ import { useInView, revealClass } from '../hooks/useInView';
 // not a new gap.
 const IMAGE_BY_DIVISION = {
   'marine-offshore': '/assets/images/hero_section.jpg',
-  aviation: '/assets/images/division_aviation.svg',
-  'energy-infrastructure': '/assets/images/who_we_are_plant.svg',
-  'logistics-haulage': '/assets/images/division_logistics.svg',
-  'equipment-ppe': '/assets/images/division_equipment.svg',
-  'property-investment': '/assets/images/division_property.svg',
+  aviation: '/assets/images/division_aviation.jpg',
+  'energy-infrastructure': '/assets/images/energy and infrasture division.png',
+  'logistics-haulage': '/assets/images/division_logistics.jpeg',
+  'equipment-ppe': '/assets/images/division_equipment.png',
+  'property-investment': '/assets/images/division_property.jpeg',
 };
 
 // marine-offshore reuses the warm hero photo — grade it cool to match

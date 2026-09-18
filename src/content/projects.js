@@ -19,7 +19,7 @@ export const PROJECTS = [
     location: '[LOCATION PLACEHOLDER], Nigeria',
     date: '[DATE PLACEHOLDER]',
     description: 'Security escort vessel operations and offshore support services provided across the project duration.',
-    image: '/assets/images/division_aviation.svg',
+    image: '/assets/images/division_aviation.jpg',
   },
   {
     id: 'bonga-top-chain-replacement',
@@ -40,7 +40,7 @@ export const PROJECTS = [
     location: '[LOCATION PLACEHOLDER], Nigeria',
     date: '[DATE PLACEHOLDER]',
     description: 'Marine and vessel support for pipeline installation works on a 20-inch export line.',
-    image: '/assets/images/who_we_are_plant.svg',
+    image: '/assets/images/energy and infrasture division.png',
   },
   {
     id: 'offshore-seismic-survey-support',
@@ -50,7 +50,7 @@ export const PROJECTS = [
     location: '[LOCATION PLACEHOLDER], Nigeria',
     date: '[DATE PLACEHOLDER]',
     description: 'Escort and support vessel operations for seismic survey campaigns in Nigerian waters.',
-    image: '/assets/images/division_aviation.svg',
+    image: '/assets/images/division_aviation.jpg',
   },
   {
     id: 'offshore-ago-supply-koko-field',
@@ -60,7 +60,7 @@ export const PROJECTS = [
     location: 'Koko Field, Nigeria',
     date: '[DATE PLACEHOLDER]',
     description: 'Scheduled offshore supply of Automotive Gas Oil to producing field operations.',
-    image: '/assets/images/division_logistics.svg',
+    image: '/assets/images/division_logistics.jpeg',
   },
   {
     id: 'offshore-ago-supply-ladol',
@@ -70,7 +70,7 @@ export const PROJECTS = [
     location: 'LADOL, Lagos',
     date: '[DATE PLACEHOLDER]',
     description: 'Fuel supply and offshore vessel chandling services from the LADOL free zone.',
-    image: '/assets/images/division_logistics.svg',
+    image: '/assets/images/division_logistics.jpeg',
   },
   {
     id: 'ppe-supply-programme',
@@ -80,7 +80,7 @@ export const PROJECTS = [
     location: 'Nigeria',
     date: '[DATE PLACEHOLDER]',
     description: 'Multi-year protective equipment supply supporting workforce compliance across offshore and industrial sites.',
-    image: '/assets/images/division_equipment.svg',
+    image: '/assets/images/division_equipment.png',
   },
   {
     id: 'expatriate-journey-management',
@@ -90,7 +90,7 @@ export const PROJECTS = [
     location: 'Nationwide, Nigeria',
     date: '[DATE PLACEHOLDER]',
     description: 'Airport reception, secure executive transport and escort services for client expatriate personnel.',
-    image: '/assets/images/division_logistics.svg',
+    image: '/assets/images/division_logistics.jpeg',
   },
 ];
 
