@@ -20,23 +20,30 @@ export default function Company() {
 
   return (
     <main>
-      {/* Hero */}
-      <Section size="md" tone="alt" border>
-        {/* pt-12 (mobile only) stacks on top of Section's own 80px
-            top padding — 80px alone sits under the fixed 100px header,
-            clipping the H1's top edge; the extra 48px clears it with
-            margin. md+ gets pt-0 since Section's own md padding
-            (144px) was already safe. */}
-        <Container className="pt-12 md:pt-0">
-          <h1 className="text-display md:text-hero-sm text-c-on mb-6 max-w-3xl">
+      {/* Hero — image-filled, matching About/Services/Industries. */}
+      <section className="relative overflow-hidden bg-c-scrim">
+        <img
+          src="/assets/images/hero_section.jpg"
+          alt=""
+          loading="eager"
+          className="grade-cool absolute inset-0 h-full w-full object-cover"
+        />
+        <div aria-hidden="true" className="grade-cool-tint absolute inset-0" />
+        {/* Directional scrim (as the homepage Hero): strong top-left
+            behind the text, fading to fully visible image bottom-right. */}
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-c-scrim/60 via-c-scrim/20 to-transparent" />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-c-scrim/30 via-transparent to-transparent" />
+        {/* pt-32 (mobile only) clears the fixed 100px header. */}
+        <Container className="relative z-10 pt-32 pb-section-sm md:py-section-lg">
+          <h1 className="text-hero-sm md:text-hero text-c-ondark mb-6 max-w-3xl">
             The Company
           </h1>
-          <p className="max-w-measure text-lg text-c-on-muted leading-relaxed">
+          <p className="max-w-measure text-lg text-c-ondark/85 leading-relaxed">
             How M-FAV is structured, how we operate, and the standards that apply
             across every division.
           </p>
         </Container>
-      </Section>
+      </section>
 
       {/* Structure and divisions at a glance */}
       <Section size="md">

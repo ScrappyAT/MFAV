@@ -28,7 +28,10 @@ export default function Industries() {
           className="grade-cool absolute inset-0 h-full w-full object-cover"
         />
         <div aria-hidden="true" className="grade-cool-tint absolute inset-0" />
-        <div aria-hidden="true" className="absolute inset-0 bg-c-scrim/80" />
+        {/* Directional scrim (as the homepage Hero): strong top-left
+            behind the text, fading to fully visible image bottom-right. */}
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-c-scrim/60 via-c-scrim/20 to-transparent" />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-c-scrim/30 via-transparent to-transparent" />
         {/* pt-32 (mobile only) replaces py-section-sm's 80px top half —
             80px sits under the fixed 100px header, clipping the H1's
             top edge; 128px clears it with margin. md+ is unaffected

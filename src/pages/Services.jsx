@@ -18,21 +18,12 @@ export default function Services() {
 
   return (
     <main>
-      {/* Hero — matches About/Industries: full-bleed hero photo, cool
-          grade, navy scrim, same H1 step and on-dark text colors. */}
-      <section className="relative overflow-hidden bg-c-scrim">
-        <img
-          src="/assets/images/hero_section.jpg"
-          alt=""
-          loading="eager"
-          className="grade-cool absolute inset-0 h-full w-full object-cover"
-        />
-        <div aria-hidden="true" className="grade-cool-tint absolute inset-0" />
-        <div aria-hidden="true" className="absolute inset-0 bg-c-scrim/80" />
-        {/* pt-32 (mobile only) replaces py-section-sm's 80px top half —
-            80px sits under the fixed 100px header, clipping the H1's
-            top edge; 128px clears it with margin. md+ is unaffected
-            (py-section-lg's 180px was already safe). */}
+      {/* Hero — image removed by request (a replacement image is coming).
+          Navy placeholder keeps the on-dark text colors so an image can
+          be dropped back in here without touching the copy. */}
+      <section className="relative overflow-hidden bg-c-primary-bg">
+        {/* pt-32 (mobile only) clears the fixed 100px header; md+ uses
+            py-section-lg's 180px. */}
         <Container className="relative z-10 pt-32 pb-section-sm md:py-section-lg">
           <h1 className="text-hero-sm md:text-hero text-c-ondark mb-6 max-w-3xl">Our Services</h1>
           <p className="max-w-measure text-lg text-c-ondark/85 leading-relaxed">
