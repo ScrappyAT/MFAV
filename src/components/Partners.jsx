@@ -37,10 +37,10 @@ export default function Partners() {
   return (
     <section className="bg-c-bg">
       <Container className="py-section-sm md:py-section">
-        <h2 className="text-display-sm text-c-on text-center mb-8">
+        <h2 className="text-display-sm md:text-display text-c-on text-center mb-8">
           Clients We've Worked With
         </h2>
-        <p className="max-w-2xl mx-auto text-center text-c-on-muted leading-relaxed mb-4">
+        <p className="max-w-2xl mx-auto text-center text-base md:text-lg text-c-on-muted leading-relaxed mb-4">
           We're proud to have collaborated with industry leaders and forward-thinking
           organizations across sectors.
         </p>
