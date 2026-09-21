@@ -150,7 +150,7 @@ export default function About() {
       {/* Safety */}
       <section id="safety" className="scroll-mt-24 relative overflow-hidden bg-c-scrim">
         <img
-          src="/assets/images/who_we_are_plant.svg"
+          src="/assets/images/who_we_are_plant.gif"
           alt=""
           loading="lazy"
           className="absolute inset-0 h-full w-full object-cover"

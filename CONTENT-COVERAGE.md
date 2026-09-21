@@ -1,4 +1,4 @@
-# CONTENT-COVERAGE.md — Pass 0 Audit
+﻿# CONTENT-COVERAGE.md — Pass 0 Audit
 
 Maps every section of `COPY-APPROVED.md` (the client-approved deck — see the
 note on file identity below) to its current state in the live build.
@@ -42,7 +42,6 @@ dev-only `/styleguide` (excluded from production). No route is missing.
 | `/services` | `pages/Services.jsx` | Hero text inline; body sourced from `content/divisions.js` + `content/services.js` |
 | `/services/:slug` | `pages/ServiceDetail.jsx` | Entirely from `content/services.js` (`SERVICES` object) — one template, one source, as required |
 | `/industries` | `pages/Industries.jsx` | Hero inline; tile/detail content from `content/industries.jsx` |
-| `/projects` | `pages/Projects.jsx` | Entirely inline (`SECTORS`, `PROJECTS` arrays) |
 | `/company` | `pages/Company.jsx` | Entirely inline JSX |
 | `/contact` | `pages/Contact.jsx` | Entirely inline JSX (validation messages, panel copy, field labels) |
 | 404 | `pages/NotFound.jsx` | Entirely inline JSX |
@@ -50,7 +49,7 @@ dev-only `/styleguide` (excluded from production). No route is missing.
 | Metadata | `hooks/useDocumentMeta.js` + per-page `useDocumentMeta(...)` calls + `index.html` static fallback | `SITE_NAME` constant in the hook; title/description strings inline per page |
 
 **Two duplicated data sets that must become one** (A4 "one content source per page or collection"):
-- Project cards exist as two different, non-matching placeholder arrays: `components/ProjectsSection.jsx` (5 entries) and `pages/Projects.jsx` (10 entries, different sectors/descriptions). The deck supplies exactly 8 real projects — both call sites need to read from one new `content/projects.js`.
+- **Moot now** - both project placeholder arrays were deleted along with the `/projects` page and its homepage teaser (commit bbb53ae). There is no duplicated project data set left to reconcile.
 - `content/divisions.js`'s `blurb` field (one-liner per division) is reused as both Company.jsx's division-grid description *and* ServiceDetail's meta-description input, but its wording doesn't match the deck's "Services mega-menu descriptors" (§1) — see §4 below on where that text is even supposed to go.
 
 ---
@@ -86,7 +85,7 @@ dev-only `/styleguide` (excluded from production). No route is missing.
 | 3.5 | Featured Services | **Partial** | H2 happens to already match the deck's suggested line verbatim (lucky coincidence). All six card descriptions are different wording and need full replacement. |
 | 3.6 | Industries We Serve | **Partial** | Heading matches. All eight one-line relevance strings differ from the deck's new wording. |
 | 3.7 | Safety & Operational Excellence | **Partial** | Heading matches. Deck adds a new intro paragraph — **missing** entirely today. All six point headings/bodies are different wording (deck rewrote these to stop leaning on the old motto). |
-| 3.8 | Projects / Operations | **Partial — wrong option in place** | Currently ships Option A (5 generic placeholder cards + a "pending confirmation" banner). Deck calls for Option B: the 8 real, dated projects, banner removed (A6.1). This is a full data-model swap, not a wording tweak. |
+| 3.8 | Projects / Operations | **REMOVED** | The `/projects` page and its homepage teaser were deleted together (commit bbb53ae); no projects page remains to cover. |
 | 3.9 | Why M-FAV | **Partial** | The six differentiators (heading + line) are already **verbatim-identical** to the deck — no change needed there. Only the section H2 itself (`"Why MFAV"`) needs the hyphen. |
 | 3.10 | Partners / Clients | **Partial** | H2 matches. The unattributed supporting paragraph required by A6.3 is **missing** (only the placeholder-marks note is there today, with different wording than the deck's suggested note). |
 | 3.11 | Closing CTA | **Present** | Heading, body and both button labels are already byte-identical to the deck. No change needed. |
@@ -107,9 +106,9 @@ dev-only `/styleguide` (excluded from production). No route is missing.
 
 **Partial.** Structure matches (hero + full-depth sector list with 2–3 linked divisions each). Hero H1 matches, hero sub-line differs slightly (cosmetic — current "Eight sectors, one set of capabilities..." vs deck's intro elsewhere). All eight `detail` paragraphs in `content/industries.jsx` are different wording from the deck's new `[DRAFT]` paragraphs (which reference more specific service names — FSIVs/AHVs/PSVs, DP2, etc., consistent with the service-page rewrite).
 
-### 8. `/projects` (deck §8)
+### 8. `/projects` (deck 8) - **REMOVED**
 
-**Partial — same Option A/B issue as 3.8.** Filter chip labels and slugs already match the deck's five categories plus "All" exactly — no change needed there. Empty-state copy differs (current: "No projects match this filter yet." only — deck adds a "View all projects"/"get in touch" follow-on sentence). The 10-entry placeholder array needs to become the same 8 real projects as §3.8, from the same new content file.
+The `/projects` page and its homepage teaser were deleted together (commit bbb53ae). Nothing on this page remains to cover.
 
 ### 9. `/company` (deck §9)
 
@@ -151,7 +150,6 @@ dev-only `/styleguide` (excluded from production). No route is missing.
 | `src/pages/Contact.jsx` | Meta description |
 | `src/pages/Services.jsx` | Meta description |
 | `src/pages/Industries.jsx` | Meta description |
-| `src/pages/Projects.jsx` | Meta description |
 | `src/content/services.js` | Comment only (not rendered copy) — low priority but should be swept |
 | `src/content/industries.jsx` | One `detail` paragraph (Oil & Gas) references "MFAV" |
 | `src/components/ui/TextLink.jsx` | Comment only, and a demo string inside `Styleguide.jsx`'s usage example — dev-only route, excluded from production, out of scope for this content pass unless you want it swept too |
@@ -192,7 +190,6 @@ No other heading in the deck grows meaningfully beyond its current length; the r
 New files:
 - **`src/content/site.js`** (or similar) — global strings currently hardcoded across `Header.jsx`, `Footer.jsx`, `Logo.jsx`, `useDocumentMeta.js`, `index.html`: brand name forms, motto, footer brand line, copyright, RC placeholder, social list, tagline.
 - **`src/content/metadata.js`** — per-route `<title>`/description pairs (14 routes), replacing the scattered inline strings passed to `useDocumentMeta()` in every page file, and replacing `useDocumentMeta.js`'s `SITE_NAME`-suffix pattern with the deck's literal per-route titles.
-- **`src/content/projects.js`** — the 8 real projects (title, sector, sector slug, location, description, date placeholder), replacing both `ProjectsSection.jsx`'s and `Projects.jsx`'s separate inline arrays.
 - **`src/content/about.js`** — About page's overview, mission/vision/corporate-aim, values, leadership intro, safety detail, certifications text (currently all inline JSX in `About.jsx`).
 - **`src/content/company.js`** — Company page's operating-model, governance, HSE and careers copy (currently inline in `Company.jsx`).
 - **`src/content/contact.js`** — validation messages, success/error panel copy, response-time note (currently inline in `Contact.jsx`).

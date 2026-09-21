@@ -17,7 +17,7 @@ export default function WhoWeAre() {
         {/* Image side — full-bleed to the viewport edge, not inset */}
         <div ref={ref} className="relative min-h-96 lg:min-h-full overflow-hidden order-2 lg:order-1">
           <img
-            src="/assets/images/who_we_are_plant.svg"
+            src="/assets/images/who_we_are_plant.gif"
             alt="Industrial plant at dusk"
             loading="lazy"
             className={['absolute inset-0 h-full w-full object-cover reveal-image', inView && 'is-visible'].filter(Boolean).join(' ')}

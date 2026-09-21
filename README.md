@@ -51,7 +51,7 @@ src/
 ```
 
 Routes (`src/App.jsx`): `/` · `/about` · `/services` · `/services/:slug` ·
-`/industries` · `/projects` · `/company` · `/contact` · `/styleguide`
+`/industries` → `/company` → `/contact` → `/styleguide`
 (dev-only, stripped from production via `import.meta.env.DEV`) · `*` → `NotFound`.
 
 ## How to add a service (division)
@@ -81,20 +81,6 @@ per-division page.
    `/services/:slug` is already generic.
 5. If the division needs a footer link, it's automatic too —
    `src/components/layout/Footer.jsx` maps `DIVISIONS` directly.
-
-## How to add a project (portfolio card)
-
-Projects are placeholder data today (see `PLACEHOLDERS.md`). To add one:
-
-- Homepage teaser: `src/components/ProjectsSection.jsx` → `PROJECTS` array.
-- Full portfolio: `src/pages/Projects.jsx` → `PROJECTS` array (note this is a
-  **separate** array from the homepage teaser — they're allowed to show
-  different illustrative sets). Each entry needs `sectorSlug` matching one
-  of `SECTORS` in the same file so the filter chips pick it up.
-- Once real project content exists, replace the `title`/`location` props
-  passed to `ProjectCard` (currently hardcoded to
-  `[PROJECT TITLE PLACEHOLDER]` / `[LOCATION PLACEHOLDER]` in both files) and
-  remove the "illustrative portfolio" banner copy.
 
 ## How to swap the logo or imagery
 

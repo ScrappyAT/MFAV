@@ -1,4 +1,4 @@
-# PLACEHOLDERS.md
+﻿# PLACEHOLDERS.md
 
 Rebuilt from scratch in Pass 6 (CONTENT-UPDATE-BRIEF.md) against every
 placeholder A7 lists as still open, plus a fresh inventory of every
@@ -33,7 +33,7 @@ Legend: 🔲 content placeholder (client to supply) · ❓ decision needed
 ## `/` (homepage)
 
 - 🔲 **Image caption** — `WhoWeAre.jsx`: `[IMAGE CAPTION PLACEHOLDER — e.g. "Offshore support operations, Gulf of Guinea"]`.
-- 🔲 **Projects teaser** — shows 5 of the 8 real projects (one per sector). Of those 5, 2 (2DHR Project Support, 20" EPWD Pipeline Project) still carry `[LOCATION PLACEHOLDER]`; all 5 carry `[DATE PLACEHOLDER]` (no dates supplied yet).
+- **[REMOVED]** **Projects teaser** - deleted together with the `/projects` page (commit bbb53ae). No project placeholders exist on the site any more.
 - ❓ **Partners** — unattributed fallback line in use (COPY-APPROVED.md A6.3); generic placeholder marks, captioned as not representing real clients. Decision needed: secure consent to name Shell, Chevron, Saipem, TotalEnergies and First E&P, or keep unattributed permanently.
 
 ## `/about`
@@ -46,10 +46,9 @@ Legend: 🔲 content placeholder (client to supply) · ❓ decision needed
 
 - No bracketed placeholders on either page. All copy is deck-sourced.
 
-## `/projects`
+## `/projects` - **REMOVED**
 
-- 🔲 All eight real projects. Three (2DHR Project Support, 20" EPWD Pipeline Project, Offshore Seismic Survey Support) carry `[LOCATION PLACEHOLDER]`; all eight carry `[DATE PLACEHOLDER]`.
-- ❓ Operator naming — where consent isn't secured, counterparties should read generically ("a deepwater operator", etc.) per the deck's own instruction; currently no operator is named anywhere on this page.
+The `/projects` page and its homepage teaser were deleted together (commit bbb53ae). No project placeholders remain anywhere on the site.
 
 ## Service detail pages (`/services/:slug`)
 
