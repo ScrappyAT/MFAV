@@ -360,15 +360,9 @@ export default function Contact() {
                 </li>
               </ul>
 
-              <div className="aspect-16/9 w-full rounded-token border border-c-border bg-c-surface-low overflow-hidden mb-6">
-                <iframe
-                  src={CONTACT.mapEmbedUrl}
-                  title={CONTACT.mapEmbedTitle}
-                  className="h-full w-full border-0"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              </div>
+              {/* Map embed hidden by request. CONTACT.mapEmbedUrl /
+                  CONTACT.mapEmbedTitle remain in content/site.js, so the
+                  iframe block can be restored here when needed. */}
 
               <p className="text-sm text-c-on-muted leading-relaxed">
                 We respond to enquiries within one business day. Operational and urgent
