@@ -20,6 +20,7 @@ const Industries = React.lazy(() => import('./pages/Industries'));
 const Projects = React.lazy(() => import('./pages/Projects'));
 const Company = React.lazy(() => import('./pages/Company'));
 const Contact = React.lazy(() => import('./pages/Contact'));
+const FAQ = React.lazy(() => import('./pages/FAQ'));
 const NotFound = React.lazy(() => import('./pages/NotFound'));
 
 // Dev-only route (A2: "/styleguide dev-only route") — lazy-loaded so it,
@@ -39,6 +40,7 @@ export default function App() {
         <Route path="/projects" element={<Suspense fallback={null}><Projects /></Suspense>} />
         <Route path="/company" element={<Suspense fallback={null}><Company /></Suspense>} />
         <Route path="/contact" element={<Suspense fallback={null}><Contact /></Suspense>} />
+        <Route path="/faq" element={<Suspense fallback={null}><FAQ /></Suspense>} />
         {import.meta.env.DEV && (
           <Route
             path="/styleguide"

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import PageTransition from './PageTransition';
@@ -38,10 +38,30 @@ function ScrollManager() {
   return null;
 }
 
+/**
+ * Alt+C navigates to /contact — a quick-access shortcut for keyboard
+ * users (H7: Flexibility & Efficiency of Use).
+ */
+function ContactShortcut() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    function handleKey(e) {
+      if (e.altKey && e.key === 'c') {
+        e.preventDefault();
+        navigate('/contact');
+      }
+    }
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [navigate]);
+  return null;
+}
+
 export default function Layout() {
   return (
     <div className="min-h-screen bg-c-bg text-c-on selection:bg-c-primary-bg selection:text-white">
       <ScrollManager />
+      <ContactShortcut />
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-toast focus:rounded-token focus:bg-c-on focus:px-4 focus:py-2 focus:text-c-bg"

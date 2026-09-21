@@ -190,8 +190,13 @@ export default function Contact() {
                     <div>
                       <h2 className="text-xl font-bold text-c-on mb-2">We couldn't send your enquiry.</h2>
                       <p className="text-c-on-muted leading-relaxed mb-4">
-                        Something went wrong on our end. Please try again, or email us
-                        directly at support@mfavoffshore.com.
+                        Something went wrong on our end. Please try again, or email us directly at{' '}
+                        <a
+                          href={`mailto:${CONTACT.email}`}
+                          className="font-semibold text-c-on underline underline-offset-2 hover:text-c-primary-bg"
+                        >
+                          {CONTACT.email}
+                        </a>.
                       </p>
                       <Button type="button" variant="secondary" onClick={() => setStatus('idle')}>
                         Try Again

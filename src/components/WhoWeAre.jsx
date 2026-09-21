@@ -22,9 +22,6 @@ export default function WhoWeAre() {
             loading="lazy"
             className={['absolute inset-0 h-full w-full object-cover reveal-image', inView && 'is-visible'].filter(Boolean).join(' ')}
           />
-          <span className="absolute bottom-4 left-4 rounded-token-sm border border-c-border-hl bg-c-bg/90 px-3 py-1.5 text-micro uppercase text-c-on-muted">
-            [IMAGE CAPTION PLACEHOLDER — e.g. "Offshore support operations, Gulf of Guinea"]
-          </span>
         </div>
 
         {/* Text side — same `inView` trigger as the image opposite it, so

@@ -60,7 +60,7 @@ export default function ServiceDetail() {
             <span className="mx-2">/</span>
             <TextLink to="/services" onDark>Services</TextLink>
             <span className="mx-2">/</span>
-            <span className="text-c-ondark">{division.name}</span>
+            <span aria-current="page" className="text-c-ondark">{division.name}</span>
           </nav>
           <h1 className="text-hero-sm md:text-hero text-c-ondark mb-6 max-w-3xl">{division.name}</h1>
           <p className="max-w-measure text-lg text-c-ondark/85 leading-relaxed mb-8">{service.positioning}</p>

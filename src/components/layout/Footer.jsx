@@ -1,21 +1,13 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Mail, Phone, MapPin, Linkedin, Twitter, Facebook, Instagram } from 'lucide-react';
+import { Mail, Phone, MapPin } from 'lucide-react';
 import TextLink from '../ui/TextLink';
 import CtaBand from '../ui/CtaBand';
 import Logo from './Logo';
 import { DIVISIONS } from '../../content/divisions';
 import { FOOTER_BRAND_LINE, MOTTO, COPYRIGHT, CONTACT } from '../../content/site';
-
-// No real social URLs exist yet (client hasn't supplied handles). Per A2.6
-// these render as non-interactive placeholders rather than fake `href="#"`
-// links — see the Phase 1 report for the open item.
-const SOCIALS = [
-  { name: 'LinkedIn', Icon: Linkedin },
-  { name: 'X', Icon: Twitter },
-  { name: 'Facebook', Icon: Facebook },
-  { name: 'Instagram', Icon: Instagram },
-];
+// Social icons hidden until real URLs are supplied — rendering non-interactive
+// icon-shaped spans alongside clickable links breaks consistency (H4).
 
 export default function Footer() {
   const { pathname } = useLocation();
@@ -57,18 +49,7 @@ export default function Footer() {
             <p className="text-micro uppercase tracking-wide text-c-ondark-primary">
               {MOTTO}
             </p>
-            <div className="flex items-center gap-3 pt-2">
-              {SOCIALS.map(({ name, Icon }) => (
-                <span
-                  key={name}
-                  title={`${name} — placeholder, pending client-supplied URL`}
-                  aria-hidden="true"
-                  className="flex h-9 w-9 items-center justify-center rounded-token border border-c-ondark/25 text-c-ondark/40"
-                >
-                  <Icon size={16} />
-                </span>
-              ))}
-            </div>
+
           </div>
 
           {/* Services */}
@@ -96,6 +77,7 @@ export default function Footer() {
               <li><TextLink to="/about" onDark>About Us</TextLink></li>
               <li><TextLink to="/company" onDark>Company</TextLink></li>
               <li><TextLink to="/industries" onDark>Industries</TextLink></li>
+              <li><TextLink to="/faq" onDark>FAQ</TextLink></li>
             </ul>
           </div>
 
@@ -135,13 +117,7 @@ export default function Footer() {
       <div className="border-t border-c-ondark/15">
         <div className="mfav-container flex flex-col sm:flex-row items-center justify-between gap-4 py-8 text-sm text-c-ondark/70">
           <p>{COPYRIGHT}</p>
-          {/* No /privacy or /terms route exists in the A5 IA — rendered as
-              plain text rather than a fake href="#" link. Flagged in the
-              Phase 1 report as an open question (add real pages, or omit). */}
-          <div className="flex items-center gap-6 text-c-ondark/70">
-            <span>Privacy</span>
-            <span>Terms</span>
-          </div>
+
         </div>
       </div>
     </footer>

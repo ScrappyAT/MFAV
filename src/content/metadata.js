@@ -59,4 +59,8 @@ export const METADATA = {
     title: 'Page Not Found — M-FAV',
     description: 'The page you requested could not be found.',
   },
+  faq: {
+    title: 'FAQ — M-FAV',
+    description: 'Answers to common questions about M-FAV services, operations, how to engage us and how to apply.',
+  },
 };

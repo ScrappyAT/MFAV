@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
 import { METADATA } from '../content/metadata';
 import { DIVISIONS } from '../content/divisions';
+import { CONTACT } from '../content/site';
 import Container from '../components/ui/Container';
 import Section from '../components/ui/Section';
 import SectionHeader from '../components/ui/SectionHeader';
@@ -134,8 +135,13 @@ export default function Company() {
               so does a demonstrated commitment to working safely.
             </p>
             <p className="text-c-ondark/75 leading-relaxed">
-              To register interest, send your CV and the role you are interested in to
-              [CAREERS EMAIL PLACEHOLDER].
+              To register interest, send your CV and the role you are interested in to{' '}
+              <a
+                href={`mailto:${CONTACT.email}`}
+                className="underline underline-offset-2 text-c-ondark hover:text-c-ondark-primary"
+              >
+                {CONTACT.email}
+              </a>.
             </p>
           </div>
         </Container>
