@@ -317,20 +317,21 @@ body {
 
 /* Clients arcs (Partners.jsx, by request): a decorative SVG of three
    dashed arcs (decorative only — `aria-hidden`, the client marks are the
-   content) with dot markers + logo cards positioned along them. The
-   stage's aspect ratio is deliberately flatter than the SVG viewBox
-   (760:440) and the svg stretches to fill it (`preserveAspectRatio="none"`),
-   which pulls the arcs up close to the heading instead of leaving ~55% of
-   the stage as empty space above the outer arc; because the markers are
-   positioned in % of the same stage box, they still land exactly on the
-   stretched arcs. Logo cards are near-square token radius, hairline
-   bordered, no shadow — consistent with the A3 radius/shadow rules.
-   Static (no scroll/hover reveal), so reduced-motion and the Phase 6
+   content) with dot markers + logo cards positioned along them. The SVG
+   viewBox is cropped to the arcs' own bounds (`0 220 760 220` — the outer
+   arc apex sits at y=240) and the svg stretches to fill the stage
+   (`preserveAspectRatio="none"`). The stage's 40:9 aspect ratio preserves
+   the original per-unit stretch, so the empty band that used to sit above
+   the outer arc is gone and the marks sit close under the heading; because
+   the markers are positioned in % of the same stage box, they still land
+   exactly on the stretched arcs. Logo cards are near-square token radius,
+   hairline bordered, no shadow — consistent with the A3 radius/shadow
+   rules. Static (no scroll/hover reveal), so reduced-motion and the Phase 6
    budget are untouched. */
 .arc-stage {
   position: relative;
   width: 100%;
-  aspect-ratio: 20 / 9;
+  aspect-ratio: 40 / 9;
 }
 .arc-svg {
   position: absolute;
