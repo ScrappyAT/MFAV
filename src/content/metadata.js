@@ -43,10 +43,6 @@ export const METADATA = {
     title: 'Industries We Serve — M-FAV',
     description: 'Capability across oil and gas, maritime, energy, aviation, construction, infrastructure, logistics and industrial operations.',
   },
-  projects: {
-    title: 'Projects — M-FAV',
-    description: 'Selected offshore, marine, logistics and infrastructure operations delivered by M-FAV.',
-  },
   company: {
     title: 'Company — M-FAV',
     description: 'Group structure, operating model, standards posture and careers at M-FAV Offshore and Allied Services Limited.',

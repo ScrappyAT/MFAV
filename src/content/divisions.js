@@ -89,6 +89,5 @@ export const NAV_LINKS = [
   { name: 'About Us', to: '/about' },
   { name: 'Services', to: '/services' },
   { name: 'Industries', to: '/industries' },
-  { name: 'Projects', to: '/projects' },
   { name: 'Company', to: '/company' },
 ];

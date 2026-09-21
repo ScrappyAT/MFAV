@@ -8,7 +8,6 @@ import KeyStats from '../components/KeyStats';
 import FeaturedServices from '../components/FeaturedServices';
 import IndustriesWeServe from '../components/IndustriesWeServe';
 import SafetyExcellence from '../components/SafetyExcellence';
-import ProjectsSection from '../components/ProjectsSection';
 import WhyMfav from '../components/WhyMfav';
 import Partners from '../components/Partners';
 
@@ -28,7 +27,6 @@ export default function Home() {
       <FeaturedServices />
       <IndustriesWeServe />
       <SafetyExcellence />
-      <ProjectsSection />
       <WhyMfav />
       <Partners />
     </main>
