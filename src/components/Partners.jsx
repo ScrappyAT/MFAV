@@ -2,41 +2,75 @@ import React from 'react';
 import Container from './ui/Container';
 
 /**
- * Partners / Clients — A3 §3f. A single restrained row of generic
- * grayscale placeholder marks: abstract geometric shapes generated as
- * inline SVG, uniform optical weight, low opacity, no hover color. None
- * of these resemble, name, or imply any real company.
+ * Clients / Partners — real client marks laid out along three dashed
+ * guide arcs (replaces the A3 §3f placeholder-mark row, by request).
+ * The first ten carries the `.lit` marker treatment from the supplied
+ * markup; all marks render at equal weight so the bottom row's supplier
+ * brands aren't hidden.
  */
-const MARKS = [
-  <svg key="1" viewBox="0 0 120 32" fill="currentColor"><rect x="4" y="10" width="12" height="12" /><rect x="20" y="4" width="6" height="24" /><rect x="30" y="14" width="40" height="4" /><circle cx="90" cy="16" r="8" /></svg>,
-  <svg key="2" viewBox="0 0 120 32" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M6 26 18 6l12 20z" /><path d="M40 8h30" /><path d="M40 16h22" /><path d="M40 24h30" /></svg>,
-  <svg key="3" viewBox="0 0 120 32" fill="currentColor"><circle cx="16" cy="16" r="10" /><rect x="34" y="6" width="4" height="20" /><rect x="42" y="6" width="4" height="20" /><rect x="50" y="6" width="4" height="20" /><rect x="66" y="10" width="30" height="12" /></svg>,
-  <svg key="4" viewBox="0 0 120 32" fill="none" stroke="currentColor" strokeWidth="2.5"><rect x="6" y="6" width="20" height="20" /><path d="M34 16h60" /><circle cx="104" cy="16" r="6" /></svg>,
-  <svg key="5" viewBox="0 0 120 32" fill="currentColor"><path d="M6 6h10v10H6zM20 6h10v10H20zM6 20h10v10H6zM20 20h10v10H20z" /><rect x="46" y="8" width="60" height="16" /></svg>,
-  <svg key="6" viewBox="0 0 120 32" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M6 16a10 10 0 1 1 20 0 10 10 0 0 1-20 0z" /><path d="M34 16h72" /></svg>,
+const CLIENTS = [
+  { alt: 'First E&P', file: 'first-ep', left: '9.6935%', top: '82.8513%', lit: true },
+  { alt: 'Seplat Energy', file: 'seplat', left: '22.107%', top: '65.4539%', lit: true },
+  { alt: 'Petralon Energy', file: 'petralon', left: '40.0451%', top: '55.7991%', lit: true },
+  { alt: 'NLNG', file: 'nlng', left: '59.9549%', top: '55.7991%', lit: true },
+  { alt: 'Brightwaters Energy', file: 'brightwaters', left: '77.893%', top: '65.4539%', lit: true },
+  { alt: 'Sahara Group', file: 'sahara', left: '90.3065%', top: '82.8513%', lit: true },
+  { alt: 'Savannah Energy', file: 'savannah', left: '23.7913%', top: '86.9318%', lit: true },
+  { alt: 'Saipem', file: 'saipem', left: '34.8684%', top: '74.0377%', lit: true },
+  { alt: 'TotalEnergies', file: 'totalenergies', left: '50%', top: '69.3182%', lit: true },
+  { alt: 'Tulcan Energy', file: 'tulcan', left: '65.1316%', top: '74.0377%', lit: true },
+  { alt: 'Dangote Refinery', file: 'dangote-refinery', left: '76.2087%', top: '86.9318%', lit: true },
+  { alt: 'Dangote Cement', file: 'dangote-cement', left: '36.3259%', top: '94.5455%' },
+  { alt: 'Deltaplus', file: 'deltaplus', left: '42.1053%', top: '87.2249%' },
+  { alt: 'Safety Jogger', file: 'safety-jogger', left: '50%', top: '84.5455%' },
+  { alt: '3M', file: '3m', left: '57.8947%', top: '87.2249%' },
+  { alt: 'Portwest', file: 'portwest', left: '63.6741%', top: '94.5455%' },
+];
+
+const ARCS = [
+  'M 40 460 A 340 220 0 0 1 720 460',
+  'M 150 460 A 230 155 0 0 1 610 460',
+  'M 260 460 A 120 88 0 0 1 500 460',
 ];
 
 export default function Partners() {
   return (
     <section className="bg-c-bg">
       <Container className="py-section-sm md:py-section">
-        <h2 className="text-display-sm text-c-on text-center mb-12">
-          Trusted to Support Critical Operations
+        <h2 className="text-display-sm text-c-on text-center mb-8">
+          Clients We've Worked With
         </h2>
-        <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-8">
-          {MARKS.map((mark, idx) => (
-            <span key={idx} className="h-8 w-28 text-c-on-muted opacity-40" aria-hidden="true">
-              {mark}
-            </span>
+        <p className="max-w-2xl mx-auto text-center text-c-on-muted leading-relaxed mb-4">
+          We're proud to have collaborated with industry leaders and forward-thinking
+          organizations across sectors.
+        </p>
+        {/* The arcs are decorative (aria-hidden); the marks are the content.
+            The stage is `hidden lg:block` per the supplied markup — on
+            smaller screens the section is heading + line only. */}
+        <div className="arc-stage hidden lg:block" id="arcStage">
+          <svg viewBox="0 0 760 440" className="arc-svg" aria-hidden="true" preserveAspectRatio="none">
+            {ARCS.map((d) => (
+              <path key={d} d={d} fill="none" strokeWidth="1.2" strokeDasharray="5 5" />
+            ))}
+          </svg>
+          {CLIENTS.map((client) => (
+            <React.Fragment key={client.alt}>
+              <div
+                className={`dot-marker${client.lit ? ' lit' : ''}`}
+                style={{ left: client.left, top: client.top }}
+              />
+              <div className="logo-dot" style={{ left: client.left, top: client.top }}>
+                <div className="logo-img-wrap">
+                  <img
+                    src={`/assets/images/brands/${client.file}.png`}
+                    alt={client.alt}
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </React.Fragment>
           ))}
         </div>
-        <p className="mt-8 max-w-2xl mx-auto text-center text-c-on-muted leading-relaxed">
-          Our services support international oil and gas operators, EPC contractors and
-          marine operators working in Nigeria and the Gulf of Guinea.
-        </p>
-        <p className="mt-4 text-center text-sm italic text-c-on-muted">
-          Client marks shown are placeholders pending confirmation.
-        </p>
       </Container>
     </section>
   );

@@ -314,3 +314,63 @@ body {
 .group:focus-visible .u-wipe {
   background-size: 100% 1px;
 }
+
+/* Clients arcs (Partners.jsx, by request): a decorative SVG of three
+   dashed arcs (decorative only — `aria-hidden`, the client marks are the
+   content) with dot markers + logo cards positioned along them. The
+   stage's aspect ratio is deliberately flatter than the SVG viewBox
+   (760:440) and the svg stretches to fill it (`preserveAspectRatio="none"`),
+   which pulls the arcs up close to the heading instead of leaving ~55% of
+   the stage as empty space above the outer arc; because the markers are
+   positioned in % of the same stage box, they still land exactly on the
+   stretched arcs. Logo cards are near-square token radius, hairline
+   bordered, no shadow — consistent with the A3 radius/shadow rules.
+   Static (no scroll/hover reveal), so reduced-motion and the Phase 6
+   budget are untouched. */
+.arc-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 20 / 9;
+}
+.arc-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.arc-svg path {
+  stroke: var(--clr-border);
+}
+.dot-marker {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background-color: var(--clr-surface-highest);
+}
+.dot-marker.lit {
+  background-color: var(--clr-primary);
+}
+.logo-dot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+.logo-img-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 6rem;
+  padding: 0.375rem 0.75rem;
+  background-color: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  /* rounded-token-sm (2px) — token lives in tailwind.config.js, so it's
+     the raw value here, same as the scrollbar rule above. */
+  border-radius: 2px;
+}
+.logo-img-wrap img {
+  display: block;
+  height: 1.75rem;
+  width: auto;
+  object-fit: contain;
+}

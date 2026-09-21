@@ -113,18 +113,20 @@ export default function About() {
           <div className="bg-c-primary-bg px-6 md:px-14 py-16 md:py-20 flex flex-col justify-center">
             <h2 className="text-xl font-bold text-c-ondark mb-4">Mission</h2>
             <p className="text-display-sm text-c-ondark leading-snug">
-              To contribute, in a profitable and socially responsible manner, to the
-              sustainable development of the maritime and offshore support services
-              industry in Nigeria and the entire Gulf of Guinea.
+              To provide safe, efficient, and cost-effective offshore, marine, engineering.
+              procurement, fabrication, logistics, and technical support services through
+              operational excellence, skilled personnel, strategie partnerships, and adherence
+              to international best practices, while promoting Nigeran Content developmen and
+              environmental sustainability.
             </p>
           </div>
           <div className="bg-c-bg-alt px-6 md:px-14 py-16 md:py-20 flex flex-col justify-center">
             <h2 className="text-xl font-bold text-c-on mb-4">Vision</h2>
             <p className="text-display-sm text-c-on leading-snug">
-              To be a leading indigenous provider of world-class support and marine
-              services to the oil and gas, manufacturing and shipping industries in
-              Nigeria and the Gulf of Guinea — driven by sustainability, innovation,
-              quality, safety and exceptional expertise.
+              To be Africa's leading indigenous offshore and marine services compan
+              delivering innovative, reliable, and sustainable solutions that support the
+              growth of the energy industry while creating lasting value for our clients
+              and stakeholders.
             </p>
           </div>
         </div>

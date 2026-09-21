@@ -115,7 +115,7 @@ export default function Footer() {
 
       {/* Copyright bar */}
       <div className="border-t border-c-ondark/15">
-        <div className="mfav-container flex flex-col sm:flex-row items-center justify-between gap-4 py-8 text-sm text-c-ondark/70">
+        <div className="mfav-container flex flex-col sm:flex-row items-center justify-center gap-4 py-8 text-sm text-c-ondark/70">
           <p>{COPYRIGHT}</p>
 
         </div>
