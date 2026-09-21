@@ -36,7 +36,7 @@
 export const SERVICES = {
   'marine-offshore': {
     positioning: 'Vessel management, chartering and offshore support for operations that cannot afford downtime.',
-    image: '/assets/images/hero_section.jpg',
+    image: '/assets/images/marine_offshore.gif',
     graded: true,
     overview: [
       'Offshore operations are measured in vessel availability. A craft off-hire for a certification lapse, a fuel transfer that misses a window, a crew change that slips a tide — each one costs more than the vessel day rate it interrupts.',

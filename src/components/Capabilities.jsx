@@ -10,7 +10,7 @@ import { useInView, revealClass } from '../hooks/useInView';
 // the closest existing placeholder. Flagged again in the Phase 2 report,
 // not a new gap.
 const IMAGE_BY_DIVISION = {
-  'marine-offshore': '/assets/images/hero_section.jpg',
+  'marine-offshore': '/assets/images/marine_offshore.gif',
   aviation: '/assets/images/division_aviation.jpg',
   'energy-infrastructure': '/assets/images/energy and infrasture division.png',
   'logistics-haulage': '/assets/images/division_logistics.jpeg',
