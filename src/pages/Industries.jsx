@@ -22,12 +22,11 @@ export default function Industries() {
       {/* Hero */}
       <section className="relative overflow-hidden bg-c-scrim">
         <img
-          src="/assets/images/hero_section.jpg"
+          src="/assets/images/who_we_are_plant.gif"
           alt=""
           loading="eager"
-          className="grade-cool absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover"
         />
-        <div aria-hidden="true" className="grade-cool-tint absolute inset-0" />
         {/* Directional scrim (as the homepage Hero): strong top-left
             behind the text, fading to fully visible image bottom-right. */}
         <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-c-scrim/60 via-c-scrim/20 to-transparent" />

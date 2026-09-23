@@ -49,7 +49,8 @@ const ARBITRARY_VALUE = /-\[[^\]]*\]/;
 // Standalone arbitrary-property syntax: a `[` preceded by a quote/space/
 // brace-open (i.e. not part of a utility-name-plus-hyphen token, which
 // ARBITRARY_VALUE above already covers) and containing a `:`.
-const ARBITRARY_PROPERTY = /(?:^|[\s"'`{])\[[a-zA-Z-]+:[^\]]*\]/;
+// Editorial placeholders are content markers, not CSS declarations.
+const ARBITRARY_PROPERTY = /(?:^|[\s"'`{])\[(?!PLACEHOLDER:|VERIFY:)[a-zA-Z-]+:[^\]]*\]/;
 const RAW_HEX = /#[0-9A-Fa-f]{3,8}\b/;
 
 function walk(dir, files = []) {

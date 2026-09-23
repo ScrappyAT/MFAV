@@ -25,7 +25,6 @@ export const DIVISIONS = [
       'Offshore Marine Operations',
       'Vessel Chartering',
       'Marine Support',
-      'Journey Management',
     ],
   },
   {
@@ -89,5 +88,4 @@ export const NAV_LINKS = [
   { name: 'About Us', to: '/about' },
   { name: 'Services', to: '/services' },
   { name: 'Industries', to: '/industries' },
-  { name: 'Company', to: '/company' },
 ];

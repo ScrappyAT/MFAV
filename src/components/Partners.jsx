@@ -44,22 +44,21 @@ export default function Partners() {
           We're proud to have collaborated with industry leaders and forward-thinking
           organizations across sectors.
         </p>
-        {/* The arcs are decorative (aria-hidden); the marks are the content.
-            The stage is `hidden lg:block` per the supplied markup — on
-            smaller screens the section is heading + line only. */}
-        <div className="arc-stage hidden lg:block" id="arcStage">
+        {/* Preserve the arc composition on every screen; narrow phones can scroll it. */}
+        <div className="partner-arcs-scroll" role="region" aria-label="Client logos arranged along arcs" tabIndex={0}>
+        <div className="arc-stage" id="arcStage">
           <svg viewBox="0 220 760 220" className="arc-svg" aria-hidden="true" preserveAspectRatio="none">
             {ARCS.map((d) => (
               <path key={d} d={d} fill="none" strokeWidth="1.2" strokeDasharray="5 5" />
             ))}
           </svg>
-          {CLIENTS.map((client) => (
+          {CLIENTS.map((client, index) => (
             <React.Fragment key={client.alt}>
               <div
                 className={`dot-marker${client.lit ? ' lit' : ''}`}
                 style={{ left: client.left, top: client.top }}
               />
-              <div className="logo-dot" style={{ left: client.left, top: client.top }}>
+              <div className={index >= 11 ? "logo-dot logo-dot-compact" : "logo-dot"} style={{ left: client.left, top: client.top }}>
                 <div className="logo-img-wrap">
                   <img
                     src={`/assets/images/brands/${client.file}.png`}
@@ -70,6 +69,7 @@ export default function Partners() {
               </div>
             </React.Fragment>
           ))}
+        </div>
         </div>
       </Container>
     </section>

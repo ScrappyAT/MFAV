@@ -36,7 +36,7 @@ export default {
         // Project-specific (no direct Figma equivalent)
         'hero': ['4.5rem', { lineHeight: '0.97', letterSpacing: '-0.02em', fontWeight: '700' }],
         'hero-sm': ['2.75rem', { lineHeight: '1.05', letterSpacing: '-0.01em', fontWeight: '700' }],
-        'display': ['3.5rem', { lineHeight: '1.1', letterSpacing: '-0.01em', fontWeight: '600' }],
+        'display': ['3rem', { lineHeight: '1.1', letterSpacing: '-0.01em', fontWeight: '600' }],
         'display-sm': ['2.25rem', { lineHeight: '1.15', letterSpacing: '-0.01em', fontWeight: '600' }],
         'stat': ['4rem', { lineHeight: '1', fontVariantNumeric: 'tabular-nums', fontWeight: '500' }],
         'eyebrow': ['0.75rem', { letterSpacing: '0.15em', fontWeight: '700' }],

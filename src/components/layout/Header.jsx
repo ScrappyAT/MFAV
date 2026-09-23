@@ -66,7 +66,7 @@ export default function Header() {
   }, [mobileOpen]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-header h-header bg-c-bg border-b border-c-border shadow-token">
+    <header className="fixed inset-x-0 top-0 z-header h-header bg-c-bg border-b border-c-border/40">
       {/* Permanently solid/light (by request) — this used to transition
           from transparent-over-hero to this same solid state on scroll
           (a `solid` state + scroll listener + hysteresis thresholds +
@@ -121,7 +121,7 @@ export default function Header() {
             <Button
               to="/contact"
               variant="primary"
-              size="sm"
+              size="md"
               aria-current={location.pathname === '/contact' ? 'page' : undefined}
             >
               Request a Consultation

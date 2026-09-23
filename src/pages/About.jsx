@@ -1,4 +1,5 @@
 import React from 'react';
+import TextLink from '../components/ui/TextLink';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
 import { METADATA } from '../content/metadata';
 import Container from '../components/ui/Container';
@@ -49,12 +50,11 @@ export default function About() {
       {/* Hero */}
       <section className="relative overflow-hidden bg-c-scrim">
         <img
-          src="/assets/images/hero_section.jpg"
+          src="/assets/images/marine_offshore.gif"
           alt=""
           loading="eager"
-          className="grade-cool absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover"
         />
-        <div aria-hidden="true" className="grade-cool-tint absolute inset-0" />
         {/* Directional scrim (as the homepage Hero): strong top-left
             behind the text, fading to fully visible image bottom-right. */}
         <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-c-scrim/60 via-c-scrim/20 to-transparent" />
@@ -73,7 +73,7 @@ export default function About() {
       </section>
 
       {/* Company overview */}
-      <Section size="md">
+      <Section id="overview" size="md">
         <Container>
           <div className="max-w-measure flex flex-col gap-5 text-c-on-muted leading-relaxed text-lg">
             <p>
@@ -96,6 +96,8 @@ export default function About() {
               integrated model earns its place — fewer interfaces, fewer handover gaps,
               and one party accountable when something needs to change mid-operation.
             </p>
+            <p>M-FAV operates six specialist divisions under one management structure. Each has its own operational leadership and technical capability, supported by shared commercial, HSE and quality functions.</p>
+            <TextLink to="/services" standalone>Explore our divisions</TextLink>
           </div>
         </Container>
       </Section>
@@ -116,17 +118,17 @@ export default function About() {
           <div className="bg-c-primary-bg px-6 md:px-14 py-16 md:py-20 flex flex-col justify-center">
             <h2 className="text-xl font-bold text-c-ondark mb-4">Mission</h2>
             <p className="text-display-sm text-c-ondark leading-snug">
-              To provide safe, efficient, and cost-effective offshore, marine, engineering.
+              Our mission is to provide safe, efficient, and cost-effective offshore, marine, engineering,
               procurement, fabrication, logistics, and technical support services through
-              operational excellence, skilled personnel, strategie partnerships, and adherence
-              to international best practices, while promoting Nigeran Content developmen and
+              operational excellence, skilled personnel, strategic partnerships, and adherence
+              to international best practices, while promoting Nigerian content development and
               environmental sustainability.
             </p>
           </div>
           <div className="bg-c-bg-alt px-6 md:px-14 py-16 md:py-20 flex flex-col justify-center">
             <h2 className="text-xl font-bold text-c-on mb-4">Vision</h2>
             <p className="text-display-sm text-c-on leading-snug">
-              To be Africa's leading indigenous offshore and marine services compan
+              Our vision is to be Africa's leading indigenous offshore and marine services company,
               delivering innovative, reliable, and sustainable solutions that support the
               growth of the energy industry while creating lasting value for our clients
               and stakeholders.
@@ -134,6 +136,49 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      {/* Operating model */}
+      <Section id="operating-model" size="md" tone="alt">
+        <Container>
+          <SectionHeader heading="How the Group Operates" />
+          <div className="max-w-measure flex flex-col gap-4 text-c-on-muted leading-relaxed">
+            <p>
+              Every engagement is assigned a single accountable contact who holds the
+              scope from enquiry to close-out, regardless of how many divisions are
+              involved. Where a client uses several services — a vessel, a haulage
+              programme and a PPE contract, for example — coordination happens inside
+              M-FAV rather than on the client's desk.
+            </p>
+            <p>
+              Operations are planned before mobilisation, executed against a documented
+              method, and reported on an agreed cycle. Variations are raised in
+              writing, priced and agreed before work proceeds.
+            </p>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Governance and standards posture */}
+      <Section size="md">
+        <Container>
+          <SectionHeader heading="Governance & Standards" />
+          <div className="max-w-measure flex flex-col gap-4 text-c-on-muted leading-relaxed">
+            <p>
+              M-FAV maintains the registrations and clearances required for the scopes
+              we undertake, and operates within the regulatory framework governing
+              marine, offshore and industrial work in Nigeria. Documentation is made
+              available during prequalification and tender.
+            </p>
+            <p>
+              Our commercial conduct is governed by transparent documentation, ethical
+              procurement practice and clear contract terms. Supplier and subcontractor
+              relationships are subject to evaluation before engagement and review
+              through delivery.
+            </p>
+          </div>
+        </Container>
+      </Section>
+
 
       {/* Values */}
       <Section size="md" tone="base">

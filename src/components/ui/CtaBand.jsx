@@ -17,7 +17,7 @@ import Button from './Button';
 export default function CtaBand({ heading, body }) {
   return (
     <div className="bg-c-primary">
-      <Container className="flex flex-col md:flex-row items-center justify-between gap-8 py-16">
+      <Container className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 py-16">
         <div className="max-w-xl">
           <h2 className="text-display-sm text-c-ondark">{heading}</h2>
           <p className="mt-3 text-c-ondark">{body}</p>

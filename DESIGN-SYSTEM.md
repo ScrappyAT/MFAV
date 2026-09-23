@@ -219,3 +219,12 @@ dedicated breakpoint of its own.
   gaps, distinct from the section-rhythm `section-*` scale; both are
   legitimate, they answer different questions ("how much space inside this
   card" vs. "how much space between sections").
+
+
+## September 2026 refresh
+
+Shared display headings now use 3rem (48px). Buttons use sentence case. Homepage hero uses a two-column layout with 100px header clearance and an image minimum height of 28rem (20rem below 640px, 40rem from 1024px). Desktop copy has a 720px maximum width and 3rem right inset. Division cards use 16:9 images with permanently visible text on a light surface; no hover is needed to discover capabilities. Existing colours, section padding and motion tokens are retained.
+
+
+## Desktop hero correction
+The homepage now uses a full-width photo at all breakpoints. Text uses the shared Container and a max-w-3xl content column, keeping it aligned with navigation. The hero reserves 100px for the fixed header and uses a viewport-aware maximum initial height of 54rem; small phones grow with content. Directional black overlay protects white text. Image focal positions are shared by image source across cards and page headers. This supersedes the previous split-hero rules.

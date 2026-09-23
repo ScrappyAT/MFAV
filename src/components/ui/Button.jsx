@@ -47,7 +47,7 @@ export default function Button({
   const isDisabled = disabled || loading;
 
   const classes = [
-    'group inline-flex items-center justify-center rounded-token font-semibold uppercase tracking-wide',
+    'group inline-flex items-center justify-center rounded-token font-semibold',
     'transition-colors duration-200 ease-standard',
     'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-c-primary',
     'disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none',

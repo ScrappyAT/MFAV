@@ -75,7 +75,6 @@ export default function Footer() {
             </h3>
             <ul className="flex flex-col gap-2.5 text-sm">
               <li><TextLink to="/about" onDark>About Us</TextLink></li>
-              <li><TextLink to="/company" onDark>Company</TextLink></li>
               <li><TextLink to="/industries" onDark>Industries</TextLink></li>
               <li><TextLink to="/faq" onDark>FAQ</TextLink></li>
             </ul>
@@ -101,12 +100,12 @@ export default function Footer() {
               {CONTACT.phones.map((phone) => (
                 <li key={phone} className="flex items-center gap-2">
                   <Phone size={16} aria-hidden="true" className="shrink-0 text-c-ondark-primary" />
-                  <span>{phone}</span>
+                  <a className="underline-offset-4 hover:underline" href={`tel:${phone.replace(/\(0\)/g, '').replace(/[^+\d]/g, '')}`}>{phone}</a>
                 </li>
               ))}
               <li className="flex items-center gap-2">
                 <Mail size={16} aria-hidden="true" className="shrink-0 text-c-ondark-primary" />
-                <span>{CONTACT.email}</span>
+                <a className="break-all underline-offset-4 hover:underline" href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
               </li>
             </ul>
           </div>

@@ -14,7 +14,7 @@ const FAQS = [
   {
     question: 'Can I engage more than one division on a single project?',
     answer:
-      'Yes — and this is where the integrated model earns its place. You are assigned a single accountable contact who coordinates across whichever divisions your operation requires. Fewer interfaces, fewer handover gaps, one party answerable for delivery.',
+      'Yes — and this is where the integrated model earns its place. You are assigned a single accountable contact who coordinates across whichever divisions your operation requires. This reduces interfaces and handover gaps, with one party answerable for delivery.',
   },
   {
     question: 'Where does M-FAV operate?',
@@ -39,7 +39,7 @@ const FAQS = [
   {
     question: 'What is "Journey Management"?',
     answer:
-      'Journey Management is the planning, monitoring and control of vehicle movements to manage route risks — including road conditions, security posture and weather. It applies to both our Logistics & Haulage and Marine & Offshore divisions.',
+      'Journey Management is the planning, monitoring and control of vehicle movements to manage route risks — including road conditions, security posture and weather. This service is provided by our Logistics & Haulage division.',
   },
   {
     question: 'Are your PPE and equipment supplies certified?',
@@ -49,7 +49,7 @@ const FAQS = [
   {
     question: 'How do I apply for a role at M-FAV?',
     answer:
-      'Send your CV and the role you are interested in to our support email. Full details are on the Company page under the Careers section.',
+      'Send your CV and the role you are interested in to our support email. Full details are on the About page under the Careers section.',
   },
 ];
 

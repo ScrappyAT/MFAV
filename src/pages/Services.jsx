@@ -18,10 +18,16 @@ export default function Services() {
 
   return (
     <main>
-      {/* Hero — image removed by request (a replacement image is coming).
-          Navy placeholder keeps the on-dark text colors so an image can
-          be dropped back in here without touching the copy. */}
-      <section className="relative overflow-hidden bg-c-primary-bg">
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-c-scrim">
+        <img
+          src="/assets/images/who_we_are_plant.gif"
+          alt=""
+          loading="eager"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-c-scrim/90 via-c-scrim/60 to-c-scrim/20" />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-c-scrim/60 via-transparent to-c-scrim/20" />
         {/* pt-32 (mobile only) clears the fixed 100px header; md+ uses
             py-section-lg's 180px. */}
         <Container className="relative z-10 pt-32 pb-section-sm md:py-section-lg">

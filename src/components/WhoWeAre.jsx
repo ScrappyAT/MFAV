@@ -29,30 +29,12 @@ export default function WhoWeAre() {
         <div className="order-1 lg:order-2 py-section-sm md:py-section flex items-center px-6 md:px-10 lg:px-16">
           <div className={['max-w-measure border-l-2 border-c-primary pl-6', revealClass(inView)].join(' ')}>
             <h2 className="text-display-sm md:text-display text-c-on mb-6">
-              Built Around Capability. Driven by Excellence.
+              One partner for the moving parts.
             </h2>
             <div className="flex flex-col gap-4 text-c-on-muted leading-relaxed">
-              <p>
-                M-FAV Offshore and Allied Services Limited is an integrated services
-                group operating across marine, offshore, aviation, logistics, energy,
-                infrastructure and industrial sectors. Our work sits where operations
-                are most demanding — offshore support vessels on station, pipeline
-                spreads, heavy loads moving on Nigerian roads, and crews who need the
-                right equipment before the shift starts.
-              </p>
-              <p>
-                Complex operations fail at the seams between contractors. Bringing
-                vessel management, haulage, equipment supply, journey management and
-                technical procurement under one accountable partner removes those
-                seams. One point of coordination, one set of standards, one party
-                answerable for delivery.
-              </p>
-              <p>
-                What stays constant across every division is how we operate: safety
-                before schedule, compliance with the regulatory framework we work
-                within, and transparent reporting that lets clients see what is
-                happening on their contract.
-              </p>
+              <p>Moving people, vessels, equipment and materials takes coordination. M-FAV brings specialist services together so clients can plan connected scopes through one point of contact.</p>
+              <p>Our six divisions span marine and offshore operations, aviation, energy and infrastructure, logistics and haulage, equipment and PPE, and property and investment.</p>
+              <p>Safety, clear responsibilities and transparent communication guide how we approach each engagement.</p>
             </div>
             <div className="mt-8">
               <TextLink to="/about" standalone>

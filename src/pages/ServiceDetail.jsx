@@ -81,7 +81,7 @@ export default function ServiceDetail() {
               ))}
             </div>
           </div>
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-5 bg-c-bg-alt p-6 md:p-8 rounded-token self-start">
             <dl className="flex flex-col">
               {service.keyFacts.map((fact) => (
                 <div key={fact.label} className="py-4 border-t border-c-border first:border-t-0">
@@ -126,7 +126,7 @@ export default function ServiceDetail() {
       {/* 5. Benefits */}
       <section className="bg-c-bg-alt">
         <Container className="py-section-sm md:py-section">
-          <SectionHeader heading="Why This Division" />
+          <SectionHeader heading="What this means for your operation" />
           <div className="grid grid-cols-1 md:grid-cols-2 border-t border-l border-c-border">
             {service.benefits.map((benefit) => (
               <div key={benefit} className="border-r border-b border-c-border p-6">
@@ -139,7 +139,7 @@ export default function ServiceDetail() {
 
       {/* 6. Relevant Industries */}
       <Container className="py-section-sm md:py-section">
-        <SectionHeader heading="Where This Applies" />
+        <SectionHeader heading="Industries we support" />
         <div className="flex flex-wrap gap-3">
           {service.relevantIndustries.map((industry) => (
             <Link

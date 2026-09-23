@@ -16,14 +16,9 @@
 // `capabilities[].name`/`description` are each division's OWN list
 // (independent of `divisions.js`'s `subCapabilities`, which stays as the
 // homepage panel's plain sub-capability strings) — free to match the
-// deck's exact capability headings, including Marine & Offshore's fourth
-// one, which the deck names "Journey Management (marine interface)".
-// That same entry's deck description embeds a markdown link
-// (`[Logistics & Haulage](/services/logistics-haulage)`), which this
-// description slot renders as plain text, not markdown — rendered here
-// with the link text kept but the markdown syntax dropped, rather than
-// showing literal brackets/parentheses. The Related Services section
-// further down the same page already links to Logistics & Haulage.
+// current capability headings for each division.
+//
+// Journey Management belongs to Logistics & Haulage following client review.
 //
 // Per-division process steps: three divisions (Marine & Offshore,
 // Logistics & Haulage, Equipment & PPE) have deck-specified custom step
@@ -37,7 +32,7 @@ export const SERVICES = {
   'marine-offshore': {
     positioning: 'Vessel management, chartering and offshore support for operations that cannot afford downtime.',
     image: '/assets/images/marine_offshore.gif',
-    graded: true,
+    graded: false,
     overview: [
       'Offshore operations are measured in vessel availability. A craft off-hire for a certification lapse, a fuel transfer that misses a window, a crew change that slips a tide — each one costs more than the vessel day rate it interrupts.',
       'M-FAV manages and charters offshore support craft including Fast Support Intervention Vessels, Anchor Handling Vessels, Platform Supply Vessels and specialised assets, and operates them in compliance with the regulatory and class requirements applicable to Nigerian waters. Our scope extends past the vessel itself to crew transfer, AGO supply coordination, security escort and offshore chandling — the support functions that determine whether an offshore programme runs to plan.',
@@ -55,14 +50,13 @@ export const SERVICES = {
       { name: 'Offshore Marine Operations', description: 'Day-to-day management of offshore support vessels: crewing, certification, maintenance planning, bunkering and voyage execution, with compliance maintained against the applicable regulatory and class requirements.' },
       { name: 'Vessel Chartering', description: 'Sourcing and contracting the right vessel for the scope, whether a single mobilisation or a sustained campaign, with commercial terms and off-hire conditions made clear before signature.' },
       { name: 'Marine Support', description: 'Crew transfer, AGO supply coordination, security escort and offshore chandling — the functions that keep an offshore facility supplied and its personnel moving safely.' },
-      { name: 'Journey Management (marine interface)', description: 'Coordination between vessel movements and onshore transport so crew rotations connect without exposure at the quayside or the airport. Full journey management sits under Logistics & Haulage.' },
     ],
     process: [
-      { title: 'Consultation', description: 'We establish the scope, duration, operating area and the client’s marine assurance requirements.' },
-      { title: 'Vessel & Scope Assessment', description: 'Vessel selection matched to scope, with certification, class status and crew competency verified before commitment.' },
-      { title: 'Mobilisation', description: 'Documentation, permits, crew mobilisation and pre-mobilisation inspection completed ahead of sailing.' },
-      { title: 'Execution', description: 'Operations run under an agreed marine procedure with daily position and status reporting.' },
-      { title: 'Monitoring & Reporting', description: 'Vessel performance, HSE events, fuel and downtime reported on an agreed cycle, with a close-out report at demobilisation.' },
+      { title: 'Consultation', description: 'We establish the scope, duration, operating area and marine assurance requirements with the client.' },
+      { title: 'Vessel & Scope Assessment', description: 'We match vessel selection to the scope and verify certification, class status and crew competency before commitment.' },
+      { title: 'Mobilisation', description: 'We complete documentation, permits, crew mobilisation and pre-mobilisation inspections ahead of sailing.' },
+      { title: 'Execution', description: 'Operations follow agreed marine procedures, with daily position and status reports.' },
+      { title: 'Monitoring & Reporting', description: 'We report vessel performance, HSE events, fuel use and downtime on an agreed cycle, with a close-out report at demobilisation.' },
     ],
     benefits: [
       'Vessel availability protected through planned maintenance and current certification.',
@@ -102,11 +96,11 @@ export const SERVICES = {
       { name: 'Purchase & Sale of Helicopters', description: 'Advisory and transaction support for clients acquiring or disposing of rotary aircraft, including sourcing, valuation input and transaction coordination.' },
     ],
     process: [
-      { title: 'Consultation', description: 'Route, passenger numbers, payload, timing and any client aviation standard.' },
-      { title: 'Assessment & Planning', description: 'Aircraft type matched to the requirement; operator certification, insurance and crew currency verified.' },
-      { title: 'Mobilisation', description: 'Permits, slots, ground handling and passenger documentation arranged.' },
-      { title: 'Execution', description: 'Movement flown, with coordination through departure, transit and arrival.' },
-      { title: 'Monitoring & Reporting', description: 'Movement confirmation, and programme-level reporting on longer contracts.' },
+      { title: 'Consultation', description: 'We confirm the route, passenger numbers, payload, timing and applicable client aviation standards.' },
+      { title: 'Assessment & Planning', description: 'We match the aircraft type to the requirement and verify operator certification, insurance and crew currency.' },
+      { title: 'Mobilisation', description: 'We arrange permits, slots, ground handling and passenger documentation.' },
+      { title: 'Execution', description: 'We coordinate the flight through departure, transit and arrival.' },
+      { title: 'Monitoring & Reporting', description: 'We confirm completed movements and provide programme-level reporting on longer contracts.' },
     ],
     benefits: [
       'Aircraft matched to the movement rather than the other way round.',
@@ -146,11 +140,11 @@ export const SERVICES = {
       { name: 'Technical Services', description: 'Engineering and inspection support, cable laying, and specialist technical scopes supporting energy and infrastructure assets.' },
     ],
     process: [
-      { title: 'Consultation', description: 'Scope, route, tolerances, environmental constraints and client standards.' },
-      { title: 'Assessment & Planning', description: 'Survey and site data reviewed, method statement and risk assessment prepared, marine spread and equipment defined.' },
-      { title: 'Mobilisation', description: 'Permits and regulatory notifications, vessel and equipment mobilisation, pre-works inspection.' },
-      { title: 'Execution', description: 'Works executed under the approved method statement with daily progress and HSE reporting.' },
-      { title: 'Monitoring & Reporting', description: 'As-built documentation, inspection records and close-out reporting.' },
+      { title: 'Consultation', description: 'We confirm the scope, route, tolerances, environmental constraints and client standards.' },
+      { title: 'Assessment & Planning', description: 'We review survey and site data, prepare the method statement and risk assessment, and define the marine spread and equipment.' },
+      { title: 'Mobilisation', description: 'We arrange permits and regulatory notifications, mobilise vessels and equipment, and complete pre-works inspections.' },
+      { title: 'Execution', description: 'Work follows the approved method statement, with daily progress and HSE reports.' },
+      { title: 'Monitoring & Reporting', description: 'We provide as-built documentation, inspection records and close-out reports.' },
     ],
     benefits: [
       'DP2-capable vessel support for precision offshore work.',
@@ -190,11 +184,11 @@ export const SERVICES = {
       { name: 'Logistics Support', description: 'Coordination of supply into offshore and remote operations, including offshore AGO supply and vessel chandling.' },
     ],
     process: [
-      { title: 'Consultation', description: 'Cargo or personnel profile, origin and destination, timing and any client security requirement.' },
-      { title: 'Route & Risk Assessment', description: 'Route surveyed, security posture assessed, escort and timing decided.' },
-      { title: 'Mobilisation', description: 'Vehicles, drivers and permits confirmed; pre-movement inspection and briefing completed.' },
-      { title: 'Execution', description: 'Movement tracked in real time with checkpoint-to-checkpoint status.' },
-      { title: 'Monitoring & Reporting', description: 'Proof of delivery, exception reporting and movement close-out.' },
+      { title: 'Consultation', description: 'We confirm the cargo or personnel profile, origin, destination, timing and client security requirements.' },
+      { title: 'Route & Risk Assessment', description: 'We survey the route, assess security risks and determine escort requirements and timing.' },
+      { title: 'Mobilisation', description: 'We confirm vehicles, drivers and permits, and complete the pre-movement inspection and briefing.' },
+      { title: 'Execution', description: 'We track the movement in real time and report its status from checkpoint to checkpoint.' },
+      { title: 'Monitoring & Reporting', description: 'We provide proof of delivery, report exceptions and document the completed movement.' },
     ],
     benefits: [
       'Real-time visibility of every movement from dispatch to delivery.',
@@ -235,11 +229,11 @@ export const SERVICES = {
       { name: 'Equipment Supply & Technical Procurement', description: 'Sourcing of technical equipment for oil production, drilling and petrochemical operations, with supplier evaluation, inspection and compliance checks built into the process.' },
     ],
     process: [
-      { title: 'Consultation', description: 'Specification, quantities, standards required and delivery window.' },
-      { title: 'Sourcing & Supplier Evaluation', description: 'Suppliers evaluated on certification, quality record and lead time reliability, not price alone.' },
-      { title: 'Quality Assurance', description: 'Inspection and compliance checks against specification before dispatch.' },
-      { title: 'Delivery', description: 'Delivered to site or vessel on the confirmed schedule, with documentation.' },
-      { title: 'Replenishment & Support', description: 'Scheduled replenishment and consumption tracking on term contracts.' },
+      { title: 'Consultation', description: 'We confirm the specification, quantities, required standards and delivery window.' },
+      { title: 'Sourcing & Supplier Evaluation', description: 'We evaluate suppliers on certification, quality record and lead time reliability, as well as price.' },
+      { title: 'Quality Assurance', description: 'We inspect goods and check compliance against the specification before dispatch.' },
+      { title: 'Delivery', description: 'We deliver to the site or vessel on the confirmed schedule, with the required documentation.' },
+      { title: 'Replenishment & Support', description: 'We arrange scheduled replenishment and track consumption on term contracts.' },
     ],
     benefits: [
       'Specification-led sourcing rather than lowest-cost substitution.',
@@ -277,11 +271,11 @@ export const SERVICES = {
       { name: 'Asset Opportunities', description: 'Identification and structuring of asset opportunities, including operational assets relevant to marine, logistics and industrial activity.' },
     ],
     process: [
-      { title: 'Consultation', description: 'Requirement, location, operational use and timeline.' },
-      { title: 'Assessment', description: 'Suitability, access, services and title reviewed.' },
-      { title: 'Structuring', description: 'Commercial terms structured and documented.' },
-      { title: 'Completion', description: 'Transaction or agreement completed with legal and regulatory requirements met.' },
-      { title: 'Ongoing Support', description: 'Continued support where M-FAV retains an operational role.' },
+      { title: 'Consultation', description: 'We confirm the requirement, location, intended operational use and timeline.' },
+      { title: 'Assessment', description: 'We review suitability, access, services and title.' },
+      { title: 'Structuring', description: 'We structure and document the commercial terms.' },
+      { title: 'Completion', description: 'We complete the transaction or agreement in line with legal and regulatory requirements.' },
+      { title: 'Ongoing Support', description: 'We provide ongoing support where M-FAV retains an operational role.' },
     ],
     benefits: [
       'Property assessed for operational suitability, not just floor area.',
